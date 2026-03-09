@@ -1507,7 +1507,7 @@ footer {
           <span class="sg-title">AI Governance &amp; Compliance</span>
         </div>
         <div class="sg-tags">
-          <span class="sg-tag">ISO 42001 AIMS (Experience)</span>
+          <span class="sg-tag">ISO 42001 AIMS </span>
           <span class="sg-tag">EU AI Act</span>
           <span class="sg-tag">AI Risk Assessment</span>
           <span class="sg-tag">Responsible AI</span>
@@ -1836,4 +1836,18 @@ window.addEventListener('scroll', () => {
 
 // Active nav link
 const sections = document.querySelectorAll('section[id]');
-const links = document.querySelecto
+const links = document.querySelectorAll('.nav-links a:not(.nav-cta)');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) cur = s.id; });
+  links.forEach(a => {
+    a.style.color = (a.getAttribute('href') === '#' + cur) ? 'var(--c1)' : '';
+  });
+});
+
+window.addEventListener('load', () => {
+  document.querySelectorAll('#hero .reveal').forEach(el => el.classList.add('show'));
+});
+</script>
+</body>
+</html>
