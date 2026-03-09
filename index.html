@@ -172,70 +172,12 @@ nav {
   to { transform: translateY(-50%) rotate(360deg); }
 }
 
-/* hero two-col layout */
+/* hero layout — photo is absolutely positioned, text fills left */
 .hero-layout {
   position: relative;
   z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 60px;
   width: 100%;
-}
-
-.hero-inner {
-  flex: 1;
-  max-width: 680px;
-}
-
-/* photo */
-.hero-photo-wrap {
-  position: relative;
-  flex-shrink: 0;
-  width: 300px;
-  height: 300px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.hero-photo-ring {
-  position: absolute;
-  inset: -20px;
-  border-radius: 50%;
-  border: 1px solid rgba(0,212,255,0.15);
-  animation: spin-ring 18s linear infinite;
-}
-
-.hero-photo-ring2 {
-  position: absolute;
-  inset: -8px;
-  border-radius: 50%;
-  border: 1px dashed rgba(0,255,160,0.1);
-  animation: spin-ring 12s linear infinite reverse;
-}
-
-@keyframes spin-ring {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-.hero-photo {
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  object-fit: cover;
-  object-position: center top;
-  border: 3px solid rgba(0,212,255,0.25);
-  box-shadow: 0 0 40px rgba(0,212,255,0.15), 0 20px 60px rgba(0,0,0,0.5);
-  position: relative;
-  z-index: 1;
-}
-
-@media (max-width: 1000px) {
-  .hero-layout { flex-direction: column-reverse; gap: 40px; }
-  .hero-photo-wrap { width: 200px; height: 200px; }
-  .hero-photo { width: 200px; height: 200px; }
+  max-width: 700px;
 }
 
 /* name block */
@@ -267,12 +209,11 @@ nav {
   background-clip: text;
 }
 
-/* HERO PHOTO */
+/* HERO PHOTO — pinned top-right */
 .hero-photo-wrap {
   position: absolute;
-  right: 48px;
-  top: 50%;
-  transform: translateY(-50%);
+  right: 60px;
+  top: 80px;
   z-index: 2;
   display: flex;
   flex-direction: column;
@@ -282,8 +223,8 @@ nav {
 
 .hero-photo-ring {
   position: relative;
-  width: 240px;
-  height: 240px;
+  width: 260px;
+  height: 260px;
 }
 
 .hero-photo-ring::before {
@@ -322,13 +263,13 @@ nav {
 }
 
 .hero-name-tag {
-  margin-top: 18px;
+  margin-top: 16px;
   text-align: center;
 }
 
 .hero-name-tag .big-name {
   font-family: 'Outfit', sans-serif;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 800;
   color: #fff;
   letter-spacing: -0.02em;
@@ -1292,11 +1233,11 @@ footer {
       </div>
     </div>
 
-    <!-- PHOTO -->
+    <!-- PHOTO — absolutely positioned top-right -->
     <div class="hero-photo-wrap">
-      <div class="hero-photo-ring"></div>
-      <div class="hero-photo-ring2"></div>
-      <img src="photo.png" alt="Parth Lakhalani" class="hero-photo" onerror="this.parentElement.style.display='none'">
+      <div class="hero-photo-ring">
+        <img src="photo.png" alt="Parth Lakhalani" class="hero-photo" onerror="this.parentElement.parentElement.style.display='none'">
+      </div>
     </div>
   </div>
 </section>
