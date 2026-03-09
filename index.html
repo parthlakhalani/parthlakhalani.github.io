@@ -177,7 +177,7 @@ nav {
   position: relative;
   z-index: 1;
   width: 100%;
-  max-width: 700px;
+  max-width: 640px;
 }
 
 /* name block */
@@ -212,19 +212,21 @@ nav {
 /* HERO PHOTO — pinned top-right */
 .hero-photo-wrap {
   position: absolute;
-  right: 60px;
-  top: 80px;
+  right: 80px;
+  top: 50%;
+  transform: translateY(-50%);
   z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0;
+  pointer-events: none;
 }
 
 .hero-photo-ring {
   position: relative;
-  width: 260px;
-  height: 260px;
+  width: 280px;
+  height: 280px;
 }
 
 .hero-photo-ring::before {
@@ -245,48 +247,25 @@ nav {
 .hero-photo-ring::after {
   content: '';
   position: absolute;
-  inset: 1px;
+  inset: 3px;
   border-radius: 50%;
   background: var(--bg);
   z-index: 1;
 }
 
 .hero-photo {
-  position: relative;
+  position: absolute;
+  inset: 6px;
   z-index: 2;
-  width: 100%;
-  height: 100%;
+  width: calc(100% - 12px);
+  height: calc(100% - 12px);
   border-radius: 50%;
   object-fit: cover;
   object-position: center top;
   display: block;
 }
 
-.hero-name-tag {
-  margin-top: 16px;
-  text-align: center;
-}
-
-.hero-name-tag .big-name {
-  font-family: 'Outfit', sans-serif;
-  font-size: 20px;
-  font-weight: 800;
-  color: #fff;
-  letter-spacing: -0.02em;
-  display: block;
-}
-
-.hero-name-tag .big-role {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  color: var(--c1);
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  display: block;
-  margin-top: 4px;
-}
-
-@media (max-width: 1100px) {
+@media (max-width: 1200px) {
   .hero-photo-wrap { display: none; }
 }
 
@@ -438,10 +417,10 @@ h2 {
 
 .sec-desc {
   font-size: 17px;
-  color: var(--muted);
+  color: #9ab5cf;
   max-width: 540px;
   line-height: 1.7;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 /* ─── SERVICES ─── */
@@ -499,9 +478,9 @@ h2 {
 
 .service-desc {
   font-size: 15px;
-  color: var(--muted);
+  color: #9ab5cf;
   line-height: 1.7;
-  font-weight: 300;
+  font-weight: 400;
   margin-bottom: 24px;
 }
 
@@ -665,8 +644,8 @@ h2 {
 
 .exp-bullets li {
   font-size: 15px;
-  color: var(--muted);
-  font-weight: 300;
+  color: #a8c0db;
+  font-weight: 400;
   display: flex;
   gap: 12px;
   line-height: 1.6;
@@ -675,7 +654,7 @@ h2 {
 .exp-bullets li::before {
   content: '—';
   color: var(--c1);
-  opacity: 0.4;
+  opacity: 0.7;
   flex-shrink: 0;
   margin-top: 1px;
 }
@@ -940,8 +919,8 @@ h2 {
 
 .cert-info {
   font-size: 12px;
-  color: var(--muted);
-  font-weight: 300;
+  color: #8aafc8;
+  font-weight: 400;
 }
 
 .cert-card.featured .cert-name { font-size: 15px; }
