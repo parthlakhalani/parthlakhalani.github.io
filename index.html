@@ -1,0 +1,1897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parth Lakhalani — Cybersecurity Expert & Academic</title>
+<meta name="description" content="Parth Lakhalani — CISO, Cybersecurity Lecturer, Researcher, and Freelance Consultant based in Berlin.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:       #03050d;
+  --bg2:      #060a16;
+  --bg3:      #090f1f;
+  --surface:  rgba(255,255,255,0.03);
+  --surface2: rgba(255,255,255,0.06);
+  --c1: #00d4ff;
+  --c2: #0090ff;
+  --c3: #00ffa0;
+  --c4: #ff6b35;
+  --text:     #d4e4f7;
+  --muted:    #5a7a9e;
+  --border:   rgba(0,212,255,0.1);
+  --glow1: 0 0 30px rgba(0,212,255,0.12);
+  --glow2: 0 0 60px rgba(0,144,255,0.08);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ─── NOISE TEXTURE ─── */
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.4;
+}
+
+/* ─── NAV ─── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 0 48px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(3,5,13,0.7);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.3s;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.nav-brand-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--c1);
+  box-shadow: 0 0 8px var(--c1);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(0.8); }
+}
+
+.nav-brand-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.01em;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 6px 14px;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.nav-links a:hover { color: var(--c1); background: rgba(0,212,255,0.06); }
+
+.nav-cta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--bg) !important;
+  background: var(--c1) !important;
+  padding: 8px 18px !important;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: all 0.2s !important;
+}
+
+.nav-cta:hover { background: var(--c3) !important; transform: translateY(-1px); }
+
+/* ─── HERO ─── */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 100px 48px 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 65% 50%, rgba(0,144,255,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 20% 70%, rgba(0,255,160,0.05) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 50% at 80% 20%, rgba(0,212,255,0.06) 0%, transparent 50%);
+}
+
+/* grid lines */
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(0,212,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,212,255,0.04) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse 80% 80% at center, black 40%, transparent 80%);
+}
+
+/* floating accent circles */
+.hero-circle {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(0,212,255,0.08);
+  animation: slow-rotate 30s linear infinite;
+}
+
+.hc1 { width: 600px; height: 600px; right: -100px; top: 50%; transform: translateY(-50%); }
+.hc2 { width: 400px; height: 400px; right: 0px; top: 50%; transform: translateY(-50%); border-color: rgba(0,255,160,0.06); animation-duration: 20s; animation-direction: reverse; }
+.hc3 { width: 200px; height: 200px; right: 100px; top: 50%; transform: translateY(-50%); border-color: rgba(0,212,255,0.1); animation-duration: 15s; }
+
+@keyframes slow-rotate {
+  from { transform: translateY(-50%) rotate(0deg); }
+  to { transform: translateY(-50%) rotate(360deg); }
+}
+
+/* hero two-col layout */
+.hero-layout {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+  width: 100%;
+}
+
+.hero-inner {
+  flex: 1;
+  max-width: 680px;
+}
+
+/* photo */
+.hero-photo-wrap {
+  position: relative;
+  flex-shrink: 0;
+  width: 300px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-photo-ring {
+  position: absolute;
+  inset: -20px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,212,255,0.15);
+  animation: spin-ring 18s linear infinite;
+}
+
+.hero-photo-ring2 {
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 1px dashed rgba(0,255,160,0.1);
+  animation: spin-ring 12s linear infinite reverse;
+}
+
+@keyframes spin-ring {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.hero-photo {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  border: 3px solid rgba(0,212,255,0.25);
+  box-shadow: 0 0 40px rgba(0,212,255,0.15), 0 20px 60px rgba(0,0,0,0.5);
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 1000px) {
+  .hero-layout { flex-direction: column-reverse; gap: 40px; }
+  .hero-photo-wrap { width: 200px; height: 200px; }
+  .hero-photo { width: 200px; height: 200px; }
+}
+
+/* name block */
+.hero-name-line {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hero-hi {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.hero-name {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(36px, 5vw, 58px);
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  background: linear-gradient(135deg, #ffffff 40%, var(--c1));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* HERO PHOTO */
+.hero-photo-wrap {
+  position: absolute;
+  right: 48px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.hero-photo-ring {
+  position: relative;
+  width: 240px;
+  height: 240px;
+}
+
+.hero-photo-ring::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--c1), var(--c2), var(--c3));
+  z-index: 0;
+  animation: spin-ring 8s linear infinite;
+}
+
+@keyframes spin-ring {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.hero-photo-ring::after {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  border-radius: 50%;
+  background: var(--bg);
+  z-index: 1;
+}
+
+.hero-photo {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+.hero-name-tag {
+  margin-top: 18px;
+  text-align: center;
+}
+
+.hero-name-tag .big-name {
+  font-family: 'Outfit', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.02em;
+  display: block;
+}
+
+.hero-name-tag .big-role {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--c1);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  display: block;
+  margin-top: 4px;
+}
+
+@media (max-width: 1100px) {
+  .hero-photo-wrap { display: none; }
+}
+
+.hero-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--c1);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hero-eyebrow::before {
+  content: '';
+  width: 36px; height: 1px;
+  background: linear-gradient(to right, var(--c1), transparent);
+}
+
+h1 {
+  font-size: clamp(48px, 7vw, 88px);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.h1-muted { color: rgba(255,255,255,0.2); }
+
+.hero-role {
+  font-size: clamp(18px, 2.5vw, 26px);
+  font-weight: 400;
+  color: var(--muted);
+  margin-bottom: 32px;
+  letter-spacing: -0.01em;
+}
+
+.hero-role span { color: var(--c1); font-weight: 500; }
+
+.hero-desc {
+  font-size: 18px;
+  color: var(--text);
+  max-width: 560px;
+  line-height: 1.75;
+  margin-bottom: 44px;
+  font-weight: 300;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 64px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  padding: 14px 28px;
+  border-radius: 6px;
+  transition: all 0.25s;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-cta {
+  background: linear-gradient(135deg, var(--c1), var(--c2));
+  color: #fff;
+  box-shadow: 0 0 24px rgba(0,144,255,0.3);
+}
+
+.btn-cta:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,144,255,0.4); }
+
+.btn-ghost {
+  background: var(--surface2);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.btn-ghost:hover { border-color: var(--c1); color: var(--c1); transform: translateY(-2px); }
+
+.hero-badges {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: 1px solid rgba(255,255,255,0.08);
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.badge-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--c3);
+  box-shadow: 0 0 4px var(--c3);
+}
+
+/* ─── SECTION BASE ─── */
+section { position: relative; z-index: 1; }
+
+.wrap { max-width: 1100px; margin: 0 auto; padding: 100px 48px; }
+
+.sec-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--c1);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sec-label::before {
+  content: '';
+  width: 24px; height: 1px;
+  background: var(--c1);
+}
+
+h2 {
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.sec-desc {
+  font-size: 17px;
+  color: var(--muted);
+  max-width: 540px;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* ─── SERVICES ─── */
+#services { background: var(--bg2); }
+
+.services-grid {
+  margin-top: 64px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 900px) { .services-grid { grid-template-columns: 1fr; } }
+
+.service-card {
+  position: relative;
+  padding: 36px 32px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.service-card:hover {
+  border-color: rgba(0,212,255,0.3);
+  transform: translateY(-6px);
+  box-shadow: var(--glow1);
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0,212,255,0.04) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.service-card:hover::before { opacity: 1; }
+
+.service-icon {
+  font-size: 32px;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.service-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+
+.service-desc {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.7;
+  font-weight: 300;
+  margin-bottom: 24px;
+}
+
+.service-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.stag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  padding: 4px 9px;
+  border-radius: 3px;
+  background: rgba(0,212,255,0.06);
+  border: 1px solid rgba(0,212,255,0.12);
+  color: var(--c1);
+  letter-spacing: 0.05em;
+}
+
+/* ─── ABOUT ─── */
+#about { background: var(--bg); }
+
+.about-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  margin-top: 64px;
+}
+
+@media (max-width: 900px) { .about-layout { grid-template-columns: 1fr; gap: 48px; } }
+
+.about-text p {
+  font-size: 17px;
+  color: var(--text);
+  font-weight: 300;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.about-text strong { color: var(--c1); font-weight: 500; }
+
+.about-text a {
+  color: var(--c1);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0,212,255,0.3);
+}
+
+.stat-block {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.stat-card {
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  text-align: center;
+}
+
+.stat-big {
+  font-size: 42px;
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--c1), var(--c3));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  display: block;
+}
+
+.stat-lbl {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 6px;
+  font-weight: 400;
+}
+
+/* ─── EXPERIENCE ─── */
+#experience { background: var(--bg2); }
+
+.exp-list {
+  margin-top: 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.exp-item {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 40px;
+  padding: 36px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.exp-item:last-child { border-bottom: none; }
+
+@media (max-width: 760px) {
+  .exp-item { grid-template-columns: 1fr; gap: 16px; }
+}
+
+.exp-meta {}
+
+.exp-period {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--c1);
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+}
+
+.exp-org {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.exp-loc {
+  font-size: 12px;
+  color: var(--muted);
+  opacity: 0.6;
+  margin-top: 4px;
+}
+
+.exp-badge {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 3px;
+  background: rgba(0,255,160,0.1);
+  border: 1px solid rgba(0,255,160,0.2);
+  color: var(--c3);
+  margin-top: 8px;
+}
+
+.exp-content {}
+
+.exp-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.exp-bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.exp-bullets li {
+  font-size: 15px;
+  color: var(--muted);
+  font-weight: 300;
+  display: flex;
+  gap: 12px;
+  line-height: 1.6;
+}
+
+.exp-bullets li::before {
+  content: '—';
+  color: var(--c1);
+  opacity: 0.4;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ─── SKILLS ─── */
+#skills { background: var(--bg); }
+
+.skills-layout {
+  margin-top: 64px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 760px) { .skills-layout { grid-template-columns: 1fr; } }
+
+.skill-group {
+  padding: 28px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  transition: border-color 0.2s;
+}
+
+.skill-group:hover { border-color: rgba(0,212,255,0.25); }
+
+.sg-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.sg-icon { font-size: 20px; }
+
+.sg-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: -0.01em;
+}
+
+.sg-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.sg-tag {
+  font-size: 12px;
+  padding: 5px 11px;
+  border-radius: 4px;
+  border: 1px solid rgba(255,255,255,0.07);
+  color: var(--muted);
+  font-weight: 400;
+  transition: all 0.2s;
+}
+
+.sg-tag:hover {
+  border-color: rgba(0,212,255,0.3);
+  color: var(--c1);
+}
+
+/* ─── EDUCATION ─── */
+#education { background: var(--bg2); }
+
+.edu-cards {
+  margin-top: 64px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 760px) { .edu-cards { grid-template-columns: 1fr; } }
+
+.edu-card {
+  padding: 28px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.2s;
+}
+
+.edu-card:hover { border-color: rgba(0,212,255,0.25); transform: translateY(-3px); }
+
+.edu-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 2px;
+  background: linear-gradient(to right, var(--c1), var(--c2));
+  opacity: 0.4;
+}
+
+.edu-year {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--c1);
+  letter-spacing: 0.1em;
+  margin-bottom: 10px;
+  opacity: 0.7;
+}
+
+.edu-degree {
+  font-size: 17px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.edu-school {
+  font-size: 13px;
+  color: var(--c3);
+  margin-bottom: 12px;
+  font-weight: 400;
+}
+
+.edu-note {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+/* ─── PUBLICATIONS ─── */
+#publications { background: var(--bg); }
+
+.pub-grid {
+  margin-top: 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pub-card {
+  display: flex;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  overflow: hidden;
+  text-decoration: none;
+  transition: all 0.25s;
+}
+
+.pub-card:hover {
+  border-color: rgba(0,212,255,0.3);
+  transform: translateX(6px);
+  box-shadow: var(--glow1);
+}
+
+.pub-year-bar {
+  width: 56px;
+  background: linear-gradient(180deg, rgba(0,212,255,0.08) 0%, rgba(0,144,255,0.04) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.pub-yr-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--c1);
+  letter-spacing: 0.1em;
+  writing-mode: vertical-rl;
+  opacity: 0.6;
+}
+
+.pub-body {
+  padding: 22px 28px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.pub-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: -0.01em;
+  margin-bottom: 6px;
+  line-height: 1.35;
+}
+
+.pub-journal {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--c3);
+  letter-spacing: 0.07em;
+}
+
+.pub-arrow {
+  font-size: 18px;
+  color: var(--muted);
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+
+.pub-card:hover .pub-arrow { color: var(--c1); transform: translateX(3px); }
+
+/* ─── CERTIFICATIONS ─── */
+#certifications { background: var(--bg2); }
+
+.cert-groups {
+  margin-top: 64px;
+}
+
+.cert-featured {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.cert-rest {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+@media (max-width: 900px) {
+  .cert-featured, .cert-rest { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 600px) {
+  .cert-featured, .cert-rest { grid-template-columns: 1fr; }
+}
+
+.cert-card {
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  transition: all 0.2s;
+}
+
+.cert-card:hover { border-color: rgba(0,212,255,0.25); transform: translateY(-2px); }
+
+.cert-card.featured {
+  border-color: rgba(0,212,255,0.2);
+  background: linear-gradient(135deg, rgba(0,212,255,0.04) 0%, var(--surface) 60%);
+}
+
+.cert-em { font-size: 22px; margin-bottom: 12px; display: block; }
+
+.cert-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 4px;
+  line-height: 1.35;
+}
+
+.cert-info {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 300;
+}
+
+.cert-card.featured .cert-name { font-size: 15px; }
+
+/* ─── CONTACT / INQUIRY ─── */
+#contact { background: var(--bg); }
+
+.contact-layout {
+  margin-top: 64px;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 64px;
+  align-items: start;
+}
+
+@media (max-width: 900px) { .contact-layout { grid-template-columns: 1fr; } }
+
+.contact-left h3 {
+  font-size: 36px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.03em;
+  margin-bottom: 16px;
+  line-height: 1.1;
+}
+
+.contact-left p {
+  font-size: 16px;
+  color: var(--muted);
+  font-weight: 300;
+  line-height: 1.75;
+  margin-bottom: 36px;
+}
+
+.contact-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contact-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--text);
+  transition: all 0.2s;
+}
+
+.contact-card:hover {
+  border-color: var(--c1);
+  color: var(--c1);
+  transform: translateX(4px);
+}
+
+.cc-icon { font-size: 20px; width: 32px; text-align: center; }
+
+.cc-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 2px;
+}
+
+.cc-val { font-size: 14px; font-weight: 400; }
+
+/* INQUIRY FORM */
+.inquiry-box {
+  padding: 36px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+}
+
+.inquiry-box h4 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 6px;
+  letter-spacing: -0.02em;
+}
+
+.inquiry-box p {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 28px;
+  font-weight: 300;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+@media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.form-group label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 6px;
+  padding: 12px 16px;
+  color: var(--text);
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--c1);
+}
+
+.form-group select option { background: #0a101e; }
+
+.form-group textarea { resize: vertical; min-height: 100px; }
+
+.form-submit {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, var(--c1), var(--c2));
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: all 0.25s;
+  box-shadow: 0 0 24px rgba(0,144,255,0.25);
+}
+
+.form-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0,144,255,0.4);
+}
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  padding: 28px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-left {
+  font-size: 14px;
+  color: var(--muted);
+  font-weight: 300;
+}
+
+.footer-left strong { color: var(--c1); font-weight: 600; }
+
+.footer-right {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-link {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-link:hover { color: var(--c1); }
+
+@media (max-width: 600px) {
+  footer { flex-direction: column; gap: 16px; text-align: center; padding: 24px; }
+}
+
+/* ─── SCROLL REVEAL ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.show { opacity: 1; transform: none; }
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+/* ─── MOBILE NAV ─── */
+@media (max-width: 900px) {
+  nav { padding: 0 24px; }
+  .nav-links { display: none; }
+  .wrap { padding: 70px 24px; }
+  #hero { padding: 90px 24px 50px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav id="nav">
+  <a href="#" class="nav-brand">
+    <div class="nav-brand-dot"></div>
+    <span class="nav-brand-name">Parth Lakhalani</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#publications">Research</a></li>
+    <li><a href="#contact" class="nav-cta">Hire Me</a></li>
+  </ul>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-circle hc1"></div>
+  <div class="hero-circle hc2"></div>
+  <div class="hero-circle hc3"></div>
+
+  <div class="hero-layout">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Berlin, Germany · Available for Freelance</div>
+
+      <div class="hero-name-line">
+        <span class="hero-hi">Hi, I'm</span>
+        <span class="hero-name">Parth Lakhalani</span>
+      </div>
+
+      <h1>ISMS. <span class="h1-muted">AI</span><br>Governance.<br><span class="h1-muted">Cloud</span> Security.</h1>
+
+      <div class="hero-role">
+        <span>CISO</span> · Cybersecurity Freelancer &amp; Lecturer · GRC · AI Governance · Cloud Security (AWS)
+      </div>
+
+      <p class="hero-desc">
+        ISO 27001 ISMS specialist, certified forensics expert (CEH · CHFI), and AI governance practitioner — helping organisations build resilient security programs, govern intelligent systems responsibly, and secure cloud infrastructure on AWS. Also an active academic, lecturing at BSBI Berlin.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-cta">
+          <span>💬</span> Work With Me
+        </a>
+        <a href="#about" class="btn btn-ghost">
+          <span>↓</span> Explore
+        </a>
+      </div>
+
+      <div class="hero-badges">
+        <div class="badge"><div class="badge-dot"></div>ISO 27001 LI — TÜV SÜD</div>
+        <div class="badge"><div class="badge-dot"></div>CEH · CHFI Certified</div>
+        <div class="badge"><div class="badge-dot"></div>AWS Cloud Security</div>
+        <div class="badge"><div class="badge-dot"></div>AI Governance</div>
+        <div class="badge"><div class="badge-dot"></div>CISO @ Mediaire GmbH</div>
+      </div>
+    </div>
+
+    <!-- PHOTO -->
+    <div class="hero-photo-wrap">
+      <div class="hero-photo-ring"></div>
+      <div class="hero-photo-ring2"></div>
+      <img src="photo.png" alt="Parth Lakhalani" class="hero-photo" onerror="this.parentElement.style.display='none'">
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SERVICES ═══ -->
+<section id="services">
+  <div class="wrap">
+    <div class="sec-label reveal">What I Offer</div>
+    <h2 class="reveal">Freelance <span style="color:var(--c1)">Services</span></h2>
+    <p class="sec-desc reveal">Available for AI governance consulting, cybersecurity, academic lecturing, and training — remote or in-person in Berlin.</p>
+
+    <div class="services-grid" style="grid-template-columns: repeat(2, 1fr);">
+      <div class="service-card reveal reveal-delay-1">
+        <span class="service-icon">🤖</span>
+        <div class="service-title">AI Governance & Compliance</div>
+        <p class="service-desc">Helping organisations implement responsible AI frameworks — ISO 42001 AI Management Systems, AI risk assessment, ethics-by-design, and compliance with emerging EU AI Act requirements.</p>
+        <div class="service-tags">
+          <span class="stag">ISO 42001 AIMS</span>
+          <span class="stag">EU AI Act</span>
+          <span class="stag">AI Risk Assessment</span>
+          <span class="stag">Responsible AI</span>
+          <span class="stag">AI Ethics</span>
+        </div>
+      </div>
+
+      <div class="service-card reveal reveal-delay-2">
+        <span class="service-icon">🛡️</span>
+        <div class="service-title">Cybersecurity Consulting</div>
+        <p class="service-desc">Enterprise GRC, ISO 27001 & ISO 22301 BCMS implementation, risk assessments, GDPR/NIS2 compliance, AWS cloud security, VAPT, and incident response planning.</p>
+        <div class="service-tags">
+          <span class="stag">ISO 27001</span>
+          <span class="stag">ISO 22301 BCMS</span>
+          <span class="stag">GDPR / NIS2</span>
+          <span class="stag">AWS Security</span>
+          <span class="stag">VAPT</span>
+        </div>
+      </div>
+
+      <div class="service-card reveal reveal-delay-3">
+        <span class="service-icon">🎓</span>
+        <div class="service-title">Academic Lecturing</div>
+        <p class="service-desc">University-level instruction in Cybersecurity, AI Governance, Digital Forensics, and Network Security. Coursebook-aligned, interactive, and grounded in real-world practice.</p>
+        <div class="service-tags">
+          <span class="stag">AI Governance</span>
+          <span class="stag">Ethical Hacking</span>
+          <span class="stag">Digital Forensics</span>
+          <span class="stag">Network Security</span>
+          <span class="stag">GRC</span>
+        </div>
+      </div>
+
+      <div class="service-card reveal reveal-delay-1">
+        <span class="service-icon">🧑‍💻</span>
+        <div class="service-title">Training & Workshops</div>
+        <p class="service-desc">Corporate security awareness, CEH/CHFI preparation, Red/Blue Team labs, cloud security on AWS, AI governance workshops, and digital forensics tool training.</p>
+        <div class="service-tags">
+          <span class="stag">CEH / CHFI Prep</span>
+          <span class="stag">AWS Cloud Security</span>
+          <span class="stag">Red / Blue Team</span>
+          <span class="stag">AI Governance</span>
+          <span class="stag">EnCase / FTK</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ABOUT ═══ -->
+<section id="about">
+  <div class="wrap">
+    <div class="sec-label reveal">Background</div>
+    <h2 class="reveal">Who <span style="color:var(--c1)">I Am</span></h2>
+
+    <div class="about-layout">
+      <div class="about-text reveal">
+        <p>I'm a <strong>Berlin-based Cybersecurity Officer, AI Governance Specialist, and Lecturer</strong> building a career at the convergence of information security, intelligent systems governance, and academia.</p>
+        <p>As CISO at <strong>Mediaire GmbH</strong>, I oversee enterprise-wide security operations — ISO 27001-aligned ISMS, cloud security on AWS, and regulatory compliance under GDPR, NIS2, and HIPAA. I'm actively deepening my expertise in <strong>AI governance</strong>, working with ISO 42001 (AIMS) and ISO 22301 (BCMS) frameworks to help organisations govern AI systems responsibly and build resilient operations.</p>
+        <p>Before Berlin, I spent years in India as an <strong>Assistant Professor at Parul University</strong>, teaching cybersecurity to 3,000+ students. I currently also serve as a <strong>Visiting Lecturer at BSBI Berlin</strong>. I hold an <strong>MBA in Data Science &amp; Big Data Management</strong> from IU Internationale Hochschule and am preparing for doctoral studies in Cybersecurity and AI Governance.</p>
+        <p>Open to <strong>AI governance consulting, cybersecurity advisory, academic lecturing, and speaking engagements</strong> — in Berlin and remotely across Europe.</p>
+      </div>
+
+      <div class="stat-block reveal">
+        <div class="stat-card">
+          <span class="stat-big">7+</span>
+          <div class="stat-lbl">Years of combined experience</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-big">3K+</span>
+          <div class="stat-lbl">Students taught across institutions</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-big">15+</span>
+          <div class="stat-lbl">Theses supervised in cybersecurity</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-big">5</span>
+          <div class="stat-lbl">Peer-reviewed publications</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ EXPERIENCE ═══ -->
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-label reveal">Career</div>
+    <h2 class="reveal">Work <span style="color:var(--c1)">Experience</span></h2>
+    <p class="sec-desc reveal">A track record spanning enterprise cybersecurity, academic instruction, and independent consulting.</p>
+
+    <div class="exp-list">
+
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <div class="exp-period">03.2025 — Present</div>
+          <div class="exp-org">Mediaire GmbH</div>
+          <div class="exp-loc">Berlin, Germany</div>
+          <div class="exp-badge">Current</div>
+        </div>
+        <div class="exp-content">
+          <div class="exp-title">Cybersecurity Officer (CISO)</div>
+          <ul class="exp-bullets">
+            <li>Built and maintains an ISMS aligned with ISO 27001:2022 and the NIST Cybersecurity Framework</li>
+            <li>Leads organization-wide risk assessments, security audits, and compliance checks spanning GDPR, NIS2, and HIPAA</li>
+            <li>Manages incident response, vendor assessments, and internal security policy enforcement</li>
+            <li>Oversees cloud security strategy and AWS infrastructure governance</li>
+            <li>Integrates cybersecurity and AI governance into the company's digital transformation roadmap</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <div class="exp-period">2025 — Present</div>
+          <div class="exp-org">BSBI — Berlin School of Business &amp; Innovation</div>
+          <div class="exp-loc">Berlin, Germany</div>
+          <div class="exp-badge">Current</div>
+        </div>
+        <div class="exp-content">
+          <div class="exp-title">Visiting Lecturer (Freelance)</div>
+          <ul class="exp-bullets">
+            <li>Delivers industry-informed lectures on cybersecurity, AI governance, and data protection to postgraduate students</li>
+            <li>Bridges theoretical frameworks with practical real-world application in an international classroom setting</li>
+            <li>Contributes to curriculum relevance by integrating current regulatory developments such as the EU AI Act and ISO 42001</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <div class="exp-period">11.2023 — 02.2025</div>
+          <div class="exp-org">SSCFS</div>
+          <div class="exp-loc">Remote</div>
+        </div>
+        <div class="exp-content">
+          <div class="exp-title">Freelance Trainer &amp; Cybersecurity Consultant</div>
+          <ul class="exp-bullets">
+            <li>Designed hands-on forensics programs using industry tools including EnCase, FTK, and Autopsy</li>
+            <li>Delivered CEH and CHFI preparation courses alongside Red/Blue Team fundamentals</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <div class="exp-period">09.2019 — 04.2023</div>
+          <div class="exp-org">Parul University</div>
+          <div class="exp-loc">Vadodara, India</div>
+        </div>
+        <div class="exp-content">
+          <div class="exp-title">Assistant Professor, Researcher &amp; Head of Examination</div>
+          <ul class="exp-bullets">
+            <li>Delivered digital forensics, network security, and internet security curricula to 3,000+ students</li>
+            <li>Supervised 15+ theses on cybersecurity topics including GDPR, malware, and forensics</li>
+            <li>Coordinated university-wide exams, overseeing 70+ faculty and administrative staff</li>
+            <li>Ran 10+ workshops on Cyber Law, Ethical Hacking, ISO compliance, and Cloud Security</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <div class="exp-period">07.2016 — 04.2019</div>
+          <div class="exp-org">SSSD-IIT College</div>
+          <div class="exp-loc">Junagadh, India</div>
+        </div>
+        <div class="exp-content">
+          <div class="exp-title">Lecturer — IT &amp; Computer Science</div>
+          <ul class="exp-bullets">
+            <li>Taught IT Security, Programming, and Computer Networking to undergraduate cohorts</li>
+            <li>Ran hands-on labs in network architecture, server security, and system configuration</li>
+            <li>Contributed to curriculum development and departmental pedagogical reforms</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SKILLS ═══ -->
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-label reveal">Expertise</div>
+    <h2 class="reveal">Technical <span style="color:var(--c1)">Skills</span></h2>
+
+    <div class="skills-layout" style="grid-template-columns: repeat(2, 1fr);">
+
+      <!-- 1. ISMS — LEAD SKILL -->
+      <div class="skill-group reveal" style="border-color: rgba(0,212,255,0.25); background: linear-gradient(135deg, rgba(0,212,255,0.05) 0%, var(--surface) 60%);">
+        <div class="sg-header">
+          <span class="sg-icon">🏛️</span>
+          <span class="sg-title">ISO 27001 ISMS &amp; GRC</span>
+        </div>
+        <div class="sg-tags">
+          <span class="sg-tag" style="border-color:rgba(0,212,255,0.35);color:var(--c1);">ISO 27001 Lead Implementer</span>
+          <span class="sg-tag">ISMS Design &amp; Implementation</span>
+          <span class="sg-tag">Risk Assessment &amp; Treatment</span>
+          <span class="sg-tag">Security Audits</span>
+          <span class="sg-tag">GDPR</span><span class="sg-tag">NIS2</span>
+          <span class="sg-tag">NIST CSF</span><span class="sg-tag">HIPAA</span>
+          <span class="sg-tag">Policy &amp; Procedure Writing</span>
+          <span class="sg-tag">Vendor Management</span>
+          <span class="sg-tag">ISO 22301 BCMS (Experience)</span>
+        </div>
+      </div>
+
+      <!-- 2. DIGITAL FORENSICS — highlighted -->
+      <div class="skill-group reveal reveal-delay-1" style="border-color: rgba(0,255,160,0.2); background: linear-gradient(135deg, rgba(0,255,160,0.04) 0%, var(--surface) 60%);">
+        <div class="sg-header">
+          <span class="sg-icon">🔍</span>
+          <span class="sg-title">Digital Forensics &amp; Ethical Hacking</span>
+        </div>
+        <div class="sg-tags">
+          <span class="sg-tag" style="border-color:rgba(0,255,160,0.35);color:var(--c3);">CEH Certified</span>
+          <span class="sg-tag" style="border-color:rgba(0,255,160,0.35);color:var(--c3);">CHFI Certified</span>
+          <span class="sg-tag">EnCase</span><span class="sg-tag">FTK</span><span class="sg-tag">Autopsy</span>
+          <span class="sg-tag">LiME &amp; Volatility</span>
+          <span class="sg-tag">Malware Analysis</span>
+          <span class="sg-tag">Network Forensics</span>
+          <span class="sg-tag">Digital Evidence Handling</span>
+          <span class="sg-tag">Android Forensics</span>
+          <span class="sg-tag">VAPT</span><span class="sg-tag">OSINT</span>
+        </div>
+      </div>
+
+      <!-- 3. AI GOVERNANCE -->
+      <div class="skill-group reveal reveal-delay-2">
+        <div class="sg-header">
+          <span class="sg-icon">🤖</span>
+          <span class="sg-title">AI Governance &amp; Compliance</span>
+        </div>
+        <div class="sg-tags">
+          <span class="sg-tag">ISO 42001 AIMS (Experience)</span>
+          <span class="sg-tag">EU AI Act</span>
+          <span class="sg-tag">AI Risk Assessment</span>
+          <span class="sg-tag">Responsible AI</span>
+          <span class="sg-tag">AI Ethics &amp; Bias</span>
+          <span class="sg-tag">Data Privacy (GDPR/DPDP)</span>
+          <span class="sg-tag">Big Data Governance</span>
+        </div>
+      </div>
+
+      <!-- 4. CLOUD SECURITY -->
+      <div class="skill-group reveal reveal-delay-3">
+        <div class="sg-header">
+          <span class="sg-icon">☁️</span>
+          <span class="sg-title">Cloud Security (AWS)</span>
+        </div>
+        <div class="sg-tags">
+          <span class="sg-tag">AWS Cloud Security</span>
+          <span class="sg-tag">AWS IAM</span>
+          <span class="sg-tag">Cloud Architecture</span>
+          <span class="sg-tag">DevSecOps</span>
+          <span class="sg-tag">IDS/IPS</span>
+          <span class="sg-tag">Firewalls</span>
+          <span class="sg-tag">VPNs</span>
+          <span class="sg-tag">Wireshark</span>
+          <span class="sg-tag">Secure Comms</span>
+        </div>
+      </div>
+
+      <!-- 5. TEACHING -->
+      <div class="skill-group reveal">
+        <div class="sg-header">
+          <span class="sg-icon">🎓</span>
+          <span class="sg-title">Teaching &amp; Research</span>
+        </div>
+        <div class="sg-tags">
+          <span class="sg-tag">Curriculum Design</span><span class="sg-tag">Canvas / Blackboard</span>
+          <span class="sg-tag">Adult Education</span><span class="sg-tag">Academic Supervision</span>
+          <span class="sg-tag">Scientific Writing</span><span class="sg-tag">Faculty Training</span>
+          <span class="sg-tag">E-learning Development</span><span class="sg-tag">Python · Java · Bash</span>
+        </div>
+      </div>
+
+      <!-- 6. LANGUAGES -->
+      <div class="skill-group reveal reveal-delay-1">
+        <div class="sg-header">
+          <span class="sg-icon">🌐</span>
+          <span class="sg-title">Languages</span>
+        </div>
+        <div class="sg-tags">
+          <span class="sg-tag">English (C2 — Professional)</span>
+          <span class="sg-tag">German (A2 — Improving)</span>
+          <span class="sg-tag">Hindi (Native)</span>
+          <span class="sg-tag">Gujarati (Native)</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ EDUCATION ═══ -->
+<section id="education">
+  <div class="wrap">
+    <div class="sec-label reveal">Qualifications</div>
+    <h2 class="reveal">Education</h2>
+
+    <div class="edu-cards">
+      <div class="edu-card reveal">
+        <div class="edu-year">2024 · MBA</div>
+        <div class="edu-degree">Big Data Management &amp; Data Science</div>
+        <div class="edu-school">IU Internationale Hochschule, Berlin</div>
+        <div class="edu-note">Capstone: Cybersecurity &amp; Compliance in Global Data Privacy (GDPR, DPDP, ISO 27001)</div>
+      </div>
+
+      <div class="edu-card reveal reveal-delay-1">
+        <div class="edu-year">2020 · B.Ed</div>
+        <div class="edu-degree">Bachelor of Education</div>
+        <div class="edu-school">Bhakta Kavi Narsinh Mehta University, India</div>
+        <div class="edu-note">Innovative pedagogical techniques for technical education</div>
+      </div>
+
+      <div class="edu-card reveal reveal-delay-2">
+        <div class="edu-year">2016 · MS · 🥇 Gold Medallist</div>
+        <div class="edu-degree">Master of Science — Cybersecurity</div>
+        <div class="edu-school">Gujarat University, Ahmadabad</div>
+        <div class="edu-note">Thesis: Forensic Analysis of Android Devices using LiME &amp; Volatility</div>
+      </div>
+
+      <div class="edu-card reveal reveal-delay-3">
+        <div class="edu-year">2014 · BS</div>
+        <div class="edu-degree">Bachelor of Science — Computer Forensics</div>
+        <div class="edu-school">Saurashtra University, Junagadh</div>
+        <div class="edu-note">Project: Phishing Detection Techniques and Awareness Strategies</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PUBLICATIONS ═══ -->
+<section id="publications">
+  <div class="wrap">
+    <div class="sec-label reveal">Academic Output</div>
+    <h2 class="reveal">Research <span style="color:var(--c1)">Publications</span></h2>
+    <p class="sec-desc reveal">Peer-reviewed contributions in digital forensics, malware analysis, and cybersecurity governance.</p>
+
+    <div class="pub-grid">
+
+      <a href="https://ijcrt.org/papers/IJCRT2406529.pdf" target="_blank" rel="noopener noreferrer" class="pub-card reveal">
+        <div class="pub-year-bar"><span class="pub-yr-text">2024</span></div>
+        <div class="pub-body">
+          <div>
+            <div class="pub-title">Bytes By Bytes: Unmasking Digital Shadows in Forensic Investigations</div>
+            <div class="pub-journal">IJCRT — International Journal of Creative Research Thoughts · June 2024</div>
+          </div>
+          <div class="pub-arrow">→</div>
+        </div>
+      </a>
+
+      <a href="https://www.ijraset.com/research-paper/a-static-approach-for-malware-analysis-a-guide-to-analysis-tools-and-techniques" target="_blank" rel="noopener noreferrer" class="pub-card reveal">
+        <div class="pub-year-bar"><span class="pub-yr-text">2023</span></div>
+        <div class="pub-body">
+          <div>
+            <div class="pub-title">Static Approach for Malware Analysis: A Guide to Analysis Tools and Techniques</div>
+            <div class="pub-journal">IJRASET — International Journal for Research in Applied Science &amp; Engineering Technology · Dec 2023</div>
+          </div>
+          <div class="pub-arrow">→</div>
+        </div>
+      </a>
+
+      <a href="https://www.researchgate.net/publication/369597611_Forensic_Phenotyping" target="_blank" rel="noopener noreferrer" class="pub-card reveal">
+        <div class="pub-year-bar"><span class="pub-yr-text">2023</span></div>
+        <div class="pub-body">
+          <div>
+            <div class="pub-title">Forensic Phenotyping: Unveiling Hidden Clues from Discarded Waste</div>
+            <div class="pub-journal">JFSCI — Journal of Forensic Sciences &amp; Criminal Investigation · DOI: 10.19080/JFSCI.2023.16.555943</div>
+          </div>
+          <div class="pub-arrow">→</div>
+        </div>
+      </a>
+
+      <a href="https://www.researchgate.net/publication/382411368_Computer_Forensics_Data_Recovery_Software_A_Comparative_Study" target="_blank" rel="noopener noreferrer" class="pub-card reveal">
+        <div class="pub-year-bar"><span class="pub-yr-text">2022</span></div>
+        <div class="pub-body">
+          <div>
+            <div class="pub-title">Computer Forensics Data Recovery Software: A Comparative Study</div>
+            <div class="pub-journal">IJIRCST — International Journal of Innovative Research in Computer Science &amp; Technology · Mar 2022</div>
+          </div>
+          <div class="pub-arrow">→</div>
+        </div>
+      </a>
+
+      <a href="https://www.ijip.in/" target="_blank" rel="noopener noreferrer" class="pub-card reveal">
+        <div class="pub-year-bar"><span class="pub-yr-text">2021</span></div>
+        <div class="pub-body">
+          <div>
+            <div class="pub-title">The Psychological Impact of COVID-19 Pandemics on Gujarati Adults</div>
+            <div class="pub-journal">IJIP — International Journal of Indian Psychology · July 2021</div>
+          </div>
+          <div class="pub-arrow">→</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CERTIFICATIONS ═══ -->
+<section id="certifications">
+  <div class="wrap">
+    <div class="sec-label reveal">Credentials</div>
+    <h2 class="reveal">Certifications <span style="color:var(--c1)">&amp; Awards</span></h2>
+
+    <div class="cert-groups">
+      <div class="cert-featured reveal" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="cert-card featured" style="border-color:rgba(0,212,255,0.35);">
+          <span class="cert-em">🏆</span>
+          <div class="cert-name">ISO 27001 Lead Implementer</div>
+          <div class="cert-info">TÜV SÜD · August 2025 · <span style="color:var(--c1);">Official Certification</span></div>
+        </div>
+        <div class="cert-card featured" style="border-color:rgba(0,255,160,0.3);">
+          <span class="cert-em">🔓</span>
+          <div class="cert-name">Certified Ethical Hacker (CEH)</div>
+          <div class="cert-info">IIT Kanpur / EC-Council · Aug 2024</div>
+        </div>
+        <div class="cert-card featured" style="border-color:rgba(0,255,160,0.3);">
+          <span class="cert-em">🔍</span>
+          <div class="cert-name">CHFI — Computer Hacking Forensic Investigator</div>
+          <div class="cert-info">IIT Kanpur / EC-Council · Jul 2024</div>
+        </div>
+      </div>
+
+      <div class="cert-rest reveal">
+        <div class="cert-card">
+          <span class="cert-em">🔐</span>
+          <div class="cert-name">CISSP — Associate (ISC)²</div>
+          <div class="cert-info">In Progress · 2025</div>
+        </div>
+        <div class="cert-card">
+          <span class="cert-em">☁️</span>
+          <div class="cert-name">AWS Cloud Security</div>
+          <div class="cert-info">Amazon Web Services</div>
+        </div>
+        <div class="cert-card">
+          <span class="cert-em">🌐</span>
+          <div class="cert-name">Cisco CCNP ENCOR (350-401)</div>
+          <div class="cert-info">Code-Red, EC-Council Global · Feb 2025</div>
+        </div>
+        <div class="cert-card">
+          <span class="cert-em">⚙️</span>
+          <div class="cert-name">ICS/OT Cybersecurity — NIST 800-82 Rev 3</div>
+          <div class="cert-info">EC-Council Global · Jan 2025</div>
+        </div>
+        <div class="cert-card">
+          <span class="cert-em">🎤</span>
+          <div class="cert-name">Cloud Security Assessments — Speaker</div>
+          <div class="cert-info">Ahmedabad Management Association · 2023</div>
+        </div>
+        <div class="cert-card">
+          <span class="cert-em">📋</span>
+          <div class="cert-name">IT Service Management</div>
+          <div class="cert-info">LinkedIn Learning · Jan 2025</div>
+        </div>
+        <div class="cert-card">
+          <span class="cert-em">🥇</span>
+          <div class="cert-name">Gold Medallist — MSc Final Semester</div>
+          <div class="cert-info">Gujarat University · 2016</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT / INQUIRY ═══ -->
+<section id="contact">
+  <div class="wrap">
+    <div class="sec-label reveal">Let's Talk</div>
+    <h2 class="reveal">Get in <span style="color:var(--c1)">Touch</span></h2>
+
+    <div class="contact-layout" style="grid-template-columns:1fr 1fr;">
+      <div class="contact-left reveal">
+        <h3>Ready to work together?</h3>
+        <p>Whether you need a cybersecurity consultant, a guest lecturer, a corporate trainer, or a research collaborator — reach out and let's discuss how I can help. I'm available remotely and in-person in Berlin.</p>
+
+        <div class="contact-cards">
+          <a href="/cdn-cgi/l/email-protection#c3b3a2b1b7abafa2a8aba2afa2adaaf2f783a4aea2aaafeda0acae" class="contact-card">
+            <span class="cc-icon">✉️</span>
+            <div>
+              <span class="cc-label">Email</span>
+              <span class="cc-val"><span class="__cf_email__" data-cfemail="16667764627e7a777d7e777a77787f272256717b777f7a3875797b">[email&#160;protected]</span></span>
+            </div>
+          </a>
+          <a href="https://www.linkedin.com/in/parth-lakhalani/" target="_blank" rel="noopener noreferrer" class="contact-card">
+            <span class="cc-icon">🔗</span>
+            <div>
+              <span class="cc-label">LinkedIn</span>
+              <span class="cc-val">linkedin.com/in/parth-lakhalani</span>
+            </div>
+          </a>
+          <div class="contact-card" style="cursor:default;pointer-events:none;">
+            <span class="cc-icon">📍</span>
+            <div>
+              <span class="cc-label">Based In</span>
+              <span class="cc-val">Berlin, Germany · Remote Available</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal reveal-delay-1" style="display:flex;flex-direction:column;justify-content:center;gap:24px;">
+        <div style="padding:36px;border:1px solid var(--border);border-radius:12px;background:var(--surface);">
+          <div style="font-size:36px;margin-bottom:16px;">📬</div>
+          <div style="font-size:20px;font-weight:700;color:#fff;margin-bottom:10px;letter-spacing:-0.02em;">For freelance inquiries</div>
+          <div style="font-size:15px;color:var(--muted);font-weight:300;line-height:1.7;margin-bottom:24px;">Drop me an email with your project details, timeline, and what type of engagement you're looking for. I typically respond within 48 hours.</div>
+          <a href="/cdn-cgi/l/email-protection#2d5d4c5f5945414c46454c414c43441c196d4a404c4441034e4240125e584f47484e59106b5f4848414c434e480d64435c58445f54" class="btn btn-cta" style="display:inline-flex;font-size:14px;">
+            <span>✉️</span> <span class="__cf_email__" data-cfemail="bcccddcec8d4d0ddd7d4ddd0ddd2d58d88fcdbd1ddd5d092dfd3d1">[email&#160;protected]</span>
+          </a>
+        </div>
+
+        <div style="display:flex;gap:12px;">
+          <div style="flex:1;padding:20px;border:1px solid var(--border);border-radius:10px;background:var(--surface);text-align:center;">
+            <div style="font-size:22px;margin-bottom:8px;">⚡</div>
+            <div style="font-size:13px;font-weight:600;color:#fff;">Fast Response</div>
+            <div style="font-size:12px;color:var(--muted);margin-top:4px;">Within 48 hours</div>
+          </div>
+          <div style="flex:1;padding:20px;border:1px solid var(--border);border-radius:10px;background:var(--surface);text-align:center;">
+            <div style="font-size:22px;margin-bottom:8px;">🌍</div>
+            <div style="font-size:13px;font-weight:600;color:#fff;">Remote-Friendly</div>
+            <div style="font-size:12px;color:var(--muted);margin-top:4px;">Europe & beyond</div>
+          </div>
+          <div style="flex:1;padding:20px;border:1px solid var(--border);border-radius:10px;background:var(--surface);text-align:center;">
+            <div style="font-size:22px;margin-bottom:8px;">🤝</div>
+            <div style="font-size:13px;font-weight:600;color:#fff;">Flexible</div>
+            <div style="font-size:12px;color:var(--muted);margin-top:4px;">Per project or retainer</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-left">© 2025 <strong>Parth Lakhalani</strong> · CISO · Lecturer · Researcher · Berlin</div>
+  <div class="footer-right">
+    <a href="/cdn-cgi/l/email-protection#a5d5c4d7d1cdc9c4cecdc4c9c4cbcc9491e5c2c8c4ccc98bc6cac8" class="footer-link">Email</a>
+    <a href="https://www.linkedin.com/in/parth-lakhalani/" target="_blank" rel="noopener noreferrer" class="footer-link">LinkedIn</a>
+    <a href="#hero" class="footer-link">↑ Top</a>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// Scroll reveal
+const revealEls = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
+}, { threshold: 0.08 });
+revealEls.forEach(el => io.observe(el));
+
+// Nav scroll style
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.style.background = window.scrollY > 50
+    ? 'rgba(3,5,13,0.95)'
+    : 'rgba(3,5,13,0.7)';
+});
+
+// Active nav link
+const sections = document.querySelectorAll('section[id]');
+const links = document.querySelectorAll('.nav-links a:not(.nav-cta)');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) cur = s.id; });
+  links.forEach(a => {
+    a.style.color = (a.getAttribute('href') === '#' + cur) ? 'var(--c1)' : '';
+  });
+});
+
+// Trigger hero animations on load
+window.addEventListener('load', () => {
+  document.querySelectorAll('#hero .reveal').forEach(el => el.classList.add('show'));
+});
+</script>
+</body>
+</html>
