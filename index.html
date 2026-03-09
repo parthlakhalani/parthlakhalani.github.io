@@ -132,9 +132,11 @@ nav {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   padding: 100px 48px 60px;
   position: relative;
   overflow: hidden;
+  text-align: center;
 }
 
 .hero-bg {
@@ -172,12 +174,15 @@ nav {
   to { transform: translateY(-50%) rotate(360deg); }
 }
 
-/* hero layout — photo is absolutely positioned, text fills left */
+/* hero layout — centred, photo absolutely pinned top-right */
 .hero-layout {
   position: relative;
   z-index: 1;
   width: 100%;
-  max-width: 640px;
+  max-width: 820px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* name block */
@@ -209,29 +214,27 @@ nav {
   background-clip: text;
 }
 
-/* HERO PHOTO — pinned top-right */
+/* HERO PHOTO — small, pinned top-right under nav */
 .hero-photo-wrap {
-  position: absolute;
-  right: 60px;
-  top: 90px;
-  z-index: 2;
+  position: fixed;
+  right: 24px;
+  top: 72px;
+  z-index: 999;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0;
-  pointer-events: none;
 }
 
 .hero-photo-ring {
   position: relative;
-  width: 280px;
-  height: 280px;
+  width: 90px;
+  height: 90px;
 }
 
 .hero-photo-ring::before {
   content: '';
   position: absolute;
-  inset: -3px;
+  inset: -2px;
   border-radius: 50%;
   background: linear-gradient(135deg, var(--c1), var(--c2), var(--c3));
   z-index: 0;
@@ -246,7 +249,7 @@ nav {
 .hero-photo-ring::after {
   content: '';
   position: absolute;
-  inset: 3px;
+  inset: 2px;
   border-radius: 50%;
   background: var(--bg);
   z-index: 1;
@@ -254,17 +257,17 @@ nav {
 
 .hero-photo {
   position: absolute;
-  inset: 6px;
+  inset: 4px;
   z-index: 2;
-  width: calc(100% - 12px);
-  height: calc(100% - 12px);
+  width: calc(100% - 8px);
+  height: calc(100% - 8px);
   border-radius: 50%;
   object-fit: cover;
   object-position: center top;
   display: block;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 900px) {
   .hero-photo-wrap { display: none; }
 }
 
@@ -275,6 +278,7 @@ nav {
   text-transform: uppercase;
   color: var(--c1);
   margin-bottom: 24px;
+  justify-content: center;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -284,6 +288,12 @@ nav {
   content: '';
   width: 36px; height: 1px;
   background: linear-gradient(to right, var(--c1), transparent);
+}
+
+.hero-eyebrow::after {
+  content: '';
+  width: 36px; height: 1px;
+  background: linear-gradient(to left, var(--c1), transparent);
 }
 
 h1 {
@@ -298,21 +308,22 @@ h1 {
 .h1-muted { color: rgba(255,255,255,0.2); }
 
 .hero-role {
-  font-size: clamp(18px, 2.5vw, 26px);
+  font-size: clamp(15px, 2vw, 20px);
   font-weight: 400;
   color: var(--muted);
-  margin-bottom: 32px;
+  margin-bottom: 28px;
   letter-spacing: -0.01em;
+  max-width: 700px;
 }
 
 .hero-role span { color: var(--c1); font-weight: 500; }
 
 .hero-desc {
-  font-size: 18px;
+  font-size: 17px;
   color: var(--text);
-  max-width: 560px;
+  max-width: 640px;
   line-height: 1.75;
-  margin-bottom: 44px;
+  margin-bottom: 40px;
   font-weight: 300;
 }
 
@@ -320,7 +331,8 @@ h1 {
   display: flex;
   gap: 14px;
   flex-wrap: wrap;
-  margin-bottom: 64px;
+  margin-bottom: 40px;
+  justify-content: center;
 }
 
 .btn {
@@ -357,8 +369,9 @@ h1 {
 
 .hero-badges {
   display: flex;
-  gap: 12px;
+  gap: 10px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .badge {
@@ -1165,6 +1178,13 @@ footer {
     <li><a href="#contact" class="nav-cta">Hire Me</a></li>
   </ul>
 </nav>
+
+<!-- PHOTO — fixed top-right corner, sits under Hire Me button -->
+<div class="hero-photo-wrap">
+  <div class="hero-photo-ring">
+    <img src="photo.png" alt="Parth Lakhalani" class="hero-photo" onerror="this.parentElement.parentElement.style.display='none'">
+  </div>
+</div>
 
 <!-- ═══ HERO ═══ -->
 <section id="hero">
