@@ -2,7 +2,7 @@
 
 > Personal portfolio website of Parth Lakhalani — CISO, Cybersecurity Freelancer & Lecturer, AI Governance Specialist, Berlin.
 
-🌐 **Live Site:** [your-username.github.io/portfolio](https://parthlakhalani.github.io/)  
+🌐 **Live Site:** [parthlakhalani.github.io/portfolio](https://parthlakhalani.github.io/)  
 📧 **Contact:** parthlakhalani14@gmail.com  
 🔗 **LinkedIn:** [linkedin.com/in/parth-lakhalani](https://www.linkedin.com/in/parth-lakhalani/)
 
