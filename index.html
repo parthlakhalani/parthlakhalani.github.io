@@ -1749,7 +1749,7 @@ footer {
     <div class="contact-layout" style="grid-template-columns:1fr 1fr;">
       <div class="contact-left reveal">
         <h3>Ready to work together?</h3>
-        <p>Whether you need a cybersecurity consultant, a guest lecturer, a corporate trainer, or a research collaborator — reach out and let's discuss how I can help. I'm available remotely and in-person in Berlin.</p>
+        <p style="color:#9ab5cf;font-size:16px;line-height:1.75;font-weight:400;">Whether you need a cybersecurity consultant, a guest lecturer, a corporate trainer, or a research collaborator — reach out and let's discuss how I can help. Available remotely and in-person in Berlin.</p>
 
         <div class="contact-cards">
           <a id="email-card-link" href="#" class="contact-card">
@@ -1777,30 +1777,40 @@ footer {
       </div>
 
       <div class="reveal reveal-delay-1" style="display:flex;flex-direction:column;justify-content:center;gap:24px;">
-        <div style="padding:36px;border:1px solid var(--border);border-radius:12px;background:var(--surface);">
-          <div style="font-size:36px;margin-bottom:16px;">📬</div>
-          <div style="font-size:20px;font-weight:700;color:#fff;margin-bottom:10px;letter-spacing:-0.02em;">For freelance inquiries</div>
-          <div style="font-size:15px;color:var(--muted);font-weight:300;line-height:1.7;margin-bottom:24px;">Drop me an email with your project details, timeline, and what type of engagement you're looking for. I typically respond within 48 hours.</div>
-          <a id="email-btn" href="#" class="btn btn-cta" style="display:inline-flex;font-size:14px;">
-            <span>✉️</span> <span id="email-btn-text"></span>
-          </a>
+
+        <!-- Google Form Embed -->
+        <div style="border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface);">
+          <div style="padding:20px 24px 0;background:var(--surface);">
+            <div style="font-size:18px;font-weight:700;color:#fff;margin-bottom:4px;">📬 Send a Message</div>
+            <div style="font-size:13px;color:#9ab5cf;margin-bottom:16px;">Fill in the form below — I typically respond within 48 hours.</div>
+          </div>
+          <iframe
+            src="https://docs.google.com/forms/d/e/1FAIpQLScOeEoJN5NgZ6h7EOJD1YEGtq1PdORNswqeKEQu_sIAj93zVA/viewform?embedded=true"
+            width="100%"
+            height="600"
+            frameborder="0"
+            marginheight="0"
+            marginwidth="0"
+            style="display:block;background:transparent;"
+          >Loading form…</iframe>
         </div>
 
+        <!-- Quick stats tiles -->
         <div style="display:flex;gap:12px;">
           <div style="flex:1;padding:20px;border:1px solid var(--border);border-radius:10px;background:var(--surface);text-align:center;">
             <div style="font-size:22px;margin-bottom:8px;">⚡</div>
             <div style="font-size:13px;font-weight:600;color:#fff;">Fast Response</div>
-            <div style="font-size:12px;color:var(--muted);margin-top:4px;">Within 48 hours</div>
+            <div style="font-size:12px;color:#9ab5cf;margin-top:4px;">Within 48 hours</div>
           </div>
           <div style="flex:1;padding:20px;border:1px solid var(--border);border-radius:10px;background:var(--surface);text-align:center;">
             <div style="font-size:22px;margin-bottom:8px;">🌍</div>
             <div style="font-size:13px;font-weight:600;color:#fff;">Remote-Friendly</div>
-            <div style="font-size:12px;color:var(--muted);margin-top:4px;">Europe & beyond</div>
+            <div style="font-size:12px;color:#9ab5cf;margin-top:4px;">Europe & beyond</div>
           </div>
           <div style="flex:1;padding:20px;border:1px solid var(--border);border-radius:10px;background:var(--surface);text-align:center;">
             <div style="font-size:22px;margin-bottom:8px;">🤝</div>
             <div style="font-size:13px;font-weight:600;color:#fff;">Flexible</div>
-            <div style="font-size:12px;color:var(--muted);margin-top:4px;">Per project or retainer</div>
+            <div style="font-size:12px;color:#9ab5cf;margin-top:4px;">Per project or retainer</div>
           </div>
         </div>
       </div>
