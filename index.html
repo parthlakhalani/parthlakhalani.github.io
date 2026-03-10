@@ -1507,7 +1507,7 @@ footer {
           <span class="sg-title">AI Governance &amp; Compliance</span>
         </div>
         <div class="sg-tags">
-          <span class="sg-tag">ISO 42001 AIMS </span>
+          <span class="sg-tag">ISO 42001 AIMS (Experience)</span>
           <span class="sg-tag">EU AI Act</span>
           <span class="sg-tag">AI Risk Assessment</span>
           <span class="sg-tag">Responsible AI</span>
@@ -1752,11 +1752,11 @@ footer {
         <p>Whether you need a cybersecurity consultant, a guest lecturer, a corporate trainer, or a research collaborator — reach out and let's discuss how I can help. I'm available remotely and in-person in Berlin.</p>
 
         <div class="contact-cards">
-          <a href="/cdn-cgi/l/email-protection#5e2e3f2c2a36323f35363f323f30376f6a1e39333f3732703d3133" class="contact-card">
+          <a id="email-card-link" href="#" class="contact-card">
             <span class="cc-icon">✉️</span>
             <div>
               <span class="cc-label">Email</span>
-              <span class="cc-val"><span class="__cf_email__" data-cfemail="8dfdecfff9e5e1ece6e5ece1ece3e4bcb9cdeae0ece4e1a3eee2e0">[email&#160;protected]</span></span>
+              <span class="cc-val" id="email-display"></span>
             </div>
           </a>
           <a href="https://www.linkedin.com/in/parth-lakhalani/" target="_blank" rel="noopener noreferrer" class="contact-card">
@@ -1781,8 +1781,8 @@ footer {
           <div style="font-size:36px;margin-bottom:16px;">📬</div>
           <div style="font-size:20px;font-weight:700;color:#fff;margin-bottom:10px;letter-spacing:-0.02em;">For freelance inquiries</div>
           <div style="font-size:15px;color:var(--muted);font-weight:300;line-height:1.7;margin-bottom:24px;">Drop me an email with your project details, timeline, and what type of engagement you're looking for. I typically respond within 48 hours.</div>
-          <a href="/cdn-cgi/l/email-protection#3f4f5e4d4b57535e54575e535e51560e0b7f58525e5653115c5052004c4a5d555a5c4b02794d5a5a535e515c5a1f76514e4a564d46" class="btn btn-cta" style="display:inline-flex;font-size:14px;">
-            <span>✉️</span> <span class="__cf_email__" data-cfemail="1c6c7d6e6874707d77747d707d72752d285c7b717d7570327f7371">[email&#160;protected]</span>
+          <a id="email-btn" href="#" class="btn btn-cta" style="display:inline-flex;font-size:14px;">
+            <span>✉️</span> <span id="email-btn-text"></span>
           </a>
         </div>
 
@@ -1812,13 +1812,13 @@ footer {
 <footer>
   <div class="footer-left">© 2025 <strong>Parth Lakhalani</strong> · CISO · Lecturer · Researcher · Berlin</div>
   <div class="footer-right">
-    <a href="/cdn-cgi/l/email-protection#7f0f1e0d0b17131e14171e131e11164e4b3f18121e1613511c1012" class="footer-link">Email</a>
+    <a id="footer-email-link" href="#" class="footer-link">Email</a>
     <a href="https://www.linkedin.com/in/parth-lakhalani/" target="_blank" rel="noopener noreferrer" class="footer-link">LinkedIn</a>
     <a href="#hero" class="footer-link">↑ Top</a>
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 // Scroll reveal
 const revealEls = document.querySelectorAll('.reveal');
 const io = new IntersectionObserver((entries) => {
@@ -1844,6 +1844,24 @@ window.addEventListener('scroll', () => {
     a.style.color = (a.getAttribute('href') === '#' + cur) ? 'var(--c1)' : '';
   });
 });
+
+// Build email at runtime so spam bots and Cloudflare cannot obfuscate it
+(function() {
+  const u = 'parthlakhalani14';
+  const d = 'gmail' + '.' + 'com';
+  const e = u + '\u0040' + d;
+  const m = 'mail' + 'to:' + e + '?subject=Freelance%20Inquiry';
+  const display = document.getElementById('email-display');
+  const cardLink = document.getElementById('email-card-link');
+  const btn = document.getElementById('email-btn');
+  const btnText = document.getElementById('email-btn-text');
+  const footerLink = document.getElementById('footer-email-link');
+  if (display) display.textContent = e;
+  if (cardLink) cardLink.href = 'mail' + 'to:' + e;
+  if (btn) btn.href = m;
+  if (btnText) btnText.textContent = e;
+  if (footerLink) footerLink.href = 'mail' + 'to:' + e;
+})();
 
 window.addEventListener('load', () => {
   document.querySelectorAll('#hero .reveal').forEach(el => el.classList.add('show'));
