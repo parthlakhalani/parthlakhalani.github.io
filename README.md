@@ -10,7 +10,7 @@
 
 ## About
 
-A single-file personal website built with HTML and CSS. It shows my current work as a security leader, services, experience, certifications, research and contact details. It supports light and dark mode and works on mobile.
+A single-file personal website built with HTML and CSS. It shows my current work as a security leader, services, experience, certifications, research and contact details. It uses a dark dashboard design and works on mobile.
 
 ---
 
@@ -18,6 +18,17 @@ A single-file personal website built with HTML and CSS. It shows my current work
 
 | Section | Description |
 |---|---|
+| Overview | Profile, career path, key numbers and the "Statement of Applicability" of standards and certificates |
+| GRC Lifecycle | How I run an ISMS, step by step: Plan, Do, Check, Act |
+| Governance Programme | My work as Acting CISO at Mediaire GmbH |
+| Competence Matrix | Where each skill comes from: certified, at work, taught, research |
+| AI Automation | AI workflows for GRC and security, and what I can automate |
+| Audit Trail | Career history, newest first (click a role for details) |
+| Service Catalogue | Freelance services |
+| Credentials and Research | Certifications, education, languages and publications |
+| Contact | Email, contact form and LinkedIn |
+
+---|---|
 | Hero | Name, role, photo and a "Statement of applicability" listing my standards and certificates, what I do with each, and their status |
 | Current work | What I'm doing as Acting CISO at Mediaire GmbH |
 | Services | ISO 27001 and audits, AI governance, health tech security, teaching |
@@ -49,8 +60,8 @@ A single-file personal website built with HTML and CSS. It shows my current work
 ### Update the status table in the hero
 Each row in the "Statement of applicability" is one `<tr>` in `index.html`. Change the status by swapping the class and its text. The counts under the table update automatically.
 - `s-ok` for **Certified** (green)
-- `s-wip` for **In progress** (amber)
-- `s-info` for **Work experience** (blue), for standards you work with without a personal certificate
+- `s-wip` for **In Progress** (amber)
+- `s-info` for **Work Experience** (blue), for standards you work with without a personal certificate
 
 ### Update the profile photo
 1. Rename your new photo to exactly `photo.png`
@@ -62,8 +73,8 @@ Each row in the "Statement of applicability" is one `<tr>` in `index.html`. Chan
 ## Tech stack
 
 - **HTML5:** structure
-- **CSS3:** styling, light and dark mode, responsive layout
-- **JavaScript:** builds the email link at runtime to reduce spam
+- **CSS3:** dark dashboard styling, responsive layout
+- **JavaScript:** email link built at runtime to reduce spam, live Berlin clock, status counts and menu highlighting
 - **Google Fonts:** Public Sans and IBM Plex Mono
 - **Google Forms:** linked contact form
 - **GitHub Pages:** free hosting
