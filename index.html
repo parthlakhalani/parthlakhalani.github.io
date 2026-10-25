@@ -100,9 +100,6 @@ section { scroll-margin-top: 76px; }
 .grid-2 { display: grid; grid-template-columns: 1.15fr 1fr; gap: 28px; }
 .grid-hero { display: grid; grid-template-columns: 1fr 1.55fr; gap: 28px; align-items: stretch; }
 .grid-hero > .panel:first-child { display: flex; flex-direction: column; }
-.now { list-style: none; padding: 0 24px 22px; display: flex; flex-direction: column; gap: 10px; }
-.now li { display: grid; grid-template-columns: 92px 1fr; gap: 12px; font-size: 14px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--panel2); }
-.now b { font-family: var(--mono); font-size: 12px; font-weight: 500; color: var(--muted); padding-top: 1px; }
 .kpis { margin-top: auto; }
 
 /* ---------- PROFILE ---------- */
@@ -178,31 +175,35 @@ tbody tr:hover td { background: var(--panel2); }
   @keyframes stampdown { from { opacity: 0; transform: rotate(-8deg) scale(1.9); } to { opacity: 1; transform: rotate(-8deg) scale(1); } }
 }
 
-/* ---------- PDCA ---------- */
-.pdca { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 34px; padding: 20px; }
-.stage { position: relative; background: var(--panel2); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px 16px; min-height: 150px; }
-.stage .st { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
-.stage .letter { width: 30px; height: 30px; border-radius: 8px; display: grid; place-items: center; font-family: var(--mono); font-weight: 600; font-size: 15px; }
+/* ---------- PDCA (linear, in order) ---------- */
+.pdca { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; padding: 20px 20px 8px; counter-reset: st; }
+.stage { position: relative; background: var(--panel2); border: 1px solid var(--line); border-top: 3px solid var(--c); border-radius: 12px; padding: 16px 18px; }
+.stage:not(:last-child)::after { content: '▸'; position: absolute; right: -21px; top: 50%; transform: translateY(-50%); color: var(--muted); font-size: 16px; }
+.stage .st { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.stage .letter { width: 30px; height: 30px; border-radius: 8px; display: grid; place-items: center; font-family: var(--mono); font-weight: 600; font-size: 15px; color: var(--c); background: color-mix(in srgb, var(--c) 16%, var(--panel)); }
 .stage h3 { font-size: 16px; font-weight: 700; }
-.stage ul { list-style: none; font-size: 14px; color: var(--muted); }
-.stage li { padding-left: 14px; position: relative; margin-bottom: 2px; }
-.stage li::before { content: ''; position: absolute; left: 0; top: 0.7em; width: 5px; height: 5px; border-radius: 50%; background: var(--line); }
-.p-plan .letter  { color: var(--blue);  background: var(--blue-bg); }
-.p-do .letter    { color: var(--teal);  background: var(--teal-bg); }
-.p-check .letter { color: var(--amber); background: var(--amber-bg); }
-.p-act .letter   { color: #C9A7FF; background: #241B3A; }
-.stage .arrow { position: absolute; color: var(--muted); font-size: 16px; line-height: 1; z-index: 2; }
-.p-plan .arrow  { right: -23px; top: 50%; transform: translateY(-50%); }
-.p-do .arrow    { bottom: -25px; left: 50%; transform: translateX(-50%); }
-.p-check .arrow { left: -23px; top: 50%; transform: translateY(-50%); }
-.p-act .arrow   { top: -25px; left: 50%; transform: translateX(-50%); }
-.core {
-  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 3;
-  width: 70px; height: 70px; border-radius: 50%; display: grid; place-items: center; text-align: center;
-  background: var(--bg); border: 1px solid var(--line); box-shadow: 0 0 0 6px var(--panel);
-  font-size: 10px; color: var(--muted); line-height: 1.2;
-}
-.core b { display: block; font-size: 14px; color: var(--text); }
+.stage ul { list-style: none; font-size: 14px; color: var(--muted); display: flex; flex-direction: column; gap: 6px; }
+.stage li { padding-left: 14px; position: relative; }
+.stage li::before { content: ''; position: absolute; left: 0; top: 0.65em; width: 5px; height: 5px; border-radius: 50%; background: var(--c); opacity: .7; }
+.stage li b { color: var(--text); font-weight: 600; }
+.p-plan  { --c: var(--blue); }
+.p-do    { --c: var(--teal); }
+.p-check { --c: var(--amber); }
+.p-act   { --c: #C9A7FF; }
+.loop { margin: 0 20px 18px; padding: 8px 14px; border: 1px dashed var(--line); border-radius: 10px; font-size: 13px; color: var(--muted); display: flex; align-items: center; gap: 10px; }
+.loop svg { width: 16px; height: 16px; fill: none; stroke: var(--muted); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+
+/* ---------- CAREER PATH ---------- */
+.arc { padding: 4px 24px 24px; }
+.arc-title { font-size: 12px; font-weight: 600; color: var(--muted); margin-bottom: 14px; }
+.arc ol { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; position: relative; }
+.arc ol::before { content: ''; position: absolute; left: 6px; right: 6px; top: 6px; height: 2px; background: linear-gradient(90deg, var(--red), var(--blue), var(--teal)); opacity: .55; }
+.arc li { position: relative; padding-top: 22px; }
+.arc li::before { content: ''; position: absolute; left: 0; top: 0; width: 14px; height: 14px; border-radius: 50%; background: var(--bg); border: 2px solid var(--d); }
+.arc li.cur::before { background: var(--d); box-shadow: 0 0 0 4px var(--teal-bg); }
+.arc .yrs { display: block; font-family: var(--mono); font-size: 12px; color: var(--muted); }
+.arc b { display: block; font-size: 14px; font-weight: 700; line-height: 1.3; margin: 2px 0 3px; color: var(--d); }
+.arc small { display: block; font-size: 13px; color: var(--muted); line-height: 1.45; }
 
 /* ---------- AI AUTOMATION ---------- */
 .ai-intro { padding: 20px 20px 4px; color: var(--muted); max-width: 62em; }
@@ -243,9 +244,7 @@ tbody tr:hover td { background: var(--panel2); }
 .uses li small { display: block; color: var(--muted); font-size: 12px; }
 
 /* ---------- WORKSTREAMS ---------- */
-.streams { list-style: none; display: grid; grid-template-columns: 1fr 1fr; }
-.streams li:nth-last-child(2):nth-child(odd) { border-bottom: none; }
-.streams li:nth-child(odd) { border-right: 1px solid var(--line); }
+.streams { list-style: none; }
 .streams li { display: grid; grid-template-columns: 38px 1fr auto; gap: 14px; align-items: start; padding: 14px 20px; border-bottom: 1px solid var(--line); }
 .streams li:last-child { border-bottom: none; }
 .ico { width: 38px; height: 38px; border-radius: 10px; display: grid; place-items: center; color: var(--blue); background: var(--blue-bg); }
@@ -258,10 +257,11 @@ tbody tr:hover td { background: var(--panel2); }
 /* ---------- MATRIX ---------- */
 .matrix { width: 100%; border-collapse: separate; border-spacing: 6px; font-size: 14px; }
 .matrix th { border: none; padding: 4px 6px; text-align: center; white-space: nowrap; }
-.matrix th[scope="row"] { text-align: left; color: var(--text); font-size: 14px; font-weight: 600; padding-left: 0; white-space: nowrap; }
+.matrix th[scope="row"] { text-align: left; color: var(--text); font-size: 14px; font-weight: 600; padding-left: 0; white-space: nowrap; line-height: 1.3; }
+.matrix th[scope="row"] small { display: block; font-family: var(--mono); font-size: 11px; font-weight: 400; color: var(--muted); }
 .matrix td { border: none; padding: 0; }
 .matrix tbody tr:hover td { background: none; }
-.cell { height: 34px; border-radius: 7px; background: var(--panel2); border: 1px solid var(--line); }
+.cell { height: 36px; border-radius: 7px; background: var(--panel2); border: 1px solid var(--line); }
 .c-yes { background: color-mix(in srgb, var(--teal) 55%, var(--panel)); border-color: transparent; }
 .c-part { background: repeating-linear-gradient(135deg, var(--amber-bg) 0 6px, color-mix(in srgb, var(--amber) 45%, var(--panel)) 6px 12px); border-color: transparent; }
 .matrix-key { display: flex; flex-wrap: wrap; gap: 6px 18px; padding: 0 20px 18px; font-size: 13px; color: var(--muted); }
@@ -332,6 +332,9 @@ footer a { color: var(--muted); }
 @media (max-width: 1180px) {
   .grid-hero, .grid-2 { grid-template-columns: 1fr; }
   .flow { grid-template-columns: 1fr 1fr; }
+  .pdca { grid-template-columns: 1fr 1fr; }
+  .stage:nth-child(2)::after { content: '▾'; right: auto; left: 50%; top: auto; bottom: -24px; transform: translateX(-50%); }
+  .stage:nth-child(2)::after { display: none; }
   .node:nth-child(2)::after, .node:nth-child(2)::before { display: none; }
   .catalogue { grid-template-columns: 1fr 1fr; }
 }
@@ -363,13 +366,13 @@ footer a { color: var(--muted); }
   .soa td.ctl { grid-column: 1 / -1; font-size: 12px; color: var(--muted); font-weight: 500; margin-bottom: 2px; }
   .soa-foot { padding-bottom: 30px; }
   .streams li { grid-template-columns: 38px 1fr; }
-  .streams { grid-template-columns: 1fr; }
-  .streams li:nth-child(odd) { border-right: none; }
-  .streams li:nth-last-child(2):nth-child(odd) { border-bottom: 1px solid var(--line); }
-  .pdca { grid-template-columns: 1fr; padding: 16px; }
-  .core { display: none; }
-  .stage .arrow { display: none; }
-  .stage { min-height: 0; }
+  .pdca { grid-template-columns: 1fr; gap: 26px; padding: 16px 16px 6px; }
+  .stage:not(:last-child)::after { content: '▾'; display: block; right: auto; left: 50%; top: auto; bottom: -23px; transform: translateX(-50%); }
+  .loop { margin: 0 16px 16px; }
+  .arc { padding: 4px 20px 20px; }
+  .arc ol { grid-template-columns: 1fr; gap: 16px; }
+  .arc ol::before { left: 6px; right: auto; top: 6px; bottom: 6px; width: 2px; height: auto; background: linear-gradient(180deg, var(--red), var(--blue), var(--teal)); }
+  .arc li { padding: 0 0 0 26px; }
   .flow { grid-template-columns: 1fr; gap: 22px; padding: 16px; }
   .node::after, .node::before { display: block !important; }
   .node:not(:last-child)::after { right: auto; left: 50%; top: auto; bottom: -20px; width: 2px; height: 16px; background: var(--teal); animation: none; }
@@ -405,8 +408,9 @@ footer a { color: var(--muted); }
   <nav class="side" aria-label="Sections">
     <a href="#overview" class="active"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>Overview</a>
     <a href="#lifecycle"><svg viewBox="0 0 24 24"><path d="M20 11a8 8 0 00-14.5-4.5L4 8"/><path d="M4 3v5h5"/><path d="M4 13a8 8 0 0014.5 4.5L20 16"/><path d="M20 21v-5h-5"/></svg>GRC lifecycle</a>
-    <a href="#automation"><svg viewBox="0 0 24 24"><rect x="6" y="7" width="12" height="11" rx="2"/><path d="M12 3v4M9 12h.01M15 12h.01M9.5 15.5h5M3 12h3M18 12h3"/></svg>AI automation</a>
     <a href="#workstreams"><svg viewBox="0 0 24 24"><path d="M3 12h4l2-5 4 10 2-5h6"/></svg>Programme</a>
+    <a href="#coverage"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg>Competence</a>
+    <a href="#automation"><svg viewBox="0 0 24 24"><rect x="6" y="7" width="12" height="11" rx="2"/><path d="M12 3v4M9 12h.01M15 12h.01M9.5 15.5h5M3 12h3M18 12h3"/></svg>AI automation</a>
     <a href="#events"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg>Audit trail</a>
     <a href="#services"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg>Services</a>
     <a href="#assets"><svg viewBox="0 0 24 24"><circle cx="12" cy="9" r="5"/><path d="M8.5 13l-1.5 8 5-3 5 3-1.5-8"/></svg>Credentials</a>
@@ -428,21 +432,23 @@ footer a { color: var(--muted); }
               <p>Acting CISO, Mediaire GmbH</p>
             </div>
           </div>
-          <p class="lede">I run information security and IT at a <b>medical AI company</b> in Berlin. I build ISMS programmes, take companies through <b>ISO 27001 audits</b>, automate GRC work with <b>AI</b>, and teach digital forensics.</p>
+          <p class="lede">I run information security and IT at a <b>medical AI company</b> in Berlin. I build ISMS and <b>business continuity</b> programmes, take companies through <b>ISO 27001 audits</b>, automate GRC work with <b>AI</b>, and teach digital forensics.</p>
           <div class="actions">
             <a href="#contact" class="btn btn-go">Request a consultation</a>
             <a href="https://www.linkedin.com/in/parth-lakhalani/" target="_blank" rel="noopener noreferrer" class="btn">LinkedIn profile</a>
           </div>
         </div>
-        <ul class="now" aria-label="Right now">
-          <li><b>Studying</b><span>AIGP certification, IAPP</span></li>
-          <li><b>Teaching</b><span>Digital forensics at BSBI Berlin</span></li>
-          <li><b>Building</b><span>AI automation for GRC and security</span></li>
-          <li><b>Based in</b><span>Berlin, working remotely across Europe</span></li>
-        </ul>
+        <div class="arc">
+          <p class="arc-title">Career path</p>
+          <ol>
+            <li style="--d: var(--red)"><span class="yrs">2014 to 2019</span><b>Offensive security</b><small>Ethical hacking, VAPT and forensics labs</small></li>
+            <li style="--d: var(--blue)"><span class="yrs">2019 to 2023</span><b>Teaching and research</b><small>3,000+ students, forensics papers</small></li>
+            <li class="cur" style="--d: var(--teal)"><span class="yrs">2023 to now</span><b>GRC and AI governance</b><small>ISMS, BCMS and AI automation</small></li>
+          </ol>
+        </div>
         <dl class="kpis">
           <div class="kpi"><dt>Years in security and teaching</dt><dd>10</dd></div>
-          <div class="kpi"><dt>Certifications</dt><dd>4<small>+1 in progress</small></dd></div>
+          <div class="kpi"><dt>Certifications</dt><dd>5<small>+2 in progress</small></dd></div>
           <div class="kpi"><dt>Students taught</dt><dd>3,000+</dd></div>
           <div class="kpi"><dt>Peer-reviewed papers</dt><dd>5</dd></div>
         </dl>
@@ -454,7 +460,7 @@ footer a { color: var(--muted); }
             <h2 id="soa-title">Statement of applicability</h2>
             <dl class="doc-meta">
               <dt>Owner</dt><dd>Parth Lakhalani</dd>
-              <dt>Scope</dt><dd>Information security, AI governance and medical software</dd>
+              <dt>Scope</dt><dd>Information security, business continuity, AI governance and medical software</dd>
             </dl>
           </div>
           <span class="doc-id">SoA-PL v2026.10</span>
@@ -464,14 +470,14 @@ footer a { color: var(--muted); }
             <tr><th scope="col">Standard or certificate</th><th scope="col">What I do</th><th scope="col">Status</th></tr>
           </thead>
           <tbody>
-            <tr><td class="ctl">ISO 27001 Lead Implementer &amp; Lead Auditor</td><td><span class="area">ISMS and audits</span><span class="ev">Build security programmes and run audits</span></td><td><span class="status s-ok">Certified</span></td></tr>
-            <tr><td class="ctl">ISO 22301</td><td><span class="area">Business continuity</span><span class="ev">Impact analysis and recovery planning</span></td><td><span class="status s-info">Work experience</span></td></tr>
-            <tr><td class="ctl">CEH, EC&#8209;Council</td><td><span class="area">Ethical hacking</span><span class="ev">Pentesting and vulnerability assessment</span></td><td><span class="status s-ok">Certified</span></td></tr>
-            <tr><td class="ctl">CHFI, EC&#8209;Council</td><td><span class="area">Digital forensics</span><span class="ev">Investigations and lecturing at BSBI</span></td><td><span class="status s-ok">Certified</span></td></tr>
+            <tr><td class="ctl">ISO/IEC 27001:2022 Lead Implementer &amp; Lead Auditor</td><td><span class="area">ISMS and audits</span><span class="ev">Build and run the ISMS, internal and certification audits</span></td><td><span class="status s-ok">Certified</span></td></tr>
+            <tr><td class="ctl">ISO 22301:2019 (BCMS)</td><td><span class="area">Business continuity</span><span class="ev">Business impact analysis, recovery plans and tests</span></td><td><span class="status s-info">Work experience</span></td></tr>
+            <tr><td class="ctl">AIGP (IAPP), ISO/IEC 42001:2023, ISO/IEC 27090</td><td><span class="area">AI governance and AI security</span><span class="ev">EU AI Act readiness for medical AI</span></td><td><span class="status s-wip">In progress</span></td></tr>
+            <tr><td class="ctl">CEH, EC&#8209;Council</td><td><span class="area">Offensive security</span><span class="ev">Certified Ethical Hacker, pentesting and VAPT</span></td><td><span class="status s-ok">Certified</span></td></tr>
+            <tr><td class="ctl">CHFI, EC&#8209;Council</td><td><span class="area">Digital forensics</span><span class="ev">Investigations, research and lecturing</span></td><td><span class="status s-ok">Certified</span></td></tr>
             <tr><td class="ctl">AWS Cloud Security</td><td><span class="area">Cloud security</span><span class="ev">AWS infrastructure, identity and access</span></td><td><span class="status s-ok">Certified</span></td></tr>
-            <tr><td class="ctl">AIGP, IAPP</td><td><span class="area">AI governance</span><span class="ev">ISO 42001 and EU AI Act readiness</span></td><td><span class="status s-wip">In progress</span></td></tr>
-            <tr><td class="ctl">GDPR, EU MDR</td><td><span class="area">Health data protection</span><span class="ev">Privacy and security for patient data</span></td><td><span class="status s-info">Work experience</span></td></tr>
-            <tr><td class="ctl">ISO 13485</td><td><span class="area">Medical device quality</span><span class="ev">Security inside the medical software QMS</span></td><td><span class="status s-info">Work experience</span></td></tr>
+            <tr><td class="ctl">ISO 13485:2016, ISO 9001:2015</td><td><span class="area">Quality management</span><span class="ev">Security inside the medical software QMS</span></td><td><span class="status s-info">Work experience</span></td></tr>
+            <tr><td class="ctl">GDPR, EU MDR, NIS2</td><td><span class="area">Regulatory compliance</span><span class="ev">Privacy and security for patient data</span></td><td><span class="status s-info">Work experience</span></td></tr>
           </tbody>
         </table>
         <figcaption class="soa-foot" id="legend"></figcaption>
@@ -479,33 +485,60 @@ footer a { color: var(--muted); }
       </figure>
     </section>
 
-    <!-- GRC LIFECYCLE + COVERAGE -->
+    <!-- GRC LIFECYCLE -->
+    <section id="lifecycle" class="panel" aria-labelledby="pdca-title">
+      <div class="panel-head"><h2 id="pdca-title">How I run an ISMS</h2><span class="hint">Plan, Do, Check, Act on ISO/IEC 27001:2022</span></div>
+      <div class="pdca">
+        <div class="stage p-plan"><div class="st"><span class="letter">P</span><h3>Plan</h3></div><ul>
+          <li>Set the ISMS scope, risk method and <b>Statement of applicability</b></li>
+          <li>Wrote security policies, including <b>data classification</b> for patient data</li>
+          <li>Ran the <b>business impact analysis</b> for ISO 22301</li></ul></div>
+        <div class="stage p-do"><div class="st"><span class="letter">D</span><h3>Do</h3></div><ul>
+          <li>Put controls in place with <b>R&amp;D, IT and AWS</b> owners</li>
+          <li>Supplier security assessments and access management</li>
+          <li>Pentest planning, awareness, and joiner, mover, leaver controls</li></ul></div>
+        <div class="stage p-check"><div class="st"><span class="letter">C</span><h3>Check</h3></div><ul>
+          <li>Internal audits as <b>ISO 27001 Lead Auditor</b></li>
+          <li>Led the company through its <b>certification audit</b></li>
+          <li>Access reviews, log reviews and <b>continuity tests</b></li></ul></div>
+        <div class="stage p-act"><div class="st"><span class="letter">A</span><h3>Act</h3></div><ul>
+          <li>Closed <b>corrective actions (CAPA)</b> after the audit</li>
+          <li>Report risks and status for <b>management review</b></li>
+          <li>Turn lessons from incidents and pentests into controls, and <b>automate</b> where it helps</li></ul></div>
+      </div>
+      <p class="loop"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 00-14.5-4.5L4 8"/><path d="M4 3v5h5"/><path d="M4 13a8 8 0 0014.5 4.5L20 16"/><path d="M20 21v-5h-5"/></svg>Then the cycle repeats: what we learn in Act feeds the next Plan.</p>
+    </section>
+
+    <!-- PROGRAMME + COMPETENCE -->
     <div class="grid-2">
-      <section id="lifecycle" class="panel" aria-labelledby="pdca-title">
-        <div class="panel-head"><h2 id="pdca-title">How I run an ISMS</h2><span class="hint">Plan, Do, Check, Act</span></div>
-        <div class="pdca">
-          <div class="stage p-plan"><div class="st"><span class="letter">P</span><h3>Plan</h3></div><ul><li>Risk assessment and treatment plans</li><li>Statement of applicability</li><li>Policies and data classification</li></ul><span class="arrow" aria-hidden="true">▸</span></div>
-          <div class="stage p-do"><div class="st"><span class="letter">D</span><h3>Do</h3></div><ul><li>Controls with R&amp;D and IT owners</li><li>Supplier security and access management</li><li>Awareness and joiner, mover, leaver</li></ul><span class="arrow" aria-hidden="true">▾</span></div>
-          <div class="stage p-act"><div class="st"><span class="letter">A</span><h3>Act</h3></div><ul><li>Corrective actions (CAPA)</li><li>Management review</li><li>Lessons learned from incidents and tests</li></ul><span class="arrow" aria-hidden="true">▴</span></div>
-          <div class="stage p-check"><div class="st"><span class="letter">C</span><h3>Check</h3></div><ul><li>Internal audits and control testing</li><li>Access and log reviews</li><li>Certification and Notified Body audits</li></ul><span class="arrow" aria-hidden="true">◂</span></div>
-          <div class="core" aria-hidden="true"><span><b>ISMS</b>ISO 27001</span></div>
-        </div>
-      </section>
+      <section id="workstreams" class="panel" aria-labelledby="ws-title">
+          <div class="panel-head"><h2 id="ws-title">Governance programme at Mediaire</h2><span class="hint">Medical AI for radiology</span></div>
+          <ul class="streams">
+            <li><span class="ico"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></span><div><h3>ISMS and certification</h3><p>Operate and improve the ISO 27001 ISMS, with controls and evidence ready for audits.</p></div><span class="run">active</span></li>
+            <li><span class="ico"><svg viewBox="0 0 24 24"><path d="M12 3.5L2.5 20h19z"/><path d="M12 10v4.5"/><path d="M12 17.3v.2"/></svg></span><div><h3>Security risk management</h3><p>Coordinate risk assessments and treatment plans with the right risk owners.</p></div><span class="run">active</span></li>
+            <li><span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg></span><div><h3>Vulnerabilities and incidents</h3><p>Vulnerability management, penetration test coordination and incident response.</p></div><span class="run">active</span></li>
+            <li><span class="ico"><svg viewBox="0 0 24 24"><path d="M3 12h4l2-5 4 10 2-5h6"/></svg></span><div><h3>Medical device cybersecurity</h3><p>Turn regulatory, Notified Body and customer requirements into controls and evidence.</p></div><span class="run">active</span></li>
+            <li><span class="ico"><svg viewBox="0 0 24 24"><path d="M7 18a4 4 0 010-8 5 5 0 019.6-1.5A4 4 0 1117 18z"/></svg></span><div><h3>Cloud and supplier security</h3><p>Cloud security, secure architecture, access reviews and supplier assessments.</p></div><span class="run">active</span></li>
+            <li><span class="ico"><svg viewBox="0 0 24 24"><path d="M20 11a8 8 0 00-14.5-4.5L4 8"/><path d="M4 3v5h5"/><path d="M4 13a8 8 0 0014.5 4.5L20 16"/><path d="M20 21v-5h-5"/></svg></span><div><h3>Business continuity (ISO 22301)</h3><p>Business impact analysis, recovery priorities and recovery tests.</p></div><span class="run">active</span></li>
+          </ul>
+          <div class="chips" aria-label="Frameworks in scope"><span>ISO/IEC 27001</span><span>ISO 22301</span><span>ISO 13485</span><span>ISO 9001</span><span>ISO/IEC 42001</span><span>GDPR</span><span>NIS2</span><span>EU MDR</span><span>EU AI Act</span></div>
+        </section>
 
       <section id="coverage" class="panel" aria-labelledby="cov-title">
-        <div class="panel-head"><h2 id="cov-title">Coverage matrix</h2><span class="hint">Where each skill comes from</span></div>
+        <div class="panel-head"><h2 id="cov-title">Competence matrix</h2><span class="hint">Evidence for ISO 27001 clause 7.2</span></div>
         <div class="panel-body">
           <table class="matrix">
             <thead><tr><th></th><th scope="col">Certified</th><th scope="col">At work</th><th scope="col">Taught</th><th scope="col">Research</th></tr></thead>
             <tbody>
-              <tr><th scope="row">ISMS and ISO 27001</th><td><div class="cell c-yes" title="Certified"></div></td><td><div class="cell c-yes" title="At work"></div></td><td><div class="cell c-yes" title="Taught"></div></td><td><div class="cell c-yes" title="Research"></div></td></tr>
-              <tr><th scope="row">Business continuity</th><td><div class="cell"></div></td><td><div class="cell c-yes" title="At work"></div></td><td><div class="cell"></div></td><td><div class="cell"></div></td></tr>
-              <tr><th scope="row">AI governance</th><td><div class="cell c-part" title="In progress"></div></td><td><div class="cell c-yes" title="At work"></div></td><td><div class="cell c-yes" title="Taught"></div></td><td><div class="cell"></div></td></tr>
-              <tr><th scope="row">Health data and medical devices</th><td><div class="cell"></div></td><td><div class="cell c-yes" title="At work"></div></td><td><div class="cell"></div></td><td><div class="cell c-yes" title="Research"></div></td></tr>
-              <tr><th scope="row">Cloud security</th><td><div class="cell c-yes" title="Certified"></div></td><td><div class="cell c-yes" title="At work"></div></td><td><div class="cell c-yes" title="Taught"></div></td><td><div class="cell"></div></td></tr>
-              <tr><th scope="row">Ethical hacking</th><td><div class="cell c-yes" title="Certified"></div></td><td><div class="cell c-yes" title="At work"></div></td><td><div class="cell c-yes" title="Taught"></div></td><td><div class="cell c-yes" title="Research"></div></td></tr>
-              <tr><th scope="row">AI automation</th><td><div class="cell"></div></td><td><div class="cell c-yes" title="At work"></div></td><td><div class="cell"></div></td><td><div class="cell"></div></td></tr>
-              <tr><th scope="row">Digital forensics</th><td><div class="cell c-yes" title="Certified"></div></td><td><div class="cell"></div></td><td><div class="cell c-yes" title="Taught"></div></td><td><div class="cell c-yes" title="Research"></div></td></tr>
+              <tr><th scope="row">ISMS<small>ISO/IEC 27001:2022</small></th><td><div class="cell c-yes"></div></td><td><div class="cell c-yes"></div></td><td><div class="cell c-yes"></div></td><td><div class="cell c-yes"></div></td></tr>
+              <tr><th scope="row">Business continuity<small>ISO 22301:2019</small></th><td><div class="cell"></div></td><td><div class="cell c-yes"></div></td><td><div class="cell"></div></td><td><div class="cell"></div></td></tr>
+              <tr><th scope="row">Quality management<small>ISO 9001, ISO 13485</small></th><td><div class="cell"></div></td><td><div class="cell c-yes"></div></td><td><div class="cell"></div></td><td><div class="cell"></div></td></tr>
+              <tr><th scope="row">Health data and privacy<small>GDPR, EU MDR</small></th><td><div class="cell"></div></td><td><div class="cell c-yes"></div></td><td><div class="cell"></div></td><td><div class="cell c-yes"></div></td></tr>
+              <tr><th scope="row">AI governance<small>ISO/IEC 42001, 27090</small></th><td><div class="cell c-part"></div></td><td><div class="cell c-part"></div></td><td><div class="cell c-yes"></div></td><td><div class="cell"></div></td></tr>
+              <tr><th scope="row">AI automation<small>n8n and LLMs</small></th><td><div class="cell"></div></td><td><div class="cell c-yes"></div></td><td><div class="cell"></div></td><td><div class="cell"></div></td></tr>
+              <tr><th scope="row">Cloud security<small>AWS</small></th><td><div class="cell c-yes"></div></td><td><div class="cell c-yes"></div></td><td><div class="cell c-yes"></div></td><td><div class="cell"></div></td></tr>
+              <tr><th scope="row">Offensive security<small>CEH, VAPT</small></th><td><div class="cell c-yes"></div></td><td><div class="cell c-yes"></div></td><td><div class="cell c-yes"></div></td><td><div class="cell c-yes"></div></td></tr>
+              <tr><th scope="row">Digital forensics<small>CHFI</small></th><td><div class="cell c-yes"></div></td><td><div class="cell c-yes"></div></td><td><div class="cell c-yes"></div></td><td><div class="cell c-yes"></div></td></tr>
             </tbody>
           </table>
         </div>
@@ -543,20 +576,6 @@ footer a { color: var(--muted); }
         </div>
       </div>
     </section>
-
-    <!-- PROGRAMME -->
-    <section id="workstreams" class="panel" aria-labelledby="ws-title">
-        <div class="panel-head"><h2 id="ws-title">Governance programme at Mediaire</h2><span class="hint">Medical AI for radiology</span></div>
-        <ul class="streams">
-          <li><span class="ico"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></span><div><h3>ISMS and certification</h3><p>Operate and improve the ISO 27001 ISMS, with controls and evidence ready for audits.</p></div><span class="run">active</span></li>
-          <li><span class="ico"><svg viewBox="0 0 24 24"><path d="M12 3.5L2.5 20h19z"/><path d="M12 10v4.5"/><path d="M12 17.3v.2"/></svg></span><div><h3>Security risk management</h3><p>Coordinate risk assessments and treatment plans with the right risk owners.</p></div><span class="run">active</span></li>
-          <li><span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg></span><div><h3>Vulnerabilities and incidents</h3><p>Vulnerability management, penetration test coordination and incident response.</p></div><span class="run">active</span></li>
-          <li><span class="ico"><svg viewBox="0 0 24 24"><path d="M3 12h4l2-5 4 10 2-5h6"/></svg></span><div><h3>Medical device cybersecurity</h3><p>Turn regulatory, Notified Body and customer requirements into controls and evidence.</p></div><span class="run">active</span></li>
-          <li><span class="ico"><svg viewBox="0 0 24 24"><path d="M7 18a4 4 0 010-8 5 5 0 019.6-1.5A4 4 0 1117 18z"/></svg></span><div><h3>Cloud and supplier security</h3><p>Cloud security, secure architecture, access reviews and supplier assessments.</p></div><span class="run">active</span></li>
-          <li><span class="ico"><svg viewBox="0 0 24 24"><path d="M20 11a8 8 0 00-14.5-4.5L4 8"/><path d="M4 3v5h5"/><path d="M4 13a8 8 0 0014.5 4.5L20 16"/><path d="M20 21v-5h-5"/></svg></span><div><h3>Business continuity</h3><p>Impact analysis, recovery priorities and recovery tests.</p></div><span class="run">active</span></li>
-        </ul>
-        <div class="chips" aria-label="Frameworks in scope"><span>ISO 27001</span><span>ISO 22301</span><span>ISO 13485</span><span>GDPR</span><span>NIS2</span><span>EU MDR</span><span>EU AI Act</span></div>
-      </section>
 
     <!-- EVENT LOG -->
     <section id="events" class="panel" aria-labelledby="ev-title">
@@ -611,8 +630,9 @@ footer a { color: var(--muted); }
         </li>
         <li>
           <details>
-            <summary><span class="ts">2016-07</span><span class="tag t-role">ROLE</span><span class="msg">Lecturer, IT and Computer Science, SSSD-IIT College <em>to 2019</em></span><span class="more">▸</span></summary>
+            <summary><span class="ts">2016-07</span><span class="tag t-role">ROLE</span><span class="msg">Lecturer, IT and Computer Science, SSSD-IIT College <em>to 2019, offensive security focus</em></span><span class="more">▸</span></summary>
             <div class="detail"><ul>
+              <li>Focused on offensive security: ethical hacking and vulnerability assessment (VAPT) labs</li>
               <li>Taught IT security, programming and networking, with hands-on labs</li>
             </ul></div>
           </details>
@@ -625,12 +645,12 @@ footer a { color: var(--muted); }
     <section id="services" class="panel" aria-labelledby="svc-title">
       <div class="panel-head"><h2 id="svc-title">Service catalogue</h2><span class="hint">Freelance, remote or in Berlin</span></div>
       <div class="catalogue">
-        <div class="svc"><span class="sid">SVC-01</span><h3>ISO 27001 and audits</h3><p>Gap analysis, ISMS build, internal audits and audit readiness, as a certified Lead Implementer and Lead Auditor.</p><a href="#contact">Request this service</a></div>
-        <div class="svc"><span class="sid">SVC-02</span><h3>AI governance</h3><p>AI risk assessment and readiness for ISO 42001 and the EU AI Act, for teams that build or use AI.</p><a href="#contact">Request this service</a></div>
-        <div class="svc"><span class="sid">SVC-03</span><h3>Health tech security</h3><p>Security and privacy for products that handle patient data: GDPR, EU MDR, ISO 13485 and data classification.</p><a href="#contact">Request this service</a></div>
+        <div class="svc"><span class="sid">SVC-01</span><h3>ISO/IEC 27001 and audits</h3><p>Gap analysis, ISMS build, internal audits and audit readiness to ISO/IEC 27001:2022, as a certified Lead Implementer and Lead Auditor.</p><a href="#contact">Request this service</a></div>
+        <div class="svc"><span class="sid">SVC-02</span><h3>AI governance</h3><p>AI risk assessment and readiness for ISO/IEC 42001, ISO/IEC 27090 and the EU AI Act, for teams that build or use AI.</p><a href="#contact">Request this service</a></div>
+        <div class="svc"><span class="sid">SVC-03</span><h3>Health tech security</h3><p>Security and privacy for products that handle patient data: GDPR, EU MDR, ISO 13485, ISO 9001 and data classification.</p><a href="#contact">Request this service</a></div>
         <div class="svc"><span class="sid">SVC-04</span><h3>Teaching and workshops</h3><p>University lectures and company workshops on digital forensics, ethical hacking and GRC.</p><a href="#contact">Request this service</a></div>
         <div class="svc feat"><span class="sid">SVC-05</span><h3>AI automation for GRC</h3><p>Workflows that monitor regulation, collect audit evidence and draft security answers, with people approving the result.</p><a href="#contact">Request this service</a></div>
-        <div class="svc ask"><h3>Not sure what you need?</h3><p>Describe the problem and I'll suggest where to start.</p><a href="#contact">Request a consultation</a></div>
+        <div class="svc"><span class="sid">SVC-06</span><h3>Business continuity (BCMS)</h3><p>Business impact analysis, recovery plans and continuity tests to ISO 22301:2019.</p><a href="#contact">Request this service</a></div>
       </div>
     </section>
 
