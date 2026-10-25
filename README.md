@@ -18,7 +18,7 @@ A single-file personal website built with HTML and CSS. It shows my current work
 
 | Section | Description |
 |---|---|
-| Hero | Name, role, photo and a "Standards and certifications" table showing what I do with each |
+| Hero | Name, role, photo and a "Statement of applicability" listing my standards and certificates, what I do with each, and their status |
 | Current work | What I'm doing as Acting CISO at Mediaire GmbH |
 | Services | ISO 27001 and audits, AI governance, health tech security, teaching |
 | Experience | Work history |
@@ -47,7 +47,7 @@ A single-file personal website built with HTML and CSS. It shows my current work
 4. Upload to GitHub and commit
 
 ### Update the status table in the hero
-Each row in the "Standards and certifications" table is one `<tr>` in `index.html`. Change the status by swapping the class and its text:
+Each row in the "Statement of applicability" is one `<tr>` in `index.html`. Change the status by swapping the class and its text. The counts under the table update automatically.
 - `s-ok` for **Certified** (green)
 - `s-wip` for **In progress** (amber)
 - `s-info` for **Work experience** (blue), for standards you work with without a personal certificate
