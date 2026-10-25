@@ -1,8 +1,8 @@
-# Parth Lakhalani — Portfolio Website
+# Parth Lakhalani: Portfolio Website
 
-> Personal portfolio website of Parth Lakhalani — CISO, Cybersecurity Freelancer & Lecturer, AI Governance Specialist, Berlin.
+> Personal website of Parth Lakhalani, Acting CISO at Mediaire GmbH, ISO 27001 Lead Implementer and Lead Auditor, AI governance practitioner and university lecturer in Berlin.
 
-🌐 **Live Site:** [parthlakhalani.github.io/portfolio](https://parthlakhalani.github.io/)  
+🌐 **Live site:** [parthlakhalani.github.io](https://parthlakhalani.github.io/)  
 📧 **Contact:** parthlakhalani14@gmail.com  
 🔗 **LinkedIn:** [linkedin.com/in/parth-lakhalani](https://www.linkedin.com/in/parth-lakhalani/)
 
@@ -10,110 +10,92 @@
 
 ## About
 
-This is a single-file personal portfolio website built with HTML, CSS, and JavaScript. It showcases my professional experience, skills, certifications, research publications, and contact information.
+A single-file personal website built with HTML and CSS. It shows my current work as a security leader, services, experience, certifications, research and contact details. It supports light and dark mode and works on mobile.
 
 ---
 
-## What's Inside
+## What's inside
 
 | Section | Description |
 |---|---|
-| Hero | Name, role, photo and a "Statement of applicability" mapping my work to ISO 27001 / ISO 42001 controls |
+| Hero | Name, role, photo and a "Statement of applicability" mapping my work to ISO 27001 and ISO 42001 controls |
 | Current work | What I'm doing as Acting CISO at Mediaire GmbH |
 | Services | ISO 27001 and audits, AI governance, health tech security, teaching |
 | Experience | Work history |
-| Credentials | Certifications, education, languages |
+| Credentials | Certifications, education and languages |
 | Research | Publications and talks |
-| Contact | Email, contact form, LinkedIn |
-
----|---|
-| Hero | Name, tagline, specialisations, and profile photo |
-| Services | AI Governance, Cybersecurity Consulting, Lecturing, Training |
-| About | Professional summary and key stats |
-| Experience | Full work history with company links |
-| Skills | ISO 27001 ISMS, Digital Forensics, AI Governance, Cloud Security (AWS) |
-| Education | MBA, B.Ed, MSc Cybersecurity, BS Computer Forensics |
-| Publications | 5 research papers with links |
-| Certifications | ISO 27001 LI (TÜV SÜD), CEH, CHFI, AWS, CISSP and more |
-| Contact | Email, LinkedIn, Google Form for inquiries |
+| Contact | Email, contact form and LinkedIn |
 
 ---
 
 ## Files
 
 ```
-portfolio/
-├── index.html        ← Main website (single file, everything included)
-├── photo.png         ← Profile photo (must be named exactly photo.png)
-└── README.md         ← This file
+├── index.html   Main website (single file, everything included)
+├── photo.png    Profile photo (must be named exactly photo.png)
+└── README.md    This file
 ```
 
 ---
 
-## How to Update
+## How to update
 
-### Update text content
-1. Open `index.html` in any text editor (Notepad, VS Code, etc.)
-2. Press `Ctrl+F` to search for the text you want to change
-3. Edit it, save the file
-4. Re-upload to GitHub (Add file → Upload files → Commit changes)
+### Update text
+1. Open `index.html` in any text editor
+2. Press `Ctrl+F` to find the text you want to change
+3. Edit it and save
+4. Upload to GitHub and commit
 
-### Update profile photo
+### Update the status table in the hero
+Each row in the "Statement of applicability" is one `<tr>` in `index.html`. Change the status by swapping the class:
+- `s-ok` shows **In place** (green)
+- `s-wip` shows **In progress** (amber)
+
+### Update the profile photo
 1. Rename your new photo to exactly `photo.png`
-2. Upload it to the repository (it will replace the old one)
-3. Commit changes
-
-### Update the Google Form
-1. Go to [forms.google.com](https://forms.google.com)
-2. Edit your form fields as needed
-3. No changes needed in the website — it auto-reflects
+2. Upload it to the repository (it replaces the old one)
+3. Commit
 
 ---
 
-## Tech Stack
+## Tech stack
 
-- **HTML5** — structure
-- **CSS3** — styling (dark theme, animations, responsive layout)
-- **JavaScript** — scroll animations, nav highlighting, email injection
-- **Google Fonts** — Public Sans + IBM Plex Mono
-- **Google Forms** — linked contact form
-- **GitHub Pages** — free hosting
+- **HTML5:** structure
+- **CSS3:** styling, light and dark mode, responsive layout
+- **JavaScript:** builds the email link at runtime to reduce spam
+- **Google Fonts:** Public Sans and IBM Plex Mono
+- **Google Forms:** linked contact form
+- **GitHub Pages:** free hosting
 
 ---
 
 ## Deployment
 
-This site is hosted on **GitHub Pages** (free).
-
-To redeploy after changes:
-1. Upload the updated `index.html` to this repository
-2. Go to **Settings → Pages**
-3. Make sure source is set to **main branch / root**
-4. Your site updates automatically within 1–2 minutes
+The site is hosted on **GitHub Pages**. Any change committed to the `main` branch goes live within 1 to 2 minutes. Check **Settings > Pages** if it doesn't (source should be the main branch, root folder).
 
 ---
 
-## Certifications Shown
+## Certifications shown
 
-- ✅ ISO 27001 Lead Implementer — TÜV SÜD (Official)
-- ✅ ISO 27001 Lead Auditor
-- ✅ CEH — Certified Ethical Hacker (IIT Kanpur / EC-Council)
-- ✅ CHFI — Computer Hacking Forensic Investigator (IIT Kanpur / EC-Council)
-- ✅ AWS Cloud Security
-- ✅ Cisco CCNP ENCOR (350-401)
-- ✅ ICS/OT Cybersecurity — NIST 800-82 Rev 3
-- 🔄 CISSP (ISC2) — In progress
-- 🔄 AIGP (IAPP) — In progress
+- ✅ ISO/IEC 27001 Lead Implementer (TÜV SÜD)
+- ✅ ISO/IEC 27001 Lead Auditor
+- ✅ CHFI, Computer Hacking Forensic Investigator (EC-Council)
+- ✅ CEH, Certified Ethical Hacker (EC-Council)
+- ✅ AWS Cloud Security (InfosecTrain)
+- 🔄 AIGP, Artificial Intelligence Governance Professional (IAPP), in progress
+- 🔄 CISSP (ISC2), in progress
+
+Other training: ICS/OT Security (NIST 800-82 Rev 3), Cisco CCNP ENCOR, IT Service Management.
 
 ---
 
-## Research Publications
+## Research publications
 
-1. IJCRT 2024 — Cybersecurity in Healthcare
-2. IJRASET 2023 — AI & Cybersecurity
-3. JFSCI 2023 — Digital Forensics (DOI: 10.19080/JFSCI.2023.16.555943)
-4. IJIRCST 2022 — Network Security
-5. IJIP 2021 — Information Security
+1. 2024: Bytes By Bytes: Unmasking Digital Shadows in Forensic Investigations (IJCRT)
+2. 2023: Static Approach for Malware Analysis: A Guide to Analysis Tools and Techniques (IJRASET)
+3. 2023: Forensic Phenotyping: Unveiling Hidden Clues from Discarded Waste (JFSCI, DOI: 10.19080/JFSCI.2023.16.555943)
+4. 2022: Computer Forensics Data Recovery Software: A Comparative Study (IJIRCST)
+5. 2021: The Psychological Impact of COVID-19 Pandemics on Gujarati Adults (IJIP)
 
 ---
 
