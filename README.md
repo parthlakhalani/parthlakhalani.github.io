@@ -50,7 +50,7 @@ A single-file personal website built with HTML and CSS. It shows my current work
 Each row in the "Standards and certifications" table is one `<tr>` in `index.html`. Change the status by swapping the class and its text:
 - `s-ok` for **Certified** (green)
 - `s-wip` for **In progress** (amber)
-- `s-info` for **In practice** (blue), for standards you use without a personal certificate
+- `s-info` for **Work experience** (blue), for standards you work with without a personal certificate
 
 ### Update the profile photo
 1. Rename your new photo to exactly `photo.png`
