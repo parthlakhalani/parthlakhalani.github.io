@@ -19,11 +19,12 @@ A single-file personal website built with HTML and CSS. It shows my current work
 | Section | Description |
 |---|---|
 | Overview | Profile, career path, key numbers and the "Statement of Applicability" of standards and certificates |
+| Experience | Roles, newest first, with key work and skills |
 | GRC Lifecycle | How I run an ISMS, step by step: Plan, Do, Check, Act |
 | Governance Programme | My work as Acting CISO at Mediaire GmbH |
 | Competence Matrix | Where each skill comes from: certified, at work, taught, research |
 | AI Automation | AI workflows for GRC and security, and what I can automate |
-| Audit Trail | Career, certifications and degrees, newest first (click a role for details) |
+| Audit Trail | Certifications, degrees and milestones, newest first |
 | Service Catalogue | Freelance services |
 | Credentials | Certifications, other training and languages |
 | Education | Degrees and diploma |
