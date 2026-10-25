@@ -18,6 +18,15 @@ This is a single-file personal portfolio website built with HTML, CSS, and JavaS
 
 | Section | Description |
 |---|---|
+| Hero | Name, role, photo and a "Statement of applicability" mapping my work to ISO 27001 / ISO 42001 controls |
+| Current work | What I'm doing as Acting CISO at Mediaire GmbH |
+| Services | ISO 27001 and audits, AI governance, health tech security, teaching |
+| Experience | Work history |
+| Credentials | Certifications, education, languages |
+| Research | Publications and talks |
+| Contact | Email, contact form, LinkedIn |
+
+---|---|
 | Hero | Name, tagline, specialisations, and profile photo |
 | Services | AI Governance, Cybersecurity Consulting, Lecturing, Training |
 | About | Professional summary and key stats |
@@ -66,8 +75,8 @@ portfolio/
 - **HTML5** — structure
 - **CSS3** — styling (dark theme, animations, responsive layout)
 - **JavaScript** — scroll animations, nav highlighting, email injection
-- **Google Fonts** — Outfit + JetBrains Mono
-- **Google Forms** — embedded contact form
+- **Google Fonts** — Public Sans + IBM Plex Mono
+- **Google Forms** — linked contact form
 - **GitHub Pages** — free hosting
 
 ---
@@ -87,12 +96,14 @@ To redeploy after changes:
 ## Certifications Shown
 
 - ✅ ISO 27001 Lead Implementer — TÜV SÜD (Official)
+- ✅ ISO 27001 Lead Auditor
 - ✅ CEH — Certified Ethical Hacker (IIT Kanpur / EC-Council)
 - ✅ CHFI — Computer Hacking Forensic Investigator (IIT Kanpur / EC-Council)
 - ✅ AWS Cloud Security
 - ✅ Cisco CCNP ENCOR (350-401)
 - ✅ ICS/OT Cybersecurity — NIST 800-82 Rev 3
-- 🔄 CISSP — Associate (ISC)² — In Progress
+- 🔄 CISSP (ISC2) — In progress
+- 🔄 AIGP (IAPP) — In progress
 
 ---
 
@@ -106,4 +117,4 @@ To redeploy after changes:
 
 ---
 
-*Last updated: March 2025*
+*Last updated: October 2026*
