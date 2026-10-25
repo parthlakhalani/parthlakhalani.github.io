@@ -9,615 +9,609 @@
 <meta property="og:description" content="Information security, ISO 27001 and AI governance for health tech. Lecturer in digital forensics.">
 <meta property="og:image" content="https://parthlakhalani.github.io/photo.png">
 <meta property="og:type" content="website">
+<meta name="theme-color" content="#0A111A">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --paper:   #F2F5F7;
-  --panel:   #FFFFFF;
-  --ink:     #14202B;
-  --muted:   #586675;
-  --rule:    #D3DBE2;
-  --accent:  #1F4FD1;
-  --ok:      #1C7A4E;
-  --ok-bg:   #E2F2E9;
-  --wip:     #9A600A;
-  --wip-bg:  #FBEFD9;
-  --info-bg: #E3EAFB;
-  --stamp:   #B42335;
+  --bg:     #0A111A;
+  --panel:  #111B27;
+  --panel2: #16222F;
+  --line:   #223142;
+  --text:   #DDE6EF;
+  --muted:  #8C9CAE;
+  --teal:   #34D1BF;
+  --teal-bg:#0F2E2D;
+  --amber:  #F3B23C;
+  --amber-bg:#33270F;
+  --blue:   #7AAEFF;
+  --blue-bg:#15253F;
+  --red:    #FF7A85;
   --sans: 'Public Sans', system-ui, sans-serif;
   --mono: 'IBM Plex Mono', ui-monospace, monospace;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --paper:  #0E151C;
-    --panel:  #16202A;
-    --ink:    #E3EAF0;
-    --muted:  #93A2B0;
-    --rule:   #2A3743;
-    --accent: #7FA2FF;
-    --ok:     #5FD39A;
-    --ok-bg:  #173326;
-    --wip:    #F0B95A;
-    --wip-bg: #3A2B12;
-    --info-bg: #1B2847;
-    --stamp:  #FF7D88;
-  }
+  color-scheme: dark;
 }
 
 html { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
 body {
-  background: var(--paper);
-  color: var(--ink);
+  background: var(--bg);
+  color: var(--text);
   font-family: var(--sans);
-  font-size: 17px;
+  font-size: 16px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
+a { color: var(--blue); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-radius: 6px; }
 
-a { color: var(--accent); text-underline-offset: 3px; }
-a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
-
-.wrap { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
-
-/* NAV */
-.nav {
-  position: sticky; top: 0; z-index: 10;
-  background: color-mix(in srgb, var(--paper) 88%, transparent);
+/* ---------- APP SHELL ---------- */
+.topbar {
+  position: sticky; top: 0; z-index: 20;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  height: 56px; padding: 0 20px;
+  background: color-mix(in srgb, var(--bg) 90%, transparent);
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--rule);
+  border-bottom: 1px solid var(--line);
 }
-.nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
-.brand { font-weight: 700; color: var(--ink); text-decoration: none; letter-spacing: -0.01em; }
-.nav ul { display: flex; gap: 4px; list-style: none; align-items: center; }
-.nav ul a { color: var(--muted); text-decoration: none; font-size: 15px; padding: 6px 12px; border-radius: 6px; }
-.nav ul a:hover { color: var(--ink); }
-.nav ul a.btn-small { color: #fff; background: var(--accent); font-weight: 600; margin-left: 8px; }
-@media (prefers-color-scheme: dark) { .nav ul a.btn-small { color: #0E151C; } }
+.crumb { font-family: var(--mono); font-size: 14px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.crumb b { color: var(--text); font-weight: 600; }
+.top-right { display: flex; align-items: center; gap: 18px; font-family: var(--mono); font-size: 13px; color: var(--muted); }
+.op { display: inline-flex; align-items: center; gap: 8px; color: var(--teal); }
+.op::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: currentColor; box-shadow: 0 0 0 3px var(--teal-bg); }
+@media (prefers-reduced-motion: no-preference) {
+  .op::before { animation: beat 2.4s ease-in-out infinite; }
+  @keyframes beat { 50% { box-shadow: 0 0 0 6px transparent; } }
+}
+.top-cta { font-family: var(--sans); font-weight: 600; font-size: 14px; color: var(--bg); background: var(--teal); padding: 7px 14px; border-radius: 8px; text-decoration: none; white-space: nowrap; }
 
-/* HERO */
-.hero { padding: 72px 0 104px; position: relative; overflow: hidden; }
-.hero::before {
-  content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none;
-  background-image: radial-gradient(var(--rule) 1.2px, transparent 1.2px);
-  background-size: 22px 22px;
-  -webkit-mask-image: radial-gradient(ellipse 60% 70% at 72% 45%, #000 20%, transparent 75%);
-          mask-image: radial-gradient(ellipse 60% 70% at 72% 45%, #000 20%, transparent 75%);
-}
-.hero .wrap { position: relative; z-index: 1; }
-.hero .wrap { display: grid; grid-template-columns: 4fr 6.2fr; gap: 56px; align-items: start; }
+.shell { display: grid; grid-template-columns: 232px 1fr; min-height: calc(100vh - 56px); }
 
-.portrait {
-  width: 112px; height: 134px; border-radius: 12px;
-  object-fit: cover; object-position: center top;
-  display: block; margin-bottom: 28px;
-  border: 1px solid var(--rule);
+.side {
+  position: sticky; top: 56px; align-self: start; height: calc(100vh - 56px);
+  border-right: 1px solid var(--line); padding: 20px 12px;
+  display: flex; flex-direction: column; gap: 2px;
 }
-.hero h1 {
-  font-size: clamp(44px, 6vw, 68px);
-  font-weight: 800; line-height: 1.02; letter-spacing: -0.035em;
-  margin-bottom: 20px;
+.side a {
+  display: flex; align-items: center; gap: 12px;
+  color: var(--muted); text-decoration: none; font-size: 15px; font-weight: 500;
+  padding: 9px 12px; border-radius: 8px;
 }
-.hero .role { font-size: 20px; font-weight: 600; margin-bottom: 14px; letter-spacing: -0.01em; }
-.hero .lede { color: var(--muted); max-width: 30em; margin-bottom: 32px; }
-.facts { display: grid; grid-template-columns: repeat(3, auto); justify-content: start; gap: 12px 32px; margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--rule); }
-.facts dt { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.2; }
-.facts dd { font-size: 14px; color: var(--muted); }
+.side a:hover { color: var(--text); background: var(--panel); }
+.side a.active { color: var(--text); background: var(--panel2); box-shadow: inset 2px 0 0 var(--teal); }
+.side svg, .ico svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+.side-foot { margin-top: auto; padding: 12px; font-size: 13px; color: var(--muted); border-top: 1px solid var(--line); }
+.side-foot b { display: block; color: var(--text); font-weight: 600; }
 
-.actions { display: flex; gap: 12px; flex-wrap: wrap; }
-.btn {
-  display: inline-block; text-decoration: none; font-weight: 600; font-size: 16px;
-  padding: 12px 22px; border-radius: 8px; border: 1px solid transparent;
-}
-.btn-primary { background: var(--accent); color: #fff; }
-@media (prefers-color-scheme: dark) { .btn-primary { color: #0E151C; } }
-.btn-primary:hover { filter: brightness(1.08); }
-.btn-plain { border-color: var(--rule); color: var(--ink); background: var(--panel); }
-.btn-plain:hover { border-color: var(--muted); }
+main { padding: 28px; display: flex; flex-direction: column; gap: 28px; min-width: 0; max-width: 1360px; }
 
-/* REGISTER (signature element) */
-.register {
-  position: relative;
-  background: var(--panel);
-  border: 1px solid var(--rule);
-  border-radius: 12px;
-  box-shadow: 10px 10px 0 -1px var(--panel), 10px 10px 0 0 var(--rule), 0 24px 48px -28px rgba(20,32,43,0.35);
-}
-.register-head {
-  display: flex; justify-content: space-between; align-items: center; gap: 16px;
-  padding: 20px 22px 14px;
-}
-.register-head strong { font-size: 19px; font-weight: 800; letter-spacing: -0.02em; }
-.doc-id { font-family: var(--mono); font-size: 12px; color: var(--muted); border: 1px solid var(--rule); border-radius: 6px; padding: 3px 8px; white-space: nowrap; }
-.doc-meta { display: grid; grid-template-columns: auto 1fr; gap: 4px 20px; padding: 0 22px 16px; border-bottom: 1px solid var(--rule); font-size: 13px; }
+/* ---------- PANELS ---------- */
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; min-width: 0; }
+.panel-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 20px; border-bottom: 1px solid var(--line); }
+.panel-head h2 { font-size: 17px; font-weight: 700; letter-spacing: -0.01em; }
+.panel-head .hint { font-size: 13px; color: var(--muted); }
+.panel-body { padding: 20px; }
+section { scroll-margin-top: 76px; }
+
+.grid-2 { display: grid; grid-template-columns: 1.15fr 1fr; gap: 28px; }
+.grid-hero { display: grid; grid-template-columns: 1fr 1.55fr; gap: 28px; align-items: stretch; }
+.grid-hero > .panel:first-child { display: flex; flex-direction: column; }
+.now { list-style: none; padding: 0 24px 22px; display: flex; flex-direction: column; gap: 10px; }
+.now li { display: grid; grid-template-columns: 92px 1fr; gap: 12px; font-size: 14px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--panel2); }
+.now b { font-family: var(--mono); font-size: 12px; font-weight: 500; color: var(--muted); padding-top: 1px; }
+.kpis { margin-top: auto; }
+
+/* ---------- PROFILE ---------- */
+.profile { padding: 24px; }
+.who { display: flex; gap: 18px; align-items: center; margin-bottom: 18px; }
+.who img { width: 84px; height: 100px; object-fit: cover; object-position: center top; border-radius: 12px; border: 1px solid var(--line); }
+.who h1 { font-size: 30px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; }
+.who p { color: var(--muted); font-size: 15px; }
+.lede { color: var(--muted); margin-bottom: 20px; }
+.lede b { color: var(--text); font-weight: 600; }
+.actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; justify-content: center; text-decoration: none; font-weight: 600; font-size: 15px; padding: 10px 18px; border-radius: 9px; border: 1px solid var(--line); color: var(--text); background: var(--panel2); }
+.btn:hover { border-color: var(--muted); }
+.btn-go { background: var(--teal); border-color: var(--teal); color: var(--bg); }
+.btn-go:hover { filter: brightness(1.08); border-color: var(--teal); }
+
+.kpis { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border-top: 1px solid var(--line); border-radius: 0 0 14px 14px; overflow: hidden; }
+.kpi { background: var(--panel); padding: 16px 20px; }
+.kpi dt { font-size: 13px; color: var(--muted); }
+.kpi dd { font-family: var(--mono); font-size: 24px; font-weight: 600; letter-spacing: -0.02em; }
+.kpi dd small { font-size: 13px; color: var(--amber); font-weight: 500; margin-left: 6px; }
+
+/* ---------- SOA ---------- */
+.soa { position: relative; }
+.soa .panel-head { align-items: flex-start; }
+.doc-id { font-family: var(--mono); font-size: 12px; color: var(--muted); border: 1px solid var(--line); border-radius: 6px; padding: 2px 8px; white-space: nowrap; }
+.doc-meta { display: grid; grid-template-columns: auto 1fr; gap: 2px 18px; margin-top: 8px; font-size: 13px; }
 .doc-meta dt { color: var(--muted); }
 .doc-meta dd { font-weight: 600; }
-.register table { width: 100%; border-collapse: collapse; font-size: 15px; }
-.register th {
-  text-align: left; font-weight: 600; font-size: 13px; color: var(--muted);
-  padding: 10px 22px; border-bottom: 1px solid var(--rule);
-}
-.register td { padding: 13px 22px; border-bottom: 1px solid var(--rule); vertical-align: top; }
-.register tr:last-child td { border-bottom: none; }
-.register .ctl { font-size: 14px; font-weight: 500; color: var(--ink); }
-.register th:nth-child(1) { width: 25%; }
-.register th:nth-child(3) { width: 1%; }
-.register .area { font-weight: 600; display: block; }
-.register .ev { color: var(--muted); font-size: 14px; }
-.status {
-  display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;
-  font-size: 13px; font-weight: 600; padding: 3px 10px; border-radius: 99px;
-}
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th { text-align: left; font-size: 12px; font-weight: 600; color: var(--muted); padding: 10px 20px; border-bottom: 1px solid var(--line); }
+td { padding: 12px 20px; border-bottom: 1px solid var(--line); vertical-align: top; }
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:hover td { background: var(--panel2); }
+.soa th:nth-child(1) { width: 27%; }
+.soa th:nth-child(3) { width: 1%; }
+.ctl { font-weight: 600; }
+.area { display: block; font-weight: 600; }
+.ev { color: var(--muted); font-size: 13px; }
+.status { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 99px; }
 .status::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
-.s-ok  { color: var(--ok);  background: var(--ok-bg); }
-.s-wip { color: var(--wip); background: var(--wip-bg); }
-.s-info { color: var(--accent); background: var(--info-bg); }
-.register-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 16px; padding: 13px 22px; font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule); }
-.legend { display: flex; flex-wrap: wrap; gap: 4px 14px; }
-.legend span { display: inline-flex; align-items: center; gap: 6px; }
-.legend i { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
-.legend b { color: var(--ink); font-weight: 700; }
+.s-ok   { color: var(--teal);  background: var(--teal-bg); }
+.s-wip  { color: var(--amber); background: var(--amber-bg); }
+.s-info { color: var(--blue);  background: var(--blue-bg); }
+.soa-foot { display: flex; flex-wrap: wrap; gap: 6px 16px; padding: 12px 20px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); }
+.soa-foot span { display: inline-flex; align-items: center; gap: 6px; }
+.soa-foot i { width: 8px; height: 8px; border-radius: 50%; }
+.soa-foot b { color: var(--text); }
 .stamp {
-  position: absolute; right: -22px; bottom: -30px; z-index: 2;
-  color: var(--stamp); border: 2.5px solid currentColor; border-radius: 10px;
-  padding: 7px 16px 6px; text-align: center; line-height: 1.15;
-  background: color-mix(in srgb, var(--panel) 80%, transparent);
+  position: absolute; right: 18px; bottom: -22px; z-index: 2;
+  color: var(--red); border: 2.5px solid currentColor; border-radius: 10px;
+  padding: 6px 14px 5px; text-align: center; line-height: 1.15;
+  background: color-mix(in srgb, var(--panel) 85%, transparent);
   box-shadow: inset 0 0 0 3px var(--panel), inset 0 0 0 4.5px currentColor;
-  transform: rotate(-8deg);
+  transform: rotate(-8deg); pointer-events: none;
 }
-.stamp span { display: block; font-size: 15px; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; }
-.stamp small { display: block; font-family: var(--mono); font-size: 11px; letter-spacing: 0.04em; }
+.stamp span { display: block; font-size: 14px; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; }
+.stamp small { display: block; font-family: var(--mono); font-size: 11px; }
 
-/* one load moment: statuses check in row by row */
+/* one load moment: statuses check in, then the stamp lands */
 @media (prefers-reduced-motion: no-preference) {
-  .register tbody .status { opacity: 0; transform: scale(0.85); animation: checkin 0.35s ease-out forwards; }
-  .register tbody tr:nth-child(1) .status { animation-delay: 0.35s; }
-  .register tbody tr:nth-child(2) .status { animation-delay: 0.5s; }
-  .register tbody tr:nth-child(3) .status { animation-delay: 0.65s; }
-  .register tbody tr:nth-child(4) .status { animation-delay: 0.8s; }
-  .register tbody tr:nth-child(5) .status { animation-delay: 0.95s; }
-  .register tbody tr:nth-child(6) .status { animation-delay: 1.1s; }
-  .register tbody tr:nth-child(7) .status { animation-delay: 1.25s; }
-  .register tbody tr:nth-child(8) .status { animation-delay: 1.4s; }
+  .soa tbody .status { opacity: 0; transform: scale(0.85); animation: checkin 0.3s ease-out forwards; }
+  .soa tbody tr:nth-child(1) .status { animation-delay: .3s; }
+  .soa tbody tr:nth-child(2) .status { animation-delay: .42s; }
+  .soa tbody tr:nth-child(3) .status { animation-delay: .54s; }
+  .soa tbody tr:nth-child(4) .status { animation-delay: .66s; }
+  .soa tbody tr:nth-child(5) .status { animation-delay: .78s; }
+  .soa tbody tr:nth-child(6) .status { animation-delay: .9s; }
+  .soa tbody tr:nth-child(7) .status { animation-delay: 1.02s; }
+  .soa tbody tr:nth-child(8) .status { animation-delay: 1.14s; }
   @keyframes checkin { to { opacity: 1; transform: none; } }
-  .stamp { opacity: 0; animation: stampdown 0.32s cubic-bezier(.2,.9,.3,1.3) 1.75s forwards; }
-  @keyframes stampdown {
-    from { opacity: 0; transform: rotate(-8deg) scale(1.9); }
-    to   { opacity: 1; transform: rotate(-8deg) scale(1); }
-  }
+  .stamp { opacity: 0; animation: stampdown .32s cubic-bezier(.2,.9,.3,1.3) 1.45s forwards; }
+  @keyframes stampdown { from { opacity: 0; transform: rotate(-8deg) scale(1.9); } to { opacity: 1; transform: rotate(-8deg) scale(1); } }
 }
 
-/* SECTIONS */
-.section { padding: 88px 0; border-top: 1px solid var(--rule); }
-.section h2 { font-size: clamp(28px, 3.4vw, 38px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 12px; }
-.section .intro { color: var(--muted); max-width: 36em; margin-bottom: 48px; }
+/* ---------- WORKSTREAMS ---------- */
+.streams { list-style: none; }
+.streams li { display: grid; grid-template-columns: 38px 1fr auto; gap: 14px; align-items: start; padding: 14px 20px; border-bottom: 1px solid var(--line); }
+.streams li:last-child { border-bottom: none; }
+.ico { width: 38px; height: 38px; border-radius: 10px; display: grid; place-items: center; color: var(--blue); background: var(--blue-bg); }
+.streams h3 { font-size: 15px; font-weight: 700; }
+.streams p { font-size: 14px; color: var(--muted); }
+.run { font-family: var(--mono); font-size: 12px; color: var(--teal); white-space: nowrap; padding-top: 2px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 16px 20px; border-top: 1px solid var(--line); }
+.chips span { font-family: var(--mono); font-size: 12px; padding: 3px 9px; border: 1px solid var(--line); border-radius: 6px; color: var(--muted); }
 
-/* Current work */
-.work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px 48px; }
-.work-grid h3 { font-size: 18px; font-weight: 700; margin-bottom: 6px; letter-spacing: -0.01em; }
-.ico {
-  width: 42px; height: 42px; border-radius: 11px; margin-bottom: 16px;
-  display: grid; place-items: center; color: var(--accent); background: var(--info-bg);
+/* ---------- MATRIX ---------- */
+.matrix { width: 100%; border-collapse: separate; border-spacing: 6px; font-size: 14px; }
+.matrix th { border: none; padding: 4px 6px; text-align: center; white-space: nowrap; }
+.matrix th[scope="row"] { text-align: left; color: var(--text); font-size: 14px; font-weight: 600; padding-left: 0; white-space: nowrap; }
+.matrix td { border: none; padding: 0; }
+.matrix tbody tr:hover td { background: none; }
+.cell { height: 34px; border-radius: 7px; background: var(--panel2); border: 1px solid var(--line); }
+.c-yes { background: color-mix(in srgb, var(--teal) 55%, var(--panel)); border-color: transparent; }
+.c-part { background: repeating-linear-gradient(135deg, var(--amber-bg) 0 6px, color-mix(in srgb, var(--amber) 45%, var(--panel)) 6px 12px); border-color: transparent; }
+.matrix-key { display: flex; flex-wrap: wrap; gap: 6px 18px; padding: 0 20px 18px; font-size: 13px; color: var(--muted); }
+.matrix-key span { display: inline-flex; align-items: center; gap: 8px; }
+.matrix-key .cell { width: 16px; height: 16px; border-radius: 4px; display: inline-block; }
+
+/* ---------- EVENT LOG ---------- */
+.log { list-style: none; font-family: var(--mono); font-size: 14px; }
+.log > li { border-bottom: 1px solid var(--line); }
+.log > li:last-child { border-bottom: none; }
+.log details > summary, .log .line {
+  display: grid; grid-template-columns: 84px 78px 1fr auto; gap: 14px; align-items: baseline;
+  padding: 11px 20px; list-style: none;
 }
-.ico svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-.scope span { display: inline-block; padding: 3px 10px; margin: 4px 4px 0 0; border: 1px solid var(--rule); border-radius: 99px; background: var(--panel); color: var(--ink); font-size: 14px; }
-.work-grid p { color: var(--muted); font-size: 16px; }
-.scope { margin-top: 48px; font-size: 15px; color: var(--muted); }
-.scope b { color: var(--ink); font-weight: 600; }
+.log details > summary { cursor: pointer; }
+.log details > summary::-webkit-details-marker { display: none; }
+.log summary:hover { background: var(--panel2); }
+.ts { color: var(--muted); }
+.tag { font-size: 12px; font-weight: 600; text-align: center; padding: 1px 0; border-radius: 5px; }
+.t-role { color: var(--blue); background: var(--blue-bg); }
+.t-cert { color: var(--teal); background: var(--teal-bg); }
+.t-edu  { color: #C9A7FF; background: #241B3A; }
+.t-wip  { color: var(--amber); background: var(--amber-bg); }
+.msg { font-family: var(--sans); color: var(--text); font-size: 15px; }
+.msg em { font-style: normal; color: var(--muted); margin-left: 4px; }
+.more { color: var(--muted); font-size: 12px; transition: transform .2s; }
+details[open] .more { transform: rotate(90deg); }
+.log .detail { padding: 2px 20px 16px calc(20px + 84px + 78px + 28px); font-family: var(--sans); color: var(--muted); font-size: 14px; }
+.log .detail ul { padding-left: 18px; }
+.log .detail li { margin-bottom: 3px; }
 
-/* Services */
-.services { list-style: none; }
-.services li {
-  display: grid; grid-template-columns: 1fr 1.6fr; gap: 32px;
-  padding: 26px 0; border-top: 1px solid var(--rule);
-}
-.services li:last-child { border-bottom: 1px solid var(--rule); }
-.services h3 { font-size: 20px; font-weight: 700; letter-spacing: -0.015em; }
-.services li:hover h3 { color: var(--accent); }
-.services p { color: var(--muted); }
+/* ---------- SERVICES ---------- */
+.catalogue { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border-radius: 0 0 14px 14px; overflow: hidden; }
+.svc { background: var(--panel); padding: 20px; display: flex; flex-direction: column; gap: 6px; }
+.svc .sid { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+.svc h3 { font-size: 17px; font-weight: 700; }
+.svc p { color: var(--muted); font-size: 14px; flex: 1; }
+.svc a { font-size: 14px; font-weight: 600; color: var(--teal); text-decoration: none; margin-top: 6px; }
+.svc a:hover { text-decoration: underline; }
 
-/* Experience */
-.timeline { list-style: none; }
-.timeline > li { display: grid; grid-template-columns: 170px 1fr; gap: 0; }
-.when { font-size: 15px; color: var(--muted); font-variant-numeric: tabular-nums; padding: 2px 28px 0 0; text-align: right; }
-.now { display: block; margin-top: 6px; }
-.now::before { content: 'Current'; display: inline-block; font-size: 12px; font-weight: 700; color: var(--ok); background: var(--ok-bg); padding: 2px 9px; border-radius: 99px; }
-.timeline > li > div:last-child { position: relative; padding: 0 0 44px 32px; border-left: 2px solid var(--rule); }
-.timeline > li:last-child > div:last-child { padding-bottom: 0; border-left-color: transparent; }
-.timeline > li > div:last-child::before {
-  content: ''; position: absolute; left: -8px; top: 5px; width: 14px; height: 14px; border-radius: 50%;
-  background: var(--paper); border: 2px solid var(--muted);
-}
-.timeline > li.is-now > div:last-child::before { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 0 4px var(--info-bg); }
-.timeline h3 { font-size: 19px; font-weight: 700; letter-spacing: -0.01em; }
-.org { color: var(--muted); margin-bottom: 10px; }
-.org a { color: inherit; }
-.timeline ul { padding-left: 18px; color: var(--ink); }
-.timeline ul li { margin-bottom: 4px; }
-.timeline ul li::marker { color: var(--muted); }
+/* ---------- INVENTORY / FEED ---------- */
+.inv td.meta { color: var(--muted); font-size: 13px; }
+.inv td a { font-family: var(--mono); font-size: 12px; }
+.sub-h { font-size: 12px; font-weight: 600; color: var(--muted); padding: 14px 20px 6px; border-top: 1px solid var(--line); }
+.feed { list-style: none; }
+.feed li { display: grid; grid-template-columns: 52px 1fr; gap: 12px; padding: 12px 20px; border-bottom: 1px solid var(--line); }
+.feed li:last-child { border-bottom: none; }
+.feed .yr { font-family: var(--mono); font-size: 13px; color: var(--muted); padding-top: 1px; }
+.feed a { color: var(--text); font-weight: 600; text-decoration-color: var(--line); }
+.feed a:hover { color: var(--blue); }
+.feed .venue { display: block; font-size: 13px; color: var(--muted); }
 
-/* Credentials */
-.cred-cols { display: grid; grid-template-columns: 1.2fr 1fr; gap: 64px; }
-.cred-cols h3 { font-size: 15px; font-weight: 700; color: var(--muted); margin-bottom: 8px; }
-.list { list-style: none; margin-bottom: 36px; }
-.list li { display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--rule); }
-.list .name { font-weight: 600; }
-.list .meta { color: var(--muted); font-size: 15px; text-align: right; white-space: nowrap; }
-.list .sub { display: block; color: var(--muted); font-size: 15px; font-weight: 400; }
+/* ---------- TICKET ---------- */
+.ticket { display: grid; grid-template-columns: 1.3fr 1fr; gap: 28px; padding: 28px; align-items: center;
+  background: linear-gradient(135deg, var(--panel2), var(--panel)); }
+.ticket h2 { font-size: 26px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 8px; }
+.ticket p { color: var(--muted); }
+.ticket .actions { flex-direction: column; }
+.ticket .btn { width: 100%; }
 
-/* Research */
-.pubs { list-style: none; }
-.pubs li { display: grid; grid-template-columns: 64px 1fr; gap: 16px; padding: 18px 0; border-top: 1px solid var(--rule); }
-.pubs .yr { color: var(--muted); font-variant-numeric: tabular-nums; }
-.pubs a { color: var(--ink); font-weight: 600; text-decoration-color: var(--rule); }
-.pubs a:hover { color: var(--accent); text-decoration-color: currentColor; }
-.pubs .venue { display: block; color: var(--muted); font-size: 15px; }
-
-/* Contact */
-.contact-card {
-  background: var(--ink); color: var(--paper); border-radius: 20px; padding: 56px;
-  display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; align-items: end;
-}
-.contact-card h2 { color: var(--paper); max-width: 16em; }
-.contact-card .intro { color: color-mix(in srgb, var(--paper) 72%, var(--ink)); margin-bottom: 0; }
-.contact-links { display: flex; flex-direction: column; gap: 10px; }
-.contact-links .btn { text-align: center; }
-.contact-card .btn-plain { background: transparent; color: var(--paper); border-color: color-mix(in srgb, var(--paper) 30%, var(--ink)); }
-.contact-card .btn-plain:hover { border-color: var(--paper); }
-
-footer { border-top: 1px solid var(--rule); padding: 28px 0; font-size: 14px; color: var(--muted); }
-footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+footer { padding: 4px 0 8px; font-size: 13px; color: var(--muted); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
 footer a { color: var(--muted); }
 
-/* RESPONSIVE */
-@media (max-width: 960px) {
-  .hero .wrap { grid-template-columns: 1fr; gap: 48px; }
-  .work-grid { grid-template-columns: 1fr 1fr; }
-  .cred-cols { grid-template-columns: 1fr; gap: 16px; }
-  .contact-card { grid-template-columns: 1fr; padding: 40px; }
-  .stamp { right: 12px; }
-  .nav ul li:not(:last-child) { display: none; }
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 1180px) {
+  .grid-hero, .grid-2 { grid-template-columns: 1fr; }
+}
+@media (max-width: 860px) {
+  .shell { grid-template-columns: 1fr; }
+  .side {
+    position: sticky; top: 56px; z-index: 15; height: auto; flex-direction: row; overflow-x: auto;
+    padding: 8px 12px; border-right: none; border-bottom: 1px solid var(--line); background: var(--bg);
+    scrollbar-width: none;
+  }
+  .side::-webkit-scrollbar { display: none; }
+  .side a { white-space: nowrap; padding: 7px 12px; font-size: 14px; }
+  .side a.active { box-shadow: inset 0 -2px 0 var(--teal); }
+  .side svg, .side-foot { display: none; }
+  section { scroll-margin-top: 120px; }
+  .clock { display: none; }
 }
 @media (max-width: 640px) {
-  .wrap { padding: 0 16px; }
-  .hero { padding: 48px 0 64px; }
-  .section { padding: 64px 0; }
-  .work-grid { grid-template-columns: 1fr; gap: 28px; }
-  .facts { grid-template-columns: repeat(2, auto); }
-  .services li { grid-template-columns: 1fr; gap: 6px; }
-  .timeline > li { grid-template-columns: 1fr; }
-  .when { text-align: left; padding: 0 0 8px 32px; border-left: 2px solid var(--rule); }
-  .now { display: inline; margin: 0 0 0 8px; }
-  .contact-card { padding: 32px 22px; border-radius: 16px; }
-  .doc-meta { grid-template-columns: auto 1fr; padding: 0 16px 14px; gap: 2px 16px; }
-  .stamp { right: 10px; bottom: -26px; padding: 5px 12px 4px; }
-  .stamp span { font-size: 13px; }
-  .register thead { display: none; }
-  .register tr { display: grid; grid-template-columns: 1fr auto; column-gap: 12px; padding: 14px 16px; border-bottom: 1px solid var(--rule); }
-  .register tbody tr:last-child { border-bottom: none; }
-  .register td { padding: 0; border: none; }
-  .register td.ctl { grid-column: 1 / -1; max-width: none; font-size: 13px; color: var(--muted); margin-bottom: 4px; }
-  .register-head { padding: 16px 16px 10px; }
-  .register-foot { padding: 12px 16px 34px; }
-  .list li { flex-direction: column; gap: 2px; }
-  .list .meta { text-align: left; }
+  main { padding: 16px; gap: 20px; }
+  .topbar { padding: 0 16px; }
+  .op { display: none; }
+  .panel-head .hint { display: none; }
+  .crumb span { display: none; }
+  .who h1 { font-size: 26px; }
+  .soa thead { display: none; }
+  .soa tbody tr { display: grid; grid-template-columns: 1fr auto; column-gap: 12px; padding: 12px 16px; border-bottom: 1px solid var(--line); }
+  .soa tbody tr:last-child { border-bottom: none; }
+  .soa td { padding: 0; border: none; }
+  .soa td.ctl { grid-column: 1 / -1; font-size: 12px; color: var(--muted); font-weight: 500; margin-bottom: 2px; }
+  .soa-foot { padding-bottom: 30px; }
+  .streams li { grid-template-columns: 38px 1fr; }
+  .run { display: none; }
+  .matrix th[scope="row"] { white-space: normal; font-size: 13px; }
+  .matrix thead th { font-size: 11px; padding: 4px 0; }
+  .log details > summary, .log .line { grid-template-columns: 64px 1fr; gap: 4px 10px; padding: 11px 16px; }
+  .log .tag { width: max-content; padding: 1px 8px; }
+  .log .msg { grid-column: 1 / -1; }
+  .log .more { display: none; }
+  .log .detail { padding: 0 16px 14px; }
+  .catalogue, .ticket { grid-template-columns: 1fr; }
+  .ticket { padding: 22px; }
+  .inv th:nth-child(2), .inv td:nth-child(2) { display: none; }
+  .inv td, .inv th { padding-left: 16px; padding-right: 16px; }
 }
 </style>
 </head>
 <body>
 
-<nav class="nav" aria-label="Main">
-  <div class="wrap">
-    <a href="#top" class="brand">Parth Lakhalani</a>
-    <ul>
-      <li><a href="#work">Current work</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#credentials">Credentials</a></li>
-      <li><a href="#research">Research</a></li>
-      <li><a href="#contact" class="btn-small">Get in touch</a></li>
-    </ul>
-  </div>
-</nav>
-
-<main id="top">
-
-<header class="hero">
-  <div class="wrap">
-    <div>
-      <img src="photo.png" alt="Portrait of Parth Lakhalani" class="portrait" width="112" height="134">
-      <h1>Parth Lakhalani</h1>
-      <p class="role">Acting CISO at Mediaire GmbH, Berlin</p>
-      <p class="lede">I run information security and IT at a medical AI company. I build ISMS programmes, take companies through ISO 27001 audits, govern AI responsibly, and teach digital forensics.</p>
-      <div class="actions">
-        <a href="#contact" class="btn btn-primary">Get in touch</a>
-        <a href="https://www.linkedin.com/in/parth-lakhalani/" target="_blank" rel="noopener noreferrer" class="btn btn-plain">LinkedIn profile</a>
-      </div>
-      <dl class="facts">
-        <div><dt>10 years</dt><dd>in security and teaching</dd></div>
-        <div><dt>3,000+</dt><dd>students taught</dd></div>
-        <div><dt>Berlin</dt><dd>remote across Europe</dd></div>
-      </dl>
-    </div>
-
-    <figure class="register" aria-labelledby="reg-title">
-      <div class="register-head">
-        <strong id="reg-title">Statement of applicability</strong>
-        <span class="doc-id">SoA-PL v2026.10</span>
-      </div>
-      <dl class="doc-meta">
-        <dt>Owner</dt><dd>Parth Lakhalani</dd>
-        <dt>Last review</dt><dd>October 2026</dd>
-        <dt>Scope</dt><dd>Information security, AI governance and medical software</dd>
-      </dl>
-      <table>
-        <thead>
-          <tr><th scope="col">Standard or certificate</th><th scope="col">What I do</th><th scope="col">Status</th></tr>
-        </thead>
-        <tbody>
-          <tr><td class="ctl">ISO 27001 Lead Implementer &amp; Lead Auditor</td><td><span class="area">ISMS and audits</span><span class="ev">Build security programmes and run audits</span></td><td><span class="status s-ok">Certified</span></td></tr>
-          <tr><td class="ctl">ISO 22301</td><td><span class="area">Business continuity</span><span class="ev">Impact analysis and recovery planning</span></td><td><span class="status s-info">Work experience</span></td></tr>
-          <tr><td class="ctl">CEH, EC&#8209;Council</td><td><span class="area">Ethical hacking</span><span class="ev">Pentesting and vulnerability assessment</span></td><td><span class="status s-ok">Certified</span></td></tr>
-          <tr><td class="ctl">CHFI, EC&#8209;Council</td><td><span class="area">Digital forensics</span><span class="ev">Investigations and lecturing at BSBI</span></td><td><span class="status s-ok">Certified</span></td></tr>
-          <tr><td class="ctl">AWS Cloud Security</td><td><span class="area">Cloud security</span><span class="ev">AWS infrastructure, identity and access</span></td><td><span class="status s-ok">Certified</span></td></tr>
-          <tr><td class="ctl">AIGP, IAPP</td><td><span class="area">AI governance</span><span class="ev">ISO 42001 and EU AI Act readiness</span></td><td><span class="status s-wip">In progress</span></td></tr>
-          <tr><td class="ctl">GDPR, EU MDR</td><td><span class="area">Health data protection</span><span class="ev">Privacy and security for patient data</span></td><td><span class="status s-info">Work experience</span></td></tr>
-          <tr><td class="ctl">ISO 13485</td><td><span class="area">Medical device quality</span><span class="ev">Security inside the medical software QMS</span></td><td><span class="status s-info">Work experience</span></td></tr>
-        </tbody>
-      </table>
-      <figcaption class="register-foot">
-        <span class="legend" id="legend"></span>
-        <span>The standards I work with, and what I do with them.</span>
-      </figcaption>
-      <div class="stamp" aria-hidden="true"><span>Reviewed</span><small>OCT 2026</small></div>
-    </figure>
+<header class="topbar">
+  <div class="crumb"><b>parth.lakhalani</b><span> / security-posture</span></div>
+  <div class="top-right">
+    <span class="op">Operational</span>
+    <span class="clock" id="clock" aria-label="Time in Berlin">Berlin</span>
+    <a class="top-cta" href="#contact">Open a ticket</a>
   </div>
 </header>
 
-<section id="work" class="section">
-  <div class="wrap">
-    <h2>What I'm working on at Mediaire</h2>
-    <p class="intro">Mediaire builds AI software for radiology, a regulated medical device. I run information security inside its quality, regulatory and risk management framework, working with R&amp;D, IT, Quality and Regulatory Affairs.</p>
-    <div class="work-grid">
-      <div>
-        <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></div>
-        <h3>ISMS and certification</h3>
-        <p>Operate and improve the ISO 27001 ISMS, and keep controls and evidence ready for audits.</p>
+<div class="shell">
+  <nav class="side" aria-label="Sections">
+    <a href="#overview" class="active"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>Overview</a>
+    <a href="#workstreams"><svg viewBox="0 0 24 24"><path d="M3 12h4l2-5 4 10 2-5h6"/></svg>Workstreams</a>
+    <a href="#coverage"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg>Coverage</a>
+    <a href="#events"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg>Event log</a>
+    <a href="#services"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg>Services</a>
+    <a href="#assets"><svg viewBox="0 0 24 24"><circle cx="12" cy="9" r="5"/><path d="M8.5 13l-1.5 8 5-3 5 3-1.5-8"/></svg>Credentials</a>
+    <a href="#intel"><svg viewBox="0 0 24 24"><path d="M5 4h11l3 3v13H5z"/><path d="M9 10h6M9 14h6M9 18h3"/></svg>Research</a>
+    <a href="#contact"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg>Contact</a>
+    <div class="side-foot"><b>Berlin, Germany</b>Remote across Europe</div>
+  </nav>
+
+  <main>
+
+    <!-- OVERVIEW -->
+    <section id="overview" class="grid-hero" aria-label="Overview">
+      <div class="panel">
+        <div class="profile">
+          <div class="who">
+            <img src="photo.png" alt="Portrait of Parth Lakhalani" width="84" height="100">
+            <div>
+              <h1>Parth Lakhalani</h1>
+              <p>Acting CISO, Mediaire GmbH</p>
+            </div>
+          </div>
+          <p class="lede">I run information security and IT at a <b>medical AI company</b> in Berlin. I build ISMS programmes, take companies through <b>ISO 27001 audits</b>, govern AI responsibly, and teach digital forensics.</p>
+          <div class="actions">
+            <a href="#contact" class="btn btn-go">Open a ticket</a>
+            <a href="https://www.linkedin.com/in/parth-lakhalani/" target="_blank" rel="noopener noreferrer" class="btn">LinkedIn profile</a>
+          </div>
+        </div>
+        <ul class="now" aria-label="Right now">
+          <li><b>Studying</b><span>AIGP certification, IAPP</span></li>
+          <li><b>Teaching</b><span>Digital forensics at BSBI Berlin</span></li>
+          <li><b>Based in</b><span>Berlin, working remotely across Europe</span></li>
+        </ul>
+        <dl class="kpis">
+          <div class="kpi"><dt>Years in security and teaching</dt><dd>10</dd></div>
+          <div class="kpi"><dt>Certifications</dt><dd>4<small>+1 in progress</small></dd></div>
+          <div class="kpi"><dt>Students taught</dt><dd>3,000+</dd></div>
+          <div class="kpi"><dt>Peer-reviewed papers</dt><dd>5</dd></div>
+        </dl>
       </div>
-      <div>
-        <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3.5L2.5 20h19z"/><path d="M12 10v4.5"/><path d="M12 17.3v.2"/></svg></div>
-        <h3>Security risk management</h3>
-        <p>Coordinate risk assessments and treatment plans, and bring significant risks to the right owners.</p>
-      </div>
-      <div>
-        <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg></div>
-        <h3>Vulnerabilities and incidents</h3>
-        <p>Run vulnerability management, coordinate penetration tests and lead incident response.</p>
-      </div>
-      <div>
-        <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12h4l2-5 4 10 2-5h6"/></svg></div>
-        <h3>Medical device cybersecurity</h3>
-        <p>Turn regulatory, Notified Body and customer requirements into practical controls and evidence.</p>
-      </div>
-      <div>
-        <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 18a4 4 0 010-8 5 5 0 019.6-1.5A4 4 0 1117 18z"/></svg></div>
-        <h3>Cloud and supplier security</h3>
-        <p>Review cloud security, secure architecture, access and suppliers across products and company systems.</p>
-      </div>
-      <div>
-        <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 11a8 8 0 00-14.5-4.5L4 8"/><path d="M4 3v5h5"/><path d="M4 13a8 8 0 0014.5 4.5L20 16"/><path d="M20 21v-5h-5"/></svg></div>
-        <h3>Business continuity</h3>
-        <p>Built the continuity programme: impact analysis, recovery priorities and recovery tests.</p>
-      </div>
+
+      <figure class="panel soa" aria-labelledby="soa-title">
+        <div class="panel-head">
+          <div>
+            <h2 id="soa-title">Statement of applicability</h2>
+            <dl class="doc-meta">
+              <dt>Owner</dt><dd>Parth Lakhalani</dd>
+              <dt>Scope</dt><dd>Information security, AI governance and medical software</dd>
+            </dl>
+          </div>
+          <span class="doc-id">SoA-PL v2026.10</span>
+        </div>
+        <table>
+          <thead>
+            <tr><th scope="col">Standard or certificate</th><th scope="col">What I do</th><th scope="col">Status</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="ctl">ISO 27001 Lead Implementer &amp; Lead Auditor</td><td><span class="area">ISMS and audits</span><span class="ev">Build security programmes and run audits</span></td><td><span class="status s-ok">Certified</span></td></tr>
+            <tr><td class="ctl">ISO 22301</td><td><span class="area">Business continuity</span><span class="ev">Impact analysis and recovery planning</span></td><td><span class="status s-info">Work experience</span></td></tr>
+            <tr><td class="ctl">CEH, EC&#8209;Council</td><td><span class="area">Ethical hacking</span><span class="ev">Pentesting and vulnerability assessment</span></td><td><span class="status s-ok">Certified</span></td></tr>
+            <tr><td class="ctl">CHFI, EC&#8209;Council</td><td><span class="area">Digital forensics</span><span class="ev">Investigations and lecturing at BSBI</span></td><td><span class="status s-ok">Certified</span></td></tr>
+            <tr><td class="ctl">AWS Cloud Security</td><td><span class="area">Cloud security</span><span class="ev">AWS infrastructure, identity and access</span></td><td><span class="status s-ok">Certified</span></td></tr>
+            <tr><td class="ctl">AIGP, IAPP</td><td><span class="area">AI governance</span><span class="ev">ISO 42001 and EU AI Act readiness</span></td><td><span class="status s-wip">In progress</span></td></tr>
+            <tr><td class="ctl">GDPR, EU MDR</td><td><span class="area">Health data protection</span><span class="ev">Privacy and security for patient data</span></td><td><span class="status s-info">Work experience</span></td></tr>
+            <tr><td class="ctl">ISO 13485</td><td><span class="area">Medical device quality</span><span class="ev">Security inside the medical software QMS</span></td><td><span class="status s-info">Work experience</span></td></tr>
+          </tbody>
+        </table>
+        <figcaption class="soa-foot" id="legend"></figcaption>
+        <div class="stamp" aria-hidden="true"><span>Reviewed</span><small>OCT 2026</small></div>
+      </figure>
+    </section>
+
+    <!-- WORKSTREAMS + COVERAGE -->
+    <div class="grid-2">
+      <section id="workstreams" class="panel" aria-labelledby="ws-title">
+        <div class="panel-head"><h2 id="ws-title">Active workstreams at Mediaire</h2><span class="hint">Medical AI for radiology</span></div>
+        <ul class="streams">
+          <li><span class="ico"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></span><div><h3>ISMS and certification</h3><p>Operate and improve the ISO 27001 ISMS, with controls and evidence ready for audits.</p></div><span class="run">running</span></li>
+          <li><span class="ico"><svg viewBox="0 0 24 24"><path d="M12 3.5L2.5 20h19z"/><path d="M12 10v4.5"/><path d="M12 17.3v.2"/></svg></span><div><h3>Security risk management</h3><p>Coordinate risk assessments and treatment plans with the right risk owners.</p></div><span class="run">running</span></li>
+          <li><span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg></span><div><h3>Vulnerabilities and incidents</h3><p>Vulnerability management, penetration test coordination and incident response.</p></div><span class="run">running</span></li>
+          <li><span class="ico"><svg viewBox="0 0 24 24"><path d="M3 12h4l2-5 4 10 2-5h6"/></svg></span><div><h3>Medical device cybersecurity</h3><p>Turn regulatory, Notified Body and customer requirements into controls and evidence.</p></div><span class="run">running</span></li>
+          <li><span class="ico"><svg viewBox="0 0 24 24"><path d="M7 18a4 4 0 010-8 5 5 0 019.6-1.5A4 4 0 1117 18z"/></svg></span><div><h3>Cloud and supplier security</h3><p>Cloud security, secure architecture, access reviews and supplier assessments.</p></div><span class="run">running</span></li>
+          <li><span class="ico"><svg viewBox="0 0 24 24"><path d="M20 11a8 8 0 00-14.5-4.5L4 8"/><path d="M4 3v5h5"/><path d="M4 13a8 8 0 0014.5 4.5L20 16"/><path d="M20 21v-5h-5"/></svg></span><div><h3>Business continuity</h3><p>Impact analysis, recovery priorities and recovery tests.</p></div><span class="run">running</span></li>
+        </ul>
+        <div class="chips" aria-label="Frameworks in scope"><span>ISO 27001</span><span>ISO 22301</span><span>ISO 13485</span><span>GDPR</span><span>NIS2</span><span>EU MDR</span><span>EU AI Act</span></div>
+      </section>
+
+      <section id="coverage" class="panel" aria-labelledby="cov-title">
+        <div class="panel-head"><h2 id="cov-title">Coverage matrix</h2><span class="hint">Where each skill comes from</span></div>
+        <div class="panel-body">
+          <table class="matrix">
+            <thead><tr><th></th><th scope="col">Certified</th><th scope="col">At work</th><th scope="col">Taught</th><th scope="col">Research</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">ISMS and ISO 27001</th><td><div class="cell c-yes" title="Certified"></div></td><td><div class="cell c-yes" title="At work"></div></td><td><div class="cell c-yes" title="Taught"></div></td><td><div class="cell c-yes" title="Research"></div></td></tr>
+              <tr><th scope="row">Business continuity</th><td><div class="cell"></div></td><td><div class="cell c-yes" title="At work"></div></td><td><div class="cell"></div></td><td><div class="cell"></div></td></tr>
+              <tr><th scope="row">AI governance</th><td><div class="cell c-part" title="In progress"></div></td><td><div class="cell c-yes" title="At work"></div></td><td><div class="cell c-yes" title="Taught"></div></td><td><div class="cell"></div></td></tr>
+              <tr><th scope="row">Health data and medical devices</th><td><div class="cell"></div></td><td><div class="cell c-yes" title="At work"></div></td><td><div class="cell"></div></td><td><div class="cell c-yes" title="Research"></div></td></tr>
+              <tr><th scope="row">Cloud security</th><td><div class="cell c-yes" title="Certified"></div></td><td><div class="cell c-yes" title="At work"></div></td><td><div class="cell c-yes" title="Taught"></div></td><td><div class="cell"></div></td></tr>
+              <tr><th scope="row">Ethical hacking</th><td><div class="cell c-yes" title="Certified"></div></td><td><div class="cell c-yes" title="At work"></div></td><td><div class="cell c-yes" title="Taught"></div></td><td><div class="cell c-yes" title="Research"></div></td></tr>
+              <tr><th scope="row">Digital forensics</th><td><div class="cell c-yes" title="Certified"></div></td><td><div class="cell"></div></td><td><div class="cell c-yes" title="Taught"></div></td><td><div class="cell c-yes" title="Research"></div></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="matrix-key"><span><i class="cell c-yes"></i>Yes</span><span><i class="cell c-part"></i>In progress</span><span><i class="cell"></i>Not yet</span></div>
+      </section>
     </div>
-    <p class="scope"><b>Frameworks in scope</b><br><span>ISO 27001</span><span>ISO 22301</span><span>ISO 13485</span><span>GDPR</span><span>NIS2</span><span>EU MDR</span><span>EU AI Act</span></p>
-  </div>
-</section>
 
-<section id="services" class="section">
-  <div class="wrap">
-    <h2>How I can help</h2>
-    <p class="intro">Freelance work, remote or in person in Berlin.</p>
-    <ul class="services">
-      <li>
-        <h3>ISO 27001 and audits</h3>
-        <p>Gap analysis, ISMS build, internal audits and audit readiness. I'm a certified Lead Implementer and Lead Auditor.</p>
-      </li>
-      <li>
-        <h3>AI governance</h3>
-        <p>AI risk assessment and readiness for ISO 42001 and the EU AI Act, for teams that build or use AI. I'm currently completing the IAPP AIGP certification.</p>
-      </li>
-      <li>
-        <h3>Health tech security</h3>
-        <p>Security and privacy for products that handle patient data: GDPR, EU MDR, ISO 13485 and data classification.</p>
-      </li>
-      <li>
-        <h3>Teaching and workshops</h3>
-        <p>University lectures and company workshops on digital forensics, ethical hacking and GRC.</p>
-      </li>
-    </ul>
-  </div>
-</section>
+    <!-- EVENT LOG -->
+    <section id="events" class="panel" aria-labelledby="ev-title">
+      <div class="panel-head"><h2 id="ev-title">Event log</h2><span class="hint">Career, newest first. Select a role for details.</span></div>
+      <ul class="log">
+        <li><div class="line"><span class="ts">2026-10</span><span class="tag t-wip">STARTED</span><span class="msg">AIGP certification, IAPP <em>AI governance</em></span><span></span></div></li>
+        <li><div class="line"><span class="ts">2026</span><span class="tag t-cert">PASSED</span><span class="msg">Led Mediaire through its ISO 27001 certification audit</span><span></span></div></li>
+        <li><div class="line"><span class="ts">2025-08</span><span class="tag t-cert">CERT</span><span class="msg">ISO/IEC 27001 Lead Implementer, TÜV SÜD <em><a href="https://portal.itscredible.com/qr/856803276577?src=qr" target="_blank" rel="noopener noreferrer">verify</a></em></span><span></span></div></li>
+        <li>
+          <details>
+            <summary><span class="ts">2025-03</span><span class="tag t-role">ROLE</span><span class="msg">Acting CISO, Mediaire GmbH, Berlin <em>current</em></span><span class="more">▸</span></summary>
+            <div class="detail"><ul>
+              <li>Operate the ISMS (ISO 27001:2022) within the integrated quality system</li>
+              <li>Coordinate risk assessments, control testing, access reviews and supplier security</li>
+              <li>Run vulnerability management, penetration test coordination and incident response</li>
+              <li>Prepare security evidence for auditors, Notified Bodies and customers</li>
+              <li>Built the business continuity and data classification programmes</li>
+            </ul></div>
+          </details>
+        </li>
+        <li>
+          <details>
+            <summary><span class="ts">2025</span><span class="tag t-role">ROLE</span><span class="msg">Visiting Lecturer, BSBI Berlin <em>current, freelance</em></span><span class="more">▸</span></summary>
+            <div class="detail"><ul>
+              <li>Teach digital forensics and cybersecurity to international students</li>
+              <li>Bring current practice and regulation, like the EU AI Act, into the classroom</li>
+            </ul></div>
+          </details>
+        </li>
+        <li><div class="line"><span class="ts">2024-08</span><span class="tag t-cert">CERT</span><span class="msg">CEH, Certified Ethical Hacker, EC-Council <em><a href="https://aspen.eccouncil.org/VerifyBadge?type=training&amp;a=lqGkPT/jcu7LR2R1yicE1A==" target="_blank" rel="noopener noreferrer">verify</a></em></span><span></span></div></li>
+        <li><div class="line"><span class="ts">2024-07</span><span class="tag t-cert">CERT</span><span class="msg">CHFI, Computer Hacking Forensic Investigator, EC-Council <em><a href="https://drive.google.com/file/d/147hlfe3IP_o6cKjoitRTYOQZsXrxnfqq/view?usp=sharing" target="_blank" rel="noopener noreferrer">verify</a></em></span><span></span></div></li>
+        <li><div class="line"><span class="ts">2024</span><span class="tag t-edu">DEGREE</span><span class="msg">MBA, Big Data Management and Data Science, IU International University</span><span></span></div></li>
+        <li>
+          <details>
+            <summary><span class="ts">2023-11</span><span class="tag t-role">ROLE</span><span class="msg">Freelance Trainer and Security Consultant, SSCFS <em>to 2025</em></span><span class="more">▸</span></summary>
+            <div class="detail"><ul>
+              <li>Built hands-on forensics courses with EnCase, FTK and Autopsy</li>
+              <li>Taught CEH and CHFI preparation and Red and Blue Team basics</li>
+            </ul></div>
+          </details>
+        </li>
+        <li>
+          <details>
+            <summary><span class="ts">2019-09</span><span class="tag t-role">ROLE</span><span class="msg">Assistant Professor and Head of Examination, Parul University <em>to 2023</em></span><span class="more">▸</span></summary>
+            <div class="detail"><ul>
+              <li>Taught digital forensics and network security to more than 3,000 students</li>
+              <li>Supervised 15+ theses and ran university exams with a team of 70+ staff</li>
+              <li>Ran workshops on cyber law, ethical hacking, ISO compliance and cloud security</li>
+            </ul></div>
+          </details>
+        </li>
+        <li>
+          <details>
+            <summary><span class="ts">2016-07</span><span class="tag t-role">ROLE</span><span class="msg">Lecturer, IT and Computer Science, SSSD-IIT College <em>to 2019</em></span><span class="more">▸</span></summary>
+            <div class="detail"><ul>
+              <li>Taught IT security, programming and networking, with hands-on labs</li>
+            </ul></div>
+          </details>
+        </li>
+        <li><div class="line"><span class="ts">2016</span><span class="tag t-edu">DEGREE</span><span class="msg">MSc, Digital Forensics and Cybersecurity, Gujarat University <em>gold medallist</em></span><span></span></div></li>
+      </ul>
+    </section>
 
-<section id="experience" class="section">
-  <div class="wrap">
-    <h2>Experience</h2>
-    <p class="intro">Ten years across security leadership, consulting and university teaching.</p>
-    <ol class="timeline">
-      <li class="is-now">
-        <div class="when">2025 to now<span class="now"></span></div>
-        <div>
-          <h3>Acting CISO, Cybersecurity and IT Officer</h3>
-          <p class="org"><a href="https://mediaire.ai/en/about-us/" target="_blank" rel="noopener noreferrer">Mediaire GmbH</a>, Berlin</p>
-          <ul>
-            <li>Operate the ISMS (ISO 27001:2022) within the integrated quality system, and led the company through its certification audit</li>
-            <li>Coordinate risk assessments, control testing, access reviews and supplier security</li>
-            <li>Run vulnerability management, penetration test coordination and incident response</li>
-            <li>Prepare security evidence for auditors, Notified Bodies and customers</li>
-            <li>Built the business continuity and data classification programmes</li>
-          </ul>
-        </div>
-      </li>
-      <li class="is-now">
-        <div class="when">2025 to now<span class="now"></span></div>
-        <div>
-          <h3>Visiting Lecturer (freelance)</h3>
-          <p class="org"><a href="https://www.berlinsbi.com/" target="_blank" rel="noopener noreferrer">BSBI, Berlin School of Business and Innovation</a></p>
-          <ul>
-            <li>Teach digital forensics and cybersecurity to international students</li>
-            <li>Bring current practice and regulation, like the EU AI Act, into the classroom</li>
-          </ul>
-        </div>
-      </li>
-      <li>
-        <div class="when">2023 to 2025</div>
-        <div>
-          <h3>Freelance Trainer and Security Consultant</h3>
-          <p class="org"><a href="https://www.linkedin.com/company/96425108/" target="_blank" rel="noopener noreferrer">SSCFS</a>, remote</p>
-          <ul>
-            <li>Built hands-on forensics courses with EnCase, FTK and Autopsy</li>
-            <li>Taught CEH and CHFI preparation and Red and Blue Team basics</li>
-          </ul>
-        </div>
-      </li>
-      <li>
-        <div class="when">2019 to 2023</div>
-        <div>
-          <h3>Assistant Professor and Head of Examination</h3>
-          <p class="org"><a href="https://paruluniversity.ac.in/" target="_blank" rel="noopener noreferrer">Parul University</a>, Vadodara, India</p>
-          <ul>
-            <li>Taught digital forensics and network security to more than 3,000 students</li>
-            <li>Supervised 15+ theses and ran university exams with a team of 70+ staff</li>
-          </ul>
-        </div>
-      </li>
-      <li>
-        <div class="when">2016 to 2019</div>
-        <div>
-          <h3>Lecturer, IT and Computer Science</h3>
-          <p class="org"><a href="https://sssdiit.junagadhgurukul.org/" target="_blank" rel="noopener noreferrer">SSSD-IIT College</a>, Junagadh, India</p>
-          <ul>
-            <li>Taught IT security, programming and networking, with hands-on labs</li>
-          </ul>
-        </div>
-      </li>
-    </ol>
-  </div>
-</section>
-
-<section id="credentials" class="section">
-  <div class="wrap">
-    <h2>Credentials</h2>
-    <p class="intro">Certifications, education and languages.</p>
-    <div class="cred-cols">
-      <div>
-        <h3>Certifications</h3>
-        <ul class="list">
-          <li><span class="name">ISO/IEC 27001 Lead Implementer</span><span class="meta">TÜV SÜD, 2025, <a href="https://portal.itscredible.com/qr/856803276577?src=qr" target="_blank" rel="noopener noreferrer">verify</a></span></li>
-          <li><span class="name">ISO/IEC 27001 Lead Auditor</span><span class="meta"></span></li>
-          <li><span class="name">CHFI, Computer Hacking Forensic Investigator</span><span class="meta">EC-Council, 2024, <a href="https://drive.google.com/file/d/147hlfe3IP_o6cKjoitRTYOQZsXrxnfqq/view?usp=sharing" target="_blank" rel="noopener noreferrer">verify</a></span></li>
-          <li><span class="name">CEH, Certified Ethical Hacker</span><span class="meta">EC-Council, 2024, <a href="https://aspen.eccouncil.org/VerifyBadge?type=training&amp;a=lqGkPT/jcu7LR2R1yicE1A==" target="_blank" rel="noopener noreferrer">verify</a></span></li>
-          <li><span class="name">AWS Cloud Security</span><span class="meta">InfosecTrain, <a href="https://www.infosectrain.com/verify?appy_code=ISTT2620538" target="_blank" rel="noopener noreferrer">verify</a></span></li>
-        </ul>
-        <h3>In progress</h3>
-        <ul class="list">
-          <li><span class="name">AIGP, Artificial Intelligence Governance Professional</span><span class="meta">IAPP, 2026</span></li>
-          <li><span class="name">CISSP</span><span class="meta">ISC2</span></li>
-        </ul>
-        <h3>Other training</h3>
-        <ul class="list">
-          <li><span class="name">ICS/OT Security, NIST 800-82 Rev 3</span><span class="meta">EC-Council, 2025</span></li>
-          <li><span class="name">Cisco CCNP ENCOR (350-401)</span><span class="meta">EC-Council, 2025</span></li>
-          <li><span class="name">IT Service Management</span><span class="meta">LinkedIn Learning, 2025</span></li>
-        </ul>
+    <!-- SERVICES -->
+    <section id="services" class="panel" aria-labelledby="svc-title">
+      <div class="panel-head"><h2 id="svc-title">Service catalogue</h2><span class="hint">Freelance, remote or in Berlin</span></div>
+      <div class="catalogue">
+        <div class="svc"><span class="sid">SVC-01</span><h3>ISO 27001 and audits</h3><p>Gap analysis, ISMS build, internal audits and audit readiness, as a certified Lead Implementer and Lead Auditor.</p><a href="#contact">Request this service</a></div>
+        <div class="svc"><span class="sid">SVC-02</span><h3>AI governance</h3><p>AI risk assessment and readiness for ISO 42001 and the EU AI Act, for teams that build or use AI.</p><a href="#contact">Request this service</a></div>
+        <div class="svc"><span class="sid">SVC-03</span><h3>Health tech security</h3><p>Security and privacy for products that handle patient data: GDPR, EU MDR, ISO 13485 and data classification.</p><a href="#contact">Request this service</a></div>
+        <div class="svc"><span class="sid">SVC-04</span><h3>Teaching and workshops</h3><p>University lectures and company workshops on digital forensics, ethical hacking and GRC.</p><a href="#contact">Request this service</a></div>
       </div>
-      <div>
-        <h3>Education</h3>
-        <ul class="list">
-          <li><span class="name">MBA, Big Data Management and Data Science<span class="sub">IU International University, Berlin</span></span><span class="meta">2024</span></li>
-          <li><span class="name">B.Ed, Bachelor of Education<span class="sub">Bhakta Kavi Narsinh Mehta University</span></span><span class="meta">2020</span></li>
-          <li><span class="name">MSc, Digital Forensics and Cybersecurity<span class="sub">Gujarat University, gold medallist</span></span><span class="meta">2016</span></li>
-          <li><span class="name">BSc, Computer Forensics<span class="sub">Saurashtra University</span></span><span class="meta">2014</span></li>
+    </section>
+
+    <!-- CREDENTIALS + RESEARCH -->
+    <div class="grid-2">
+      <section id="assets" class="panel" aria-labelledby="as-title">
+        <div class="panel-head"><h2 id="as-title">Credentials</h2><span class="hint">Certifications, education, languages</span></div>
+        <table class="inv">
+          <thead><tr><th scope="col">Certification</th><th scope="col">Issuer</th><th scope="col">Status</th></tr></thead>
+          <tbody>
+            <tr><td>ISO/IEC 27001 Lead Implementer<br><a href="https://portal.itscredible.com/qr/856803276577?src=qr" target="_blank" rel="noopener noreferrer">verify</a></td><td class="meta">TÜV SÜD, 2025</td><td><span class="status s-ok">Certified</span></td></tr>
+            <tr><td>ISO/IEC 27001 Lead Auditor</td><td class="meta"></td><td><span class="status s-ok">Certified</span></td></tr>
+            <tr><td>CHFI<br><a href="https://drive.google.com/file/d/147hlfe3IP_o6cKjoitRTYOQZsXrxnfqq/view?usp=sharing" target="_blank" rel="noopener noreferrer">verify</a></td><td class="meta">EC-Council, 2024</td><td><span class="status s-ok">Certified</span></td></tr>
+            <tr><td>CEH<br><a href="https://aspen.eccouncil.org/VerifyBadge?type=training&amp;a=lqGkPT/jcu7LR2R1yicE1A==" target="_blank" rel="noopener noreferrer">verify</a></td><td class="meta">EC-Council, 2024</td><td><span class="status s-ok">Certified</span></td></tr>
+            <tr><td>AWS Cloud Security<br><a href="https://www.infosectrain.com/verify?appy_code=ISTT2620538" target="_blank" rel="noopener noreferrer">verify</a></td><td class="meta">InfosecTrain</td><td><span class="status s-ok">Certified</span></td></tr>
+            <tr><td>AIGP, AI Governance Professional</td><td class="meta">IAPP, 2026</td><td><span class="status s-wip">In progress</span></td></tr>
+            <tr><td>CISSP</td><td class="meta">ISC2</td><td><span class="status s-wip">In progress</span></td></tr>
+          </tbody>
+        </table>
+        <p class="sub-h">Education</p>
+        <ul class="feed">
+          <li><span class="yr">2024</span><span>MBA, Big Data Management and Data Science<span class="venue">IU International University, Berlin</span></span></li>
+          <li><span class="yr">2020</span><span>B.Ed, Bachelor of Education<span class="venue">Bhakta Kavi Narsinh Mehta University</span></span></li>
+          <li><span class="yr">2016</span><span>MSc, Digital Forensics and Cybersecurity<span class="venue">Gujarat University, gold medallist</span></span></li>
+          <li><span class="yr">2014</span><span>BSc, Computer Forensics<span class="venue">Saurashtra University</span></span></li>
         </ul>
-        <h3>Languages</h3>
-        <ul class="list">
-          <li><span class="name">English</span><span class="meta">Professional</span></li>
-          <li><span class="name">German</span><span class="meta">Learning, toward B1</span></li>
-          <li><span class="name">Hindi and Gujarati</span><span class="meta">Native</span></li>
+        <p class="sub-h">Other training and languages</p>
+        <ul class="feed">
+          <li><span class="yr">2025</span><span>ICS/OT Security (NIST 800-82), Cisco CCNP ENCOR, IT Service Management</span></li>
+          <li><span class="yr">Lang</span><span>English (professional), German (learning, toward B1), Hindi and Gujarati (native)</span></li>
         </ul>
-      </div>
+      </section>
+
+      <section id="intel" class="panel" aria-labelledby="in-title">
+        <div class="panel-head"><h2 id="in-title">Research and talks</h2><span class="hint">Peer-reviewed work</span></div>
+        <ul class="feed">
+          <li><span class="yr">2024</span><span><a href="https://doi.org/10.13140/RG.2.2.27022.27202" target="_blank" rel="noopener noreferrer">Navigating Global Data Privacy Regulations: Cybersecurity and Compliance Strategies in Big Data Management</a><span class="venue">MBA thesis, IU International University</span></span></li>
+          <li><span class="yr">2024</span><span><a href="https://ijcrt.org/papers/IJCRT2406529.pdf" target="_blank" rel="noopener noreferrer">Bytes By Bytes: Unmasking Digital Shadows in Forensic Investigations</a><span class="venue">IJCRT</span></span></li>
+          <li><span class="yr">2023</span><span><a href="https://www.ijraset.com/research-paper/a-static-approach-for-malware-analysis-a-guide-to-analysis-tools-and-techniques" target="_blank" rel="noopener noreferrer">Static Approach for Malware Analysis: A Guide to Analysis Tools and Techniques</a><span class="venue">IJRASET</span></span></li>
+          <li><span class="yr">2023</span><span><a href="https://www.researchgate.net/publication/369597611_Forensic_Phenotyping" target="_blank" rel="noopener noreferrer">Forensic Phenotyping: Unveiling Hidden Clues from Discarded Waste</a><span class="venue">Journal of Forensic Sciences and Criminal Investigation</span></span></li>
+          <li><span class="yr">2023</span><span>Cloud Security Assessments<span class="venue">Talk, Ahmedabad Management Association</span></span></li>
+          <li><span class="yr">2022</span><span><a href="https://www.researchgate.net/publication/382411368_Computer_Forensics_Data_Recovery_Software_A_Comparative_Study" target="_blank" rel="noopener noreferrer">Computer Forensics Data Recovery Software: A Comparative Study</a><span class="venue">IJIRCST</span></span></li>
+          <li><span class="yr">2021</span><span><a href="https://www.ijip.in/" target="_blank" rel="noopener noreferrer">The Psychological Impact of COVID-19 Pandemics on Gujarati Adults</a><span class="venue">International Journal of Indian Psychology</span></span></li>
+          <li><span class="yr">2016</span><span>Forensic Analysis of Android Devices using LiME and Volatility<span class="venue">MSc thesis, Gujarat University</span></span></li>
+        </ul>
+      </section>
     </div>
-  </div>
-</section>
 
-<section id="research" class="section">
-  <div class="wrap">
-    <h2>Research and talks</h2>
-    <p class="intro">Peer-reviewed work in digital forensics, malware analysis and data privacy.</p>
-    <ul class="pubs">
-      <li><span class="yr">2024</span><span><a href="https://doi.org/10.13140/RG.2.2.27022.27202" target="_blank" rel="noopener noreferrer">Navigating Global Data Privacy Regulations: Cybersecurity and Compliance Strategies in Big Data Management</a><span class="venue">MBA thesis, IU International University</span></span></li>
-      <li><span class="yr">2024</span><span><a href="https://ijcrt.org/papers/IJCRT2406529.pdf" target="_blank" rel="noopener noreferrer">Bytes By Bytes: Unmasking Digital Shadows in Forensic Investigations</a><span class="venue">IJCRT, International Journal of Creative Research Thoughts</span></span></li>
-      <li><span class="yr">2023</span><span><a href="https://www.ijraset.com/research-paper/a-static-approach-for-malware-analysis-a-guide-to-analysis-tools-and-techniques" target="_blank" rel="noopener noreferrer">Static Approach for Malware Analysis: A Guide to Analysis Tools and Techniques</a><span class="venue">IJRASET</span></span></li>
-      <li><span class="yr">2023</span><span><a href="https://www.researchgate.net/publication/369597611_Forensic_Phenotyping" target="_blank" rel="noopener noreferrer">Forensic Phenotyping: Unveiling Hidden Clues from Discarded Waste</a><span class="venue">Journal of Forensic Sciences and Criminal Investigation</span></span></li>
-      <li><span class="yr">2023</span><span>Cloud Security Assessments<span class="venue">Talk, Ahmedabad Management Association</span></span></li>
-      <li><span class="yr">2022</span><span><a href="https://www.researchgate.net/publication/382411368_Computer_Forensics_Data_Recovery_Software_A_Comparative_Study" target="_blank" rel="noopener noreferrer">Computer Forensics Data Recovery Software: A Comparative Study</a><span class="venue">IJIRCST</span></span></li>
-      <li><span class="yr">2021</span><span><a href="https://www.ijip.in/" target="_blank" rel="noopener noreferrer">The Psychological Impact of COVID-19 Pandemics on Gujarati Adults</a><span class="venue">International Journal of Indian Psychology</span></span></li>
-      <li><span class="yr">2016</span><span>Forensic Analysis of Android Devices using LiME and Volatility<span class="venue">MSc thesis, Gujarat University</span></span></li>
-    </ul>
-  </div>
-</section>
-
-<section id="contact" class="section contact">
-  <div class="wrap">
-    <div class="contact-card">
+    <!-- CONTACT -->
+    <section id="contact" class="panel ticket" aria-labelledby="ct-title">
       <div>
-        <h2>Need help with ISO 27001, AI governance or a guest lecture?</h2>
-        <p class="intro">Send me a short note about what you need. I usually reply within two working days.</p>
+        <h2 id="ct-title">Open a ticket</h2>
+        <p>Need help with ISO 27001, AI governance or a guest lecture? Send a short note about what you need. I usually reply within two working days.</p>
       </div>
-      <div class="contact-links">
-        <a id="email-link" href="#" class="btn btn-primary">Email me</a>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLScOeEoJN5NgZ6h7EOJD1YEGtq1PdORNswqeKEQu_sIAj93zVA/viewform" target="_blank" rel="noopener noreferrer" class="btn btn-plain">Use the contact form</a>
-        <a href="https://www.linkedin.com/in/parth-lakhalani/" target="_blank" rel="noopener noreferrer" class="btn btn-plain">LinkedIn</a>
+      <div class="actions">
+        <a id="email-link" href="#" class="btn btn-go">Email me</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScOeEoJN5NgZ6h7EOJD1YEGtq1PdORNswqeKEQu_sIAj93zVA/viewform" target="_blank" rel="noopener noreferrer" class="btn">Use the contact form</a>
+        <a href="https://www.linkedin.com/in/parth-lakhalani/" target="_blank" rel="noopener noreferrer" class="btn">LinkedIn</a>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-</main>
-
-<footer>
-  <div class="wrap">
-    <span>© 2026 Parth Lakhalani, Berlin</span>
-    <a href="#top">Back to top</a>
-  </div>
-</footer>
+    <footer>
+      <span>© 2026 Parth Lakhalani, Berlin</span>
+      <a href="#overview">Back to top</a>
+    </footer>
+  </main>
+</div>
 
 <script>
-// Build the email address at runtime so simple scrapers can't harvest it
+// Email link built at runtime so simple scrapers can't harvest it
 (function () {
   var e = 'parthlakhalani14' + '@' + 'gmail' + '.' + 'com';
   var a = document.getElementById('email-link');
   if (a) a.href = 'mail' + 'to:' + e + '?subject=Inquiry%20from%20your%20website';
 })();
 
-// Count statuses in the Statement of applicability so the legend stays correct when rows change
+// Status counts under the Statement of applicability
 (function () {
-  var kinds = [['s-ok', 'certified', 'var(--ok)'], ['s-wip', 'in progress', 'var(--wip)'], ['s-info', 'work experience', 'var(--accent)']];
   var box = document.getElementById('legend');
   if (!box) return;
-  kinds.forEach(function (k) {
-    var n = document.querySelectorAll('.register tbody .' + k[0]).length;
+  [['s-ok', 'certified', 'var(--teal)'], ['s-wip', 'in progress', 'var(--amber)'], ['s-info', 'work experience', 'var(--blue)']].forEach(function (k) {
+    var n = document.querySelectorAll('.soa tbody .' + k[0]).length;
     if (!n) return;
     var el = document.createElement('span');
     el.innerHTML = '<i style="background:' + k[2] + '"></i><b>' + n + '</b> ' + k[1];
     box.appendChild(el);
   });
+})();
+
+// Live Berlin clock in the top bar
+(function () {
+  var el = document.getElementById('clock');
+  if (!el) return;
+  var fmt = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Berlin', hour: '2-digit', minute: '2-digit', second: '2-digit' });
+  function tick() { el.textContent = 'Berlin ' + fmt.format(new Date()); }
+  tick(); setInterval(tick, 1000);
+})();
+
+// Highlight the section in view in the side navigation
+(function () {
+  var links = document.querySelectorAll('.side a');
+  var map = {};
+  links.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
+  if (!('IntersectionObserver' in window)) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (en.isIntersecting && map[en.target.id]) {
+        links.forEach(function (a) { a.classList.remove('active'); });
+        map[en.target.id].classList.add('active');
+        if (window.innerWidth <= 860) map[en.target.id].scrollIntoView({ block: 'nearest', inline: 'center' });
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  Object.keys(map).forEach(function (id) { var s = document.getElementById(id); if (s) io.observe(s); });
 })();
 </script>
 </body>
