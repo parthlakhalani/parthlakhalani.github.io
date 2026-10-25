@@ -23,17 +23,10 @@ A single-file personal website built with HTML and CSS. It shows my current work
 | Governance Programme | My work as Acting CISO at Mediaire GmbH |
 | Competence Matrix | Where each skill comes from: certified, at work, taught, research |
 | AI Automation | AI workflows for GRC and security, and what I can automate |
-| Audit Trail | Career history, newest first (click a role for details) |
+| Audit Trail | Career, certifications and degrees, newest first (click a role for details) |
 | Service Catalogue | Freelance services |
-| Credentials and Research | Certifications, education, languages and publications |
-| Contact | Email, contact form and LinkedIn |
-
----|---|
-| Hero | Name, role, photo and a "Statement of applicability" listing my standards and certificates, what I do with each, and their status |
-| Current work | What I'm doing as Acting CISO at Mediaire GmbH |
-| Services | ISO 27001 and audits, AI governance, health tech security, teaching |
-| Experience | Work history |
-| Credentials | Certifications, education and languages |
+| Credentials | Certifications, other training and languages |
+| Education | Degrees and diploma |
 | Research | Publications and talks |
 | Contact | Email, contact form and LinkedIn |
 
@@ -58,7 +51,7 @@ A single-file personal website built with HTML and CSS. It shows my current work
 4. Upload to GitHub and commit
 
 ### Update the status table in the hero
-Each row in the "Statement of applicability" is one `<tr>` in `index.html`. Change the status by swapping the class and its text. The counts under the table update automatically.
+Each row in the "Statement of Applicability" is one `<tr>` in `index.html`. Change the status by swapping the class and its text. The counts under the table update automatically.
 - `s-ok` for **Certified** (green)
 - `s-wip` for **In Progress** (amber)
 - `s-info` for **Work Experience** (blue), for standards you work with without a personal certificate

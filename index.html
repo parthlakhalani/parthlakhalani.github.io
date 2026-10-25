@@ -196,13 +196,14 @@ tbody tr:hover td { background: var(--panel2); }
 /* ---------- CAREER PATH ---------- */
 .arc { padding: 4px 24px 24px; }
 .arc-title { font-size: 12px; font-weight: 600; color: var(--muted); margin-bottom: 14px; }
-.arc ol { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; position: relative; }
-.arc ol::before { content: ''; position: absolute; left: 6px; right: 6px; top: 6px; height: 2px; background: linear-gradient(90deg, var(--red), var(--blue), var(--teal)); opacity: .55; }
-.arc li { position: relative; padding-top: 22px; }
-.arc li::before { content: ''; position: absolute; left: 0; top: 0; width: 14px; height: 14px; border-radius: 50%; background: var(--bg); border: 2px solid var(--d); }
+.arc ol { list-style: none; display: flex; flex-direction: column; gap: 14px; position: relative; }
+.arc ol::before { content: ''; position: absolute; left: 6px; top: 8px; bottom: 8px; width: 2px; background: linear-gradient(180deg, var(--red), var(--blue), #C9A7FF, var(--teal)); opacity: .6; }
+.arc li { position: relative; padding-left: 28px; display: grid; grid-template-columns: 104px 1fr; column-gap: 12px; align-items: baseline; }
+.arc li::before { content: ''; position: absolute; left: 0; top: 4px; width: 14px; height: 14px; border-radius: 50%; background: var(--bg); border: 2px solid var(--d); }
 .arc li.cur::before { background: var(--d); box-shadow: 0 0 0 4px var(--teal-bg); }
+.arc li small { grid-column: 2; }
 .arc .yrs { display: block; font-family: var(--mono); font-size: 12px; color: var(--muted); }
-.arc b { display: block; font-size: 14px; font-weight: 700; line-height: 1.3; margin: 2px 0 3px; color: var(--d); }
+.arc b { display: block; font-size: 14px; font-weight: 700; line-height: 1.3; color: var(--d); }
 .arc small { display: block; font-size: 13px; color: var(--muted); line-height: 1.45; }
 
 /* ---------- AI AUTOMATION ---------- */
@@ -370,9 +371,8 @@ footer a { color: var(--muted); }
   .stage:not(:last-child)::after { content: '▾'; display: block; right: auto; left: 50%; top: auto; bottom: -23px; transform: translateX(-50%); }
   .loop { margin: 0 16px 16px; }
   .arc { padding: 4px 20px 20px; }
-  .arc ol { grid-template-columns: 1fr; gap: 16px; }
-  .arc ol::before { left: 6px; right: auto; top: 6px; bottom: 6px; width: 2px; height: auto; background: linear-gradient(180deg, var(--red), var(--blue), var(--teal)); }
-  .arc li { padding: 0 0 0 26px; }
+  .arc li { grid-template-columns: 1fr; }
+  .arc li small { grid-column: 1; }
   .flow { grid-template-columns: 1fr; gap: 22px; padding: 16px; }
   .node::after, .node::before { display: block !important; }
   .node:not(:last-child)::after { right: auto; left: 50%; top: auto; bottom: -20px; width: 2px; height: 16px; background: var(--teal); animation: none; }
@@ -414,6 +414,7 @@ footer a { color: var(--muted); }
     <a href="#events"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg>Audit Trail</a>
     <a href="#services"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg>Services</a>
     <a href="#assets"><svg viewBox="0 0 24 24"><circle cx="12" cy="9" r="5"/><path d="M8.5 13l-1.5 8 5-3 5 3-1.5-8"/></svg>Credentials</a>
+    <a href="#education"><svg viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg>Education</a>
     <a href="#intel"><svg viewBox="0 0 24 24"><path d="M5 4h11l3 3v13H5z"/><path d="M9 10h6M9 14h6M9 18h3"/></svg>Research</a>
     <a href="#contact"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg>Contact</a>
     <div class="side-foot"><b>Berlin, Germany</b>Remote across Europe</div>
@@ -432,7 +433,7 @@ footer a { color: var(--muted); }
               <p>Acting CISO, Mediaire GmbH</p>
             </div>
           </div>
-          <p class="lede">I run Information Security and IT at a <b>HealthTech AI company</b> in Berlin. I build ISMS and <b>Business Continuity</b> programmes, take companies through <b>ISO 27001 audits</b>, automate GRC work with <b>AI</b>, and teach Digital Forensics.</p>
+          <p class="lede">I run Information Security and IT at a <b>HealthTech AI company</b> in Berlin. I build ISMS and <b>Business Continuity</b> programmes, take companies through <b>ISO 27001 audits</b>, automate GRC work with <b>AI</b>, and lecture at BSBI Berlin.</p>
           <div class="actions">
             <a href="#contact" class="btn btn-go">Request a consultation</a>
             <a href="https://www.linkedin.com/in/parth-lakhalani/" target="_blank" rel="noopener noreferrer" class="btn">LinkedIn profile</a>
@@ -443,14 +444,15 @@ footer a { color: var(--muted); }
           <ol>
             <li style="--d: var(--red)"><span class="yrs">2014 to 2019</span><b>Offensive Security</b><small>Ethical Hacking, VAPT and forensics labs</small></li>
             <li style="--d: var(--blue)"><span class="yrs">2019 to 2023</span><b>Blue Team (Forensic) &amp; Teaching</b><small>Defensive Security, 3,000+ students and research</small></li>
-            <li class="cur" style="--d: var(--teal)"><span class="yrs">2023 to now</span><b>GRC and AI Governance</b><small>ISMS, BCMS and AI Automation</small></li>
+            <li style="--d: #C9A7FF"><span class="yrs">2023 to 2025</span><b>Data Science &amp; AI</b><small>Master's in Data Science, MBA in Big Data Management</small></li>
+            <li class="cur" style="--d: var(--teal)"><span class="yrs">2025 to now</span><b>GRC &amp; AI Governance</b><small>ISMS, BCMS and AI Automation</small></li>
           </ol>
         </div>
         <dl class="kpis">
           <div class="kpi"><dt>Years in security and teaching</dt><dd>10</dd></div>
           <div class="kpi"><dt>Certifications</dt><dd>5<small>+2 in progress</small></dd></div>
           <div class="kpi"><dt>Students taught</dt><dd>3,000+</dd></div>
-          <div class="kpi"><dt>Peer-reviewed papers</dt><dd>5</dd></div>
+          <div class="kpi"><dt>Peer-reviewed publications</dt><dd>10+</dd></div>
         </dl>
       </div>
 
@@ -472,10 +474,10 @@ footer a { color: var(--muted); }
           <tbody>
             <tr><td class="ctl">ISO/IEC 27001:2022 Lead Implementer &amp; Lead Auditor</td><td><span class="area">ISMS and Audits</span><span class="ev">Build and run the ISMS, internal and certification audits</span></td><td><span class="status s-ok">Certified</span></td></tr>
             <tr><td class="ctl">ISO 22301:2019 (BCMS)</td><td><span class="area">Business Continuity</span><span class="ev">Business Impact Analysis, recovery plans and tests</span></td><td><span class="status s-info">Work Experience</span></td></tr>
-            <tr><td class="ctl">AIGP (IAPP), ISO/IEC 42001:2023, ISO/IEC 27090</td><td><span class="area">AI Governance and AI Security</span><span class="ev">EU AI Act readiness for HealthTech AI</span></td><td><span class="status s-wip">In Progress</span></td></tr>
+            <tr><td class="ctl">AIGP (IAPP), ISO/IEC 42001:2023, ISO/IEC 27090</td><td><span class="area">AI Governance and AI Security</span><span class="ev">EU AI Act and NIST AI RMF readiness for HealthTech AI</span></td><td><span class="status s-wip">In Progress</span></td></tr>
             <tr><td class="ctl">CEH, EC&#8209;Council</td><td><span class="area">Offensive Security</span><span class="ev">Certified Ethical Hacker, pentesting and VAPT</span></td><td><span class="status s-ok">Certified</span></td></tr>
             <tr><td class="ctl">CHFI, EC&#8209;Council</td><td><span class="area">Digital Forensics</span><span class="ev">Investigations, research and lecturing</span></td><td><span class="status s-ok">Certified</span></td></tr>
-            <tr><td class="ctl">AWS Cloud Security</td><td><span class="area">Cloud Security</span><span class="ev">AWS infrastructure, identity and access</span></td><td><span class="status s-ok">Certified</span></td></tr>
+            <tr><td class="ctl">AWS Cloud Security, ISO/IEC 27017/27018</td><td><span class="area">Cloud Security</span><span class="ev">AWS infrastructure, identity and access</span></td><td><span class="status s-ok">Certified</span></td></tr>
             <tr><td class="ctl">ISO 13485:2016, ISO 9001:2015</td><td><span class="area">Quality Management</span><span class="ev">Security inside the medical software QMS</span></td><td><span class="status s-info">Work Experience</span></td></tr>
             <tr><td class="ctl">GDPR, EU MDR, NIS2</td><td><span class="area">Regulatory Compliance</span><span class="ev">Privacy and security for patient data</span></td><td><span class="status s-info">Work Experience</span></td></tr>
           </tbody>
@@ -521,7 +523,7 @@ footer a { color: var(--muted); }
             <li><span class="ico"><svg viewBox="0 0 24 24"><path d="M7 18a4 4 0 010-8 5 5 0 019.6-1.5A4 4 0 1117 18z"/></svg></span><div><h3>Cloud and Supplier Security</h3><p>Cloud Security, secure architecture, Access Reviews and supplier assessments.</p></div><span class="run">active</span></li>
             <li><span class="ico"><svg viewBox="0 0 24 24"><path d="M20 11a8 8 0 00-14.5-4.5L4 8"/><path d="M4 3v5h5"/><path d="M4 13a8 8 0 0014.5 4.5L20 16"/><path d="M20 21v-5h-5"/></svg></span><div><h3>Business Continuity (ISO 22301)</h3><p>Business Impact Analysis, recovery priorities and recovery tests.</p></div><span class="run">active</span></li>
           </ul>
-          <div class="chips" aria-label="Frameworks in scope"><span>ISO/IEC 27001</span><span>ISO 22301</span><span>ISO 13485</span><span>ISO 9001</span><span>ISO/IEC 42001</span><span>GDPR</span><span>NIS2</span><span>EU MDR</span><span>EU AI Act</span></div>
+          <div class="chips" aria-label="Frameworks in scope"><span>ISO/IEC 27001</span><span>ISO 22301</span><span>ISO 13485</span><span>ISO 9001</span><span>ISO/IEC 42001</span><span>GDPR</span><span>NIS2</span><span>ISO/IEC 27005</span><span>ISO/IEC 27017</span><span>ISO/IEC 27018</span><span>EU MDR</span><span>EU AI Act</span><span>NIST AI RMF</span><span>BSI IT-Grundschutz</span></div>
         </section>
 
       <section id="coverage" class="panel" aria-labelledby="cov-title">
@@ -583,61 +585,73 @@ footer a { color: var(--muted); }
       <ul class="log">
         <li><div class="line"><span class="ts">2026-10</span><span class="tag t-wip">STARTED</span><span class="msg">AIGP certification, IAPP <em>AI Governance</em></span><span></span></div></li>
         <li><div class="line"><span class="ts">2026-06</span><span class="tag t-role">BUILT</span><span class="msg">AI Regulatory Watch and threat digests <em>n8n and LLM</em></span><span></span></div></li>
+        <li>
+          <details>
+            <summary><span class="ts">2026-02</span><span class="tag t-role">ROLE</span><span class="msg">Lecturer, BSBI Berlin <em>current</em></span><span class="more">▸</span></summary>
+            <div class="detail"><ul>
+              <li>Teach cybersecurity, GRC and AI Governance to an international student cohort</li>
+              <li>Design hands-on sessions that connect theory to real security and compliance work</li>
+              <li>Prepare course materials, assessments and technical exercises</li>
+            </ul></div>
+          </details>
+        </li>
         <li><div class="line"><span class="ts">2026</span><span class="tag t-cert">PASSED</span><span class="msg">Led Mediaire through its ISO 27001 Certification Audit</span><span></span></div></li>
+        <li><div class="line"><span class="ts">2025-10</span><span class="tag t-edu">DEGREE</span><span class="msg">MBA, Big Data Management and Data Science, London South Bank University <em>dual degree</em></span><span></span></div></li>
         <li><div class="line"><span class="ts">2025-08</span><span class="tag t-cert">CERT</span><span class="msg">ISO/IEC 27001 Lead Implementer, TÜV SÜD <em><a href="https://portal.itscredible.com/qr/856803276577?src=qr" target="_blank" rel="noopener noreferrer">verify</a></em></span><span></span></div></li>
         <li>
           <details>
-            <summary><span class="ts">2025-03</span><span class="tag t-role">ROLE</span><span class="msg">Acting CISO, Mediaire GmbH, Berlin <em>current</em></span><span class="more">▸</span></summary>
+            <summary><span class="ts">2025-03</span><span class="tag t-role">ROLE</span><span class="msg">Cybersecurity Officer (Acting CISO), Mediaire GmbH, Berlin <em>current</em></span><span class="more">▸</span></summary>
             <div class="detail"><ul>
-              <li>Operate the ISMS (ISO 27001:2022) within the integrated quality system</li>
-              <li>Coordinate risk assessments, Control Testing, Access Reviews and Supplier Security</li>
-              <li>Run Vulnerability Management, penetration test coordination and Incident Response</li>
-              <li>Prepare security evidence for auditors, Notified Bodies and customers</li>
-              <li>Built the Business Continuity and Data Classification programmes</li>
+              <li>Lead GRC and the ISMS (ISO/IEC 27001:2022) for AI radiology platforms used across Europe</li>
+              <li>Extend the programme into AI Governance with ISO/IEC 42001 and NIST AI RMF</li>
+              <li>Run risk assessments (ISO/IEC 27005) and cloud reviews on AWS with ISO/IEC 27017/27018</li>
+              <li>Internal Penetration Testing and review of external assessments</li>
+              <li>Compliance across GDPR, FDA, EU MDR, ISO 13485 and BSI IT-Grundschutz</li>
+              <li>Built and maintain the Business Continuity Management System (ISO 22301)</li>
+              <li>Deliver Security Awareness training</li>
             </ul></div>
           </details>
         </li>
-        <li>
-          <details>
-            <summary><span class="ts">2025</span><span class="tag t-role">ROLE</span><span class="msg">Visiting Lecturer, BSBI Berlin <em>current, freelance</em></span><span class="more">▸</span></summary>
-            <div class="detail"><ul>
-              <li>Teach Digital Forensics and cybersecurity to international students</li>
-              <li>Bring current practice and regulation, like the EU AI Act, into the classroom</li>
-            </ul></div>
-          </details>
-        </li>
+        <li><div class="line"><span class="ts">2024-10</span><span class="tag t-edu">DEGREE</span><span class="msg">Master's in Data Science and Big Data Management, IU International University of Applied Sciences</span><span></span></div></li>
         <li><div class="line"><span class="ts">2024-08</span><span class="tag t-cert">CERT</span><span class="msg">CEH, Certified Ethical Hacker, EC-Council <em><a href="https://aspen.eccouncil.org/VerifyBadge?type=training&amp;a=lqGkPT/jcu7LR2R1yicE1A==" target="_blank" rel="noopener noreferrer">verify</a></em></span><span></span></div></li>
         <li><div class="line"><span class="ts">2024-07</span><span class="tag t-cert">CERT</span><span class="msg">CHFI, Computer Hacking Forensic Investigator, EC-Council <em><a href="https://drive.google.com/file/d/147hlfe3IP_o6cKjoitRTYOQZsXrxnfqq/view?usp=sharing" target="_blank" rel="noopener noreferrer">verify</a></em></span><span></span></div></li>
-        <li><div class="line"><span class="ts">2024</span><span class="tag t-edu">DEGREE</span><span class="msg">MBA, Big Data Management and Data Science, IU International University</span><span></span></div></li>
         <li>
           <details>
-            <summary><span class="ts">2023-11</span><span class="tag t-role">ROLE</span><span class="msg">Freelance Trainer and Security Consultant, SSCFS <em>to 2025</em></span><span class="more">▸</span></summary>
+            <summary><span class="ts">2023-04</span><span class="tag t-role">ROLE</span><span class="msg">Trainer and Consultant, Sherlock School of Cyber Security and Forensic (SSCSF) <em>to 2025</em></span><span class="more">▸</span></summary>
             <div class="detail"><ul>
-              <li>Built hands-on forensics courses with EnCase, FTK and Autopsy</li>
-              <li>Taught CEH and CHFI preparation and Red and Blue Team basics</li>
+              <li>Workshops on GRC, Ethical Hacking and Digital Forensics for 100+ professionals</li>
+              <li>Advised organisations on security awareness, data privacy and NIST and ISO 27000 compliance</li>
+              <li>Hands-on training in Ethical Hacking, Cloud Security (AWS) and Network Security</li>
             </ul></div>
           </details>
         </li>
         <li>
           <details>
-            <summary><span class="ts">2019-09</span><span class="tag t-role">ROLE</span><span class="msg">Assistant Professor and Head of Examination, Parul University <em>to 2023</em></span><span class="more">▸</span></summary>
+            <summary><span class="ts">2019-07</span><span class="tag t-role">ROLE</span><span class="msg">Assistant Professor and Examination Coordinator, Parul University <em>to 2023</em></span><span class="more">▸</span></summary>
             <div class="detail"><ul>
-              <li>Taught Digital Forensics and Network Security to more than 3,000 students</li>
-              <li>Supervised 15+ theses and ran university exams with a team of 70+ staff</li>
-              <li>Ran workshops on Cyber Law, Ethical Hacking, ISO compliance and Cloud Security</li>
+              <li>Research in cybersecurity and Digital Forensics: 10+ peer-reviewed papers and 20+ cybercrime investigations</li>
+              <li>Supervised 15+ theses and taught 3,000+ students</li>
+              <li>Courses on Malware Analysis, network forensics and cybercrime investigation</li>
+              <li>Examination Coordinator from 2021, leading a team of 70+</li>
+              <li>Contributed to the university achieving NAAC A++ accreditation</li>
             </ul></div>
           </details>
         </li>
+        <li><div class="line"><span class="ts">2020</span><span class="tag t-edu">DEGREE</span><span class="msg">B.Ed, Bachelor of Education, Bhakta Kavi Narsinh Mehta University</span><span></span></div></li>
         <li>
           <details>
-            <summary><span class="ts">2016-07</span><span class="tag t-role">ROLE</span><span class="msg">Lecturer, IT and Computer Science, SSSD-IIT College <em>to 2019, Offensive Security focus</em></span><span class="more">▸</span></summary>
+            <summary><span class="ts">2016-07</span><span class="tag t-role">ROLE</span><span class="msg">Lecturer, SSSD Institute of Information Technology <em>to 2019, Offensive Security focus</em></span><span class="more">▸</span></summary>
             <div class="detail"><ul>
-              <li>Focused on Offensive Security: Ethical Hacking and vulnerability assessment (VAPT) labs</li>
-              <li>Taught IT security, programming and networking, with hands-on labs</li>
+              <li>Taught cybersecurity, Ethical Hacking and Digital Forensics</li>
+              <li>Ran lab sessions in information security, VAPT, networking and programming</li>
+              <li>Mentored student research and academic projects</li>
             </ul></div>
           </details>
         </li>
-        <li><div class="line"><span class="ts">2016</span><span class="tag t-edu">DEGREE</span><span class="msg">MSc, Digital Forensics and Cybersecurity, Gujarat University <em>gold medallist</em></span><span></span></div></li>
+        <li><div class="line"><span class="ts">2016</span><span class="tag t-edu">DEGREE</span><span class="msg">Master of Science (MSc), Cyber Security and Digital Forensics, Gujarat University <em>gold medallist</em></span><span></span></div></li>
+        <li><div class="line"><span class="ts">2015-12</span><span class="tag t-role">INTERN</span><span class="msg">CBI Central Forensic Science Laboratory, New Delhi <em>digital evidence, ballistics, questioned documents</em></span><span></span></div></li>
+        <li><div class="line"><span class="ts">2014</span><span class="tag t-edu">DEGREE</span><span class="msg">Bachelor of Science (BSc), Forensic Science (Cyber Forensics), Saurashtra University</span><span></span></div></li>
+        <li><div class="line"><span class="ts">2012</span><span class="tag t-edu">DIPLOMA</span><span class="msg">Diploma, Business Administration Programmer, NIELIT</span><span></span></div></li>
       </ul>
     </section>
 
@@ -657,7 +671,7 @@ footer a { color: var(--muted); }
     <!-- CREDENTIALS + RESEARCH -->
     <div class="grid-2">
       <section id="assets" class="panel" aria-labelledby="as-title">
-        <div class="panel-head"><h2 id="as-title">Credentials</h2><span class="hint">Certifications, education, languages</span></div>
+        <div class="panel-head"><h2 id="as-title">Credentials</h2><span class="hint">Certifications, training, languages</span></div>
         <table class="inv">
           <thead><tr><th scope="col">Certification</th><th scope="col">Issuer</th><th scope="col">Status</th></tr></thead>
           <tbody>
@@ -670,13 +684,6 @@ footer a { color: var(--muted); }
             <tr><td>CISSP</td><td class="meta">ISC2</td><td><span class="status s-wip">In Progress</span></td></tr>
           </tbody>
         </table>
-        <p class="sub-h">Education</p>
-        <ul class="feed">
-          <li><span class="yr">2024</span><span>MBA, Big Data Management and Data Science<span class="venue">IU International University, Berlin</span></span></li>
-          <li><span class="yr">2020</span><span>B.Ed, Bachelor of Education<span class="venue">Bhakta Kavi Narsinh Mehta University</span></span></li>
-          <li><span class="yr">2016</span><span>MSc, Digital Forensics and Cybersecurity<span class="venue">Gujarat University, gold medallist</span></span></li>
-          <li><span class="yr">2014</span><span>BSc, Computer Forensics<span class="venue">Saurashtra University</span></span></li>
-        </ul>
         <p class="sub-h">Other training and languages</p>
         <ul class="feed">
           <li><span class="yr">2025</span><span>ICS/OT Security (NIST 800-82), Cisco CCNP ENCOR, IT Service Management</span></li>
@@ -684,20 +691,33 @@ footer a { color: var(--muted); }
         </ul>
       </section>
 
-      <section id="intel" class="panel" aria-labelledby="in-title">
-        <div class="panel-head"><h2 id="in-title">Research and Talks</h2><span class="hint">Peer-reviewed work</span></div>
+      <section id="education" class="panel" aria-labelledby="edu-title">
+        <div class="panel-head"><h2 id="edu-title">Education</h2><span class="hint">Dual master's, MSc and BSc</span></div>
         <ul class="feed">
-          <li><span class="yr">2024</span><span><a href="https://doi.org/10.13140/RG.2.2.27022.27202" target="_blank" rel="noopener noreferrer">Navigating Global Data Privacy Regulations: Cybersecurity and Compliance Strategies in Big Data Management</a><span class="venue">MBA thesis, IU International University</span></span></li>
-          <li><span class="yr">2024</span><span><a href="https://ijcrt.org/papers/IJCRT2406529.pdf" target="_blank" rel="noopener noreferrer">Bytes By Bytes: Unmasking Digital Shadows in Forensic Investigations</a><span class="venue">IJCRT</span></span></li>
-          <li><span class="yr">2023</span><span><a href="https://www.ijraset.com/research-paper/a-static-approach-for-malware-analysis-a-guide-to-analysis-tools-and-techniques" target="_blank" rel="noopener noreferrer">Static Approach for Malware Analysis: A Guide to Analysis Tools and Techniques</a><span class="venue">IJRASET</span></span></li>
-          <li><span class="yr">2023</span><span><a href="https://www.researchgate.net/publication/369597611_Forensic_Phenotyping" target="_blank" rel="noopener noreferrer">Forensic Phenotyping: Unveiling Hidden Clues from Discarded Waste</a><span class="venue">Journal of Forensic Sciences and Criminal Investigation</span></span></li>
-          <li><span class="yr">2023</span><span>Cloud Security Assessments<span class="venue">Talk, Ahmedabad Management Association</span></span></li>
-          <li><span class="yr">2022</span><span><a href="https://www.researchgate.net/publication/382411368_Computer_Forensics_Data_Recovery_Software_A_Comparative_Study" target="_blank" rel="noopener noreferrer">Computer Forensics Data Recovery Software: A Comparative Study</a><span class="venue">IJIRCST</span></span></li>
-          <li><span class="yr">2021</span><span><a href="https://www.ijip.in/" target="_blank" rel="noopener noreferrer">The Psychological Impact of COVID-19 Pandemics on Gujarati Adults</a><span class="venue">International Journal of Indian Psychology</span></span></li>
-          <li><span class="yr">2016</span><span>Forensic Analysis of Android Devices using LiME and Volatility<span class="venue">MSc thesis, Gujarat University</span></span></li>
+          <li><span class="yr">2025</span><span>MBA, Big Data Management and Data Science<span class="venue">London South Bank University (LSBU), dual degree</span></span></li>
+          <li><span class="yr">2024</span><span>Master's in Data Science and Big Data Management<span class="venue">IU International University of Applied Sciences</span></span></li>
+          <li><span class="yr">2020</span><span>B.Ed, Bachelor of Education<span class="venue">Bhakta Kavi Narsinh Mehta University</span></span></li>
+          <li><span class="yr">2016</span><span>Master of Science (MSc), Cyber Security and Digital Forensics<span class="venue">Gujarat University, gold medallist</span></span></li>
+          <li><span class="yr">2014</span><span>Bachelor of Science (BSc), Forensic Science (Cyber Forensics)<span class="venue">Saurashtra University, Rajkot</span></span></li>
+          <li><span class="yr">2012</span><span>Diploma, Business Administration Programmer<span class="venue">NIELIT, National Institute of Electronics and Information Technology</span></span></li>
         </ul>
       </section>
     </div>
+
+    <!-- RESEARCH -->
+    <section id="intel" class="panel" aria-labelledby="in-title">
+      <div class="panel-head"><h2 id="in-title">Research and Talks</h2><span class="hint">10+ peer-reviewed publications</span></div>
+      <ul class="feed">
+        <li><span class="yr">2024</span><span><a href="https://doi.org/10.13140/RG.2.2.27022.27202" target="_blank" rel="noopener noreferrer">Navigating Global Data Privacy Regulations: Cybersecurity and Compliance Strategies in Big Data Management</a><span class="venue">Master's thesis, IU International University</span></span></li>
+        <li><span class="yr">2024</span><span><a href="https://ijcrt.org/papers/IJCRT2406529.pdf" target="_blank" rel="noopener noreferrer">Bytes By Bytes: Unmasking Digital Shadows in Forensic Investigations</a><span class="venue">IJCRT</span></span></li>
+        <li><span class="yr">2023</span><span><a href="https://www.ijraset.com/research-paper/a-static-approach-for-malware-analysis-a-guide-to-analysis-tools-and-techniques" target="_blank" rel="noopener noreferrer">Static Approach for Malware Analysis: A Guide to Analysis Tools and Techniques</a><span class="venue">IJRASET</span></span></li>
+        <li><span class="yr">2023</span><span><a href="https://www.researchgate.net/publication/369597611_Forensic_Phenotyping" target="_blank" rel="noopener noreferrer">Forensic Phenotyping: Unveiling Hidden Clues from Discarded Waste</a><span class="venue">Journal of Forensic Sciences and Criminal Investigation</span></span></li>
+        <li><span class="yr">2023</span><span>Cloud Security Assessments<span class="venue">Talk, Ahmedabad Management Association</span></span></li>
+        <li><span class="yr">2022</span><span><a href="https://www.researchgate.net/publication/382411368_Computer_Forensics_Data_Recovery_Software_A_Comparative_Study" target="_blank" rel="noopener noreferrer">Computer Forensics Data Recovery Software: A Comparative Study</a><span class="venue">IJIRCST</span></span></li>
+        <li><span class="yr">2021</span><span><a href="https://www.ijip.in/" target="_blank" rel="noopener noreferrer">The Psychological Impact of COVID-19 Pandemics on Gujarati Adults</a><span class="venue">International Journal of Indian Psychology</span></span></li>
+        <li><span class="yr">2016</span><span>Forensic Analysis of Android Devices using LiME and Volatility<span class="venue">MSc thesis, Gujarat University</span></span></li>
+      </ul>
+    </section>
 
     <!-- CONTACT -->
     <section id="contact" class="panel ticket" aria-labelledby="ct-title">
