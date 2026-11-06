@@ -84,8 +84,7 @@ The site is hosted on **GitHub Pages**. Any change committed to the `main` branc
 ## Certifications shown
 
 **Core**
-- ✅ ISO/IEC 27001 Lead Implementer (TÜV SÜD, Aug 2025; training by InfosecTrain, Jun 2025)
-- ✅ ISO/IEC 27001 Lead Auditor
+- ✅ ISO/IEC 27001 Lead Implementer & Lead Auditor (TÜV SÜD, Aug 2025; training by InfosecTrain, Jun 2025)
 - ✅ CHFI, Computer Hacking Forensic Investigator (IIT Kanpur, Jul 2024)
 - ✅ CEH, Cyber Security and Ethical Hacking (IIT Kanpur, Aug 2024)
 - ✅ AWS Solutions Architect Associate and AWS Security Specialty (InfosecTrain, May 2026)
