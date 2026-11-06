@@ -88,7 +88,8 @@ The site is hosted on **GitHub Pages**. Any change committed to the `main` branc
 - ✅ CHFI, Computer Hacking Forensic Investigator (EC-Council)
 - ✅ CEH, Certified Ethical Hacker (EC-Council)
 - ✅ AWS Cloud Security (InfosecTrain)
-- 🔄 AIGP, Artificial Intelligence Governance Professional (IAPP), in progress
+- ✅ AIGP training, InfosecTrain (Oct 2026, 24 CPE)
+- 🔄 AIGP certification exam (IAPP), in progress
 - 🔄 CISSP (ISC2), in progress
 
 Other training: ICS/OT Security (NIST 800-82 Rev 3), Cisco CCNP ENCOR, IT Service Management.
