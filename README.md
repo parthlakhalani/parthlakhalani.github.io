@@ -85,8 +85,8 @@ The site is hosted on **GitHub Pages**. Any change committed to the `main` branc
 
 **Core**
 - ✅ ISO/IEC 27001 Lead Implementer & Lead Auditor (TÜV SÜD, Aug 2025; training by InfosecTrain, Jun 2025)
-- ✅ CHFI, Computer Hacking Forensic Investigator (IIT Kanpur, Jul 2024)
-- ✅ CEH, Cyber Security and Ethical Hacking (IIT Kanpur, Aug 2024)
+- ✅ CHFI, Computer Hacking Forensic Investigator (EC-Council and IIT Kanpur, Jul 2024)
+- ✅ CEH, Certified Ethical Hacker (EC-Council and IIT Kanpur, Aug 2024)
 - ✅ AWS Solutions Architect Associate and AWS Security Specialty (InfosecTrain, May 2026)
 - ✅ AIGP training (InfosecTrain, Oct 2026, 24 CPE)
 - 🔄 AIGP certification exam (IAPP), in progress
