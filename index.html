@@ -338,6 +338,24 @@ details[open] .more { transform: rotate(90deg); }
 .feed a:hover { color: var(--blue); }
 .feed .venue { display: block; font-size: 13px; color: var(--muted); }
 
+/* ---------- CREDENTIAL GROUPS ---------- */
+.cred-core { border-bottom: 1px solid var(--line); }
+.inv td .sub2 { display: block; font-size: 12px; color: var(--muted); margin-top: 2px; }
+.inv td .sub2 a { margin-left: 2px; }
+.cgroups { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); }
+.cgroup { background: var(--panel); padding: 18px 20px; }
+.cgroup h3 { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 700; margin-bottom: 10px; }
+.cgroup h3 i { width: 8px; height: 8px; border-radius: 2px; background: var(--g); }
+.cl { list-style: none; display: flex; flex-direction: column; }
+.cl li { display: grid; grid-template-columns: 1fr auto; gap: 2px 12px; padding: 9px 0; border-bottom: 1px dashed var(--line); font-size: 14px; }
+.cl li:last-child { border-bottom: none; }
+.cl .n { font-weight: 600; }
+.cl .m { grid-column: 1; font-size: 12px; color: var(--muted); }
+.cl .d { grid-row: 1; grid-column: 2; font-family: var(--mono); font-size: 12px; color: var(--muted); white-space: nowrap; }
+.cl a { font-family: var(--mono); font-size: 12px; }
+.cred-foot { padding: 14px 20px; border-top: 1px solid var(--line); font-size: 14px; color: var(--muted); border-radius: 0 0 14px 14px; }
+.cred-foot b { color: var(--text); font-weight: 600; }
+
 /* ---------- TICKET ---------- */
 .ticket { display: grid; grid-template-columns: 1.3fr 1fr; gap: 28px; padding: 28px; align-items: center;
   background: linear-gradient(135deg, var(--panel2), var(--panel)); }
@@ -415,7 +433,7 @@ footer a { color: var(--muted); }
   .log .msg { grid-column: 1 / -1; }
   .log .more { display: none; }
   .log .detail { padding: 0 16px 14px; }
-  .catalogue, .ticket { grid-template-columns: 1fr; }
+  .catalogue, .ticket, .cgroups { grid-template-columns: 1fr; }
   .ticket { padding: 22px; }
   .inv th:nth-child(2), .inv td:nth-child(2) { display: none; }
   .inv td, .inv th { padding-left: 16px; padding-right: 16px; }
@@ -480,7 +498,7 @@ footer a { color: var(--muted); }
         </div>
         <dl class="kpis">
           <div class="kpi"><dt>Years in security and teaching</dt><dd>10</dd></div>
-          <div class="kpi"><dt>Certifications</dt><dd>5<small>+2 in progress</small></dd></div>
+          <div class="kpi"><dt>Certificates and training</dt><dd>20+<small>+2 in progress</small></dd></div>
           <div class="kpi"><dt>Students taught</dt><dd>3,000+</dd></div>
           <div class="kpi"><dt>Peer-reviewed papers</dt><dd>5</dd></div>
         </dl>
@@ -505,9 +523,9 @@ footer a { color: var(--muted); }
             <tr><td class="ctl">ISO/IEC 27001:2022 Lead Implementer &amp; Lead Auditor</td><td><span class="area">ISMS and Audits</span><span class="ev">Build and run the ISMS, internal and certification audits</span></td><td><span class="status s-ok">Certified</span></td></tr>
             <tr><td class="ctl">ISO 22301:2019 (BCMS)</td><td><span class="area">Business Continuity</span><span class="ev">Business Impact Analysis, recovery plans and tests</span></td><td><span class="status s-info">Work Experience</span></td></tr>
             <tr><td class="ctl">AIGP (IAPP), ISO/IEC 42001:2023, ISO/IEC 27090</td><td><span class="area">AI Governance and AI Security</span><span class="ev">AIGP training completed (24 CPE), EU AI Act readiness for HealthTech AI</span></td><td><span class="status s-wip">In Progress</span></td></tr>
-            <tr><td class="ctl">CEH, EC&#8209;Council</td><td><span class="area">Offensive Security</span><span class="ev">Certified Ethical Hacker, pentesting and VAPT</span></td><td><span class="status s-ok">Certified</span></td></tr>
-            <tr><td class="ctl">CHFI, EC&#8209;Council</td><td><span class="area">Digital Forensics</span><span class="ev">Investigations, research and lecturing</span></td><td><span class="status s-ok">Certified</span></td></tr>
-            <tr><td class="ctl">AWS Cloud Security</td><td><span class="area">Cloud Security</span><span class="ev">AWS infrastructure, identity and access</span></td><td><span class="status s-ok">Certified</span></td></tr>
+            <tr><td class="ctl">CEH, IIT Kanpur</td><td><span class="area">Offensive Security</span><span class="ev">Certified Ethical Hacker, pentesting and VAPT</span></td><td><span class="status s-ok">Certified</span></td></tr>
+            <tr><td class="ctl">CHFI, IIT Kanpur</td><td><span class="area">Digital Forensics</span><span class="ev">Investigations, research and lecturing</span></td><td><span class="status s-ok">Certified</span></td></tr>
+            <tr><td class="ctl">AWS Solutions Architect Associate &amp; Security Specialty</td><td><span class="area">Cloud Security</span><span class="ev">AWS infrastructure, identity and access</span></td><td><span class="status s-ok">Certified</span></td></tr>
             <tr><td class="ctl">ISO 13485:2016, ISO 9001:2015</td><td><span class="area">Quality Management</span><span class="ev">Security inside the medical software QMS</span></td><td><span class="status s-info">Work Experience</span></td></tr>
             <tr><td class="ctl">GDPR, EU MDR, NIS2</td><td><span class="area">Regulatory Compliance</span><span class="ev">Privacy and security for patient data</span></td><td><span class="status s-info">Work Experience</span></td></tr>
           </tbody>
@@ -685,12 +703,15 @@ footer a { color: var(--muted); }
       <ul class="log">
         <li><div class="line"><span class="ts">2026-10</span><span class="tag t-cert">TRAINING</span><span class="msg">AIGP training completed, InfosecTrain, 24 CPE <em><a href="https://www.infosectrain.com/verify?appy_code=ISTT2624031" target="_blank" rel="noopener noreferrer">verify</a></em></span><span></span></div></li>
         <li><div class="line"><span class="ts">2026-06</span><span class="tag t-role">BUILT</span><span class="msg">AI Regulatory Watch and threat digests <em>n8n and LLM</em></span><span></span></div></li>
-        <li><div class="line"><span class="ts">2026</span><span class="tag t-cert">PASSED</span><span class="msg">Led Mediaire through its ISO 27001 Certification Audit</span><span></span></div></li>
+        <li><div class="line"><span class="ts">2026-05</span><span class="tag t-cert">CERT</span><span class="msg">AWS Solutions Architect Associate and AWS Security Specialty, InfosecTrain <em><a href="https://www.infosectrain.com/verify?appy_code=ISTT2621801" target="_blank" rel="noopener noreferrer">verify</a></em></span><span></span></div></li>
+        <li><div class="line"><span class="ts">2026-02</span><span class="tag t-cert">PASSED</span><span class="msg">Led Mediaire through its ISO 27001 Certification Audit</span><span></span></div></li>
+        <li><div class="line"><span class="ts">2025-11</span><span class="tag t-cert">TRAINING</span><span class="msg">LLM Security Red Team Bootcamp, InfosecTrain <em>AI Security</em></span><span></span></div></li>
         <li><div class="line"><span class="ts">2025-10</span><span class="tag t-edu">DEGREE</span><span class="msg">MBA in Big Data Management, London South Bank University <em>dual degree</em></span><span></span></div></li>
         <li><div class="line"><span class="ts">2025-08</span><span class="tag t-cert">CERT</span><span class="msg">ISO/IEC 27001 Lead Implementer, TÜV SÜD <em><a href="https://portal.itscredible.com/qr/856803276577?src=qr" target="_blank" rel="noopener noreferrer">verify</a></em></span><span></span></div></li>
+        <li><div class="line"><span class="ts">2025-06</span><span class="tag t-cert">TRAINING</span><span class="msg">ISO/IEC 27001 Lead Implementer training, InfosecTrain <em><a href="https://www.infosectrain.com/verify?appy_code=ISTT2517419" target="_blank" rel="noopener noreferrer">verify</a></em></span><span></span></div></li>
         <li><div class="line"><span class="ts">2024-10</span><span class="tag t-edu">DEGREE</span><span class="msg">Master in Data Science, IU International University</span><span></span></div></li>
-        <li><div class="line"><span class="ts">2024-08</span><span class="tag t-cert">CERT</span><span class="msg">CEH, Certified Ethical Hacker, EC-Council <em><a href="https://aspen.eccouncil.org/VerifyBadge?type=training&amp;a=lqGkPT/jcu7LR2R1yicE1A==" target="_blank" rel="noopener noreferrer">verify</a></em></span><span></span></div></li>
-        <li><div class="line"><span class="ts">2024-07</span><span class="tag t-cert">CERT</span><span class="msg">CHFI, Computer Hacking Forensic Investigator, EC-Council <em><a href="https://drive.google.com/file/d/147hlfe3IP_o6cKjoitRTYOQZsXrxnfqq/view?usp=sharing" target="_blank" rel="noopener noreferrer">verify</a></em></span><span></span></div></li>
+        <li><div class="line"><span class="ts">2024-08</span><span class="tag t-cert">CERT</span><span class="msg">CEH, Cyber Security and Ethical Hacking, IIT Kanpur <em><a href="https://verify.ifacet.digitalcredentials.in/73bcb3cb-b0b3-4eed-8b66-e39fb151558c" target="_blank" rel="noopener noreferrer">verify</a></em></span><span></span></div></li>
+        <li><div class="line"><span class="ts">2024-07</span><span class="tag t-cert">CERT</span><span class="msg">CHFI, Computer Hacking Forensic Investigator, IIT Kanpur <em><a href="https://verify.ifacet.digitalcredentials.in/6a43e164-af09-450e-a1b4-a08d3f34fd1a" target="_blank" rel="noopener noreferrer">verify</a></em></span><span></span></div></li>
         <li><div class="line"><span class="ts">2020</span><span class="tag t-edu">DEGREE</span><span class="msg">B.Ed, Information Communication Technology (ICT), Bhakta Kavi Narsinh Mehta University</span><span></span></div></li>
         <li><div class="line"><span class="ts">2016</span><span class="tag t-edu">DEGREE</span><span class="msg">MS, Digital Forensics and Cybersecurity, Gujarat University <em>gold medallist</em></span><span></span></div></li>
         <li><div class="line"><span class="ts">2014</span><span class="tag t-edu">DEGREE</span><span class="msg">BS, Computer Forensics, Saurashtra University</span><span></span></div></li>
@@ -711,43 +732,72 @@ footer a { color: var(--muted); }
       </div>
     </section>
 
-    <!-- CREDENTIALS + RESEARCH -->
-    <div class="grid-2">
-      <section id="assets" class="panel" aria-labelledby="as-title">
-        <div class="panel-head"><h2 id="as-title">Credentials</h2><span class="hint">Certifications, training, languages</span></div>
-        <table class="inv">
-          <thead><tr><th scope="col">Certification</th><th scope="col">Issuer</th><th scope="col">Status</th></tr></thead>
-          <tbody>
-            <tr><td>ISO/IEC 27001 Lead Implementer<br><a href="https://portal.itscredible.com/qr/856803276577?src=qr" target="_blank" rel="noopener noreferrer">verify</a></td><td class="meta">TÜV SÜD, 2025</td><td><span class="status s-ok">Certified</span></td></tr>
-            <tr><td>ISO/IEC 27001 Lead Auditor</td><td class="meta"></td><td><span class="status s-ok">Certified</span></td></tr>
-            <tr><td>CHFI<br><a href="https://drive.google.com/file/d/147hlfe3IP_o6cKjoitRTYOQZsXrxnfqq/view?usp=sharing" target="_blank" rel="noopener noreferrer">verify</a></td><td class="meta">EC-Council, 2024</td><td><span class="status s-ok">Certified</span></td></tr>
-            <tr><td>CEH<br><a href="https://aspen.eccouncil.org/VerifyBadge?type=training&amp;a=lqGkPT/jcu7LR2R1yicE1A==" target="_blank" rel="noopener noreferrer">verify</a></td><td class="meta">EC-Council, 2024</td><td><span class="status s-ok">Certified</span></td></tr>
-            <tr><td>AWS Cloud Security<br><a href="https://www.infosectrain.com/verify?appy_code=ISTT2620538" target="_blank" rel="noopener noreferrer">verify</a></td><td class="meta">InfosecTrain</td><td><span class="status s-ok">Certified</span></td></tr>
-            <tr><td>AIGP Training, Artificial Intelligence Governance Professional<br><a href="https://www.infosectrain.com/verify?appy_code=ISTT2624031" target="_blank" rel="noopener noreferrer">verify</a></td><td class="meta">InfosecTrain, Oct 2026, 24 CPE</td><td><span class="status s-ok">Completed</span></td></tr>
-            <tr><td>AIGP Certification, exam</td><td class="meta">IAPP</td><td><span class="status s-wip">In Progress</span></td></tr>
-            <tr><td>CISSP</td><td class="meta">ISC2</td><td><span class="status s-wip">In Progress</span></td></tr>
-          </tbody>
-        </table>
-        <p class="sub-h">Other certificates and training</p>
-        <ul class="feed">
-          <li><span class="yr">Cert</span><span>Data Security and Protection Leads</span></li>
-          <li><span class="yr">Cert</span><span>Data Security and Protection</span></li>
-          <li><span class="yr">Cert</span><span>Reviewer Certificate</span></li>
-          <li><span class="yr">Cert</span><span>IT Helpdesk Fundamentals</span></li>
-          <li><span class="yr">2025</span><span>ICS/OT Security (NIST 800-82), Cisco CCNP ENCOR, IT Service Management</span></li>
+    <!-- CREDENTIALS -->
+    <section id="assets" class="panel" aria-labelledby="as-title">
+      <div class="panel-head"><h2 id="as-title">Credentials</h2><span class="hint">20+ certificates, training and events</span></div>
+      <div class="cred-core">
+      <table class="inv">
+        <thead><tr><th scope="col">Core certification</th><th scope="col">Issuer</th><th scope="col">Status</th></tr></thead>
+        <tbody>
+          <tr><td>ISO/IEC 27001 Lead Implementer <a href="https://portal.itscredible.com/qr/856803276577?src=qr" target="_blank" rel="noopener noreferrer">verify</a><span class="sub2">Training: InfosecTrain, Jun 2025 <a href="https://www.infosectrain.com/verify?appy_code=ISTT2517419" target="_blank" rel="noopener noreferrer">verify</a></span></td><td class="meta">TÜV SÜD, Aug 2025</td><td><span class="status s-ok">Certified</span></td></tr>
+          <tr><td>ISO/IEC 27001 Lead Auditor</td><td class="meta"></td><td><span class="status s-ok">Certified</span></td></tr>
+          <tr><td>Computer Hacking Forensic Investigator (CHFI) <a href="https://verify.ifacet.digitalcredentials.in/6a43e164-af09-450e-a1b4-a08d3f34fd1a" target="_blank" rel="noopener noreferrer">verify</a></td><td class="meta">IIT Kanpur, Jul 2024</td><td><span class="status s-ok">Certified</span></td></tr>
+          <tr><td>Cyber Security and Ethical Hacking (CEH) <a href="https://verify.ifacet.digitalcredentials.in/73bcb3cb-b0b3-4eed-8b66-e39fb151558c" target="_blank" rel="noopener noreferrer">verify</a></td><td class="meta">IIT Kanpur, Aug 2024</td><td><span class="status s-ok">Certified</span></td></tr>
+          <tr><td>AWS Solutions Architect Associate and AWS Security Specialty <a href="https://www.infosectrain.com/verify?appy_code=ISTT2621801" target="_blank" rel="noopener noreferrer">verify</a></td><td class="meta">InfosecTrain, May 2026</td><td><span class="status s-ok">Certified</span></td></tr>
+          <tr><td>AIGP Training, Artificial Intelligence Governance Professional <a href="https://www.infosectrain.com/verify?appy_code=ISTT2624031" target="_blank" rel="noopener noreferrer">verify</a></td><td class="meta">InfosecTrain, Oct 2026, 24 CPE</td><td><span class="status s-ok">Completed</span></td></tr>
+          <tr><td>AIGP Certification, exam</td><td class="meta">IAPP</td><td><span class="status s-wip">In Progress</span></td></tr>
+          <tr><td>CISSP</td><td class="meta">ISC2</td><td><span class="status s-wip">In Progress</span></td></tr>
+        </tbody>
+      </table>
+      </div>
+      <div class="cgroups">
+      <div class="cgroup" style="--g:var(--blue)">
+        <h3><i></i>Cloud and AI Security</h3>
+        <ul class="cl">
+          <li><span class="n">AI in SecOps Bootcamp</span><span class="d">May 2026</span><span class="m">InfosecTrain <a href="https://feedback.infosectrain.com/certificate_eventfile/ISTE26h479540503.jpg" target="_blank" rel="noopener noreferrer">view</a></span></li>
+          <li><span class="n">AWS Cloud Foundation</span><span class="d">Feb 2026</span><span class="m">InfosecTrain <a href="https://www.infosectrain.com/verify?appy_code=ISTT2620538" target="_blank" rel="noopener noreferrer">verify</a></span></li>
+          <li><span class="n">LLM Security Red Team Bootcamp</span><span class="d">Nov 2025</span><span class="m">InfosecTrain, ID ISTE25c145741113</span></li>
+          <li><span class="n">AWS Solutions Architect (course)</span><span class="d">May 2024</span><span class="m">Technical Guftgu <a href="https://drive.google.com/file/d/1hEghx1-VPaveMsQ2iRdL3-Jf7drkHP1L/view?usp=drive_link" target="_blank" rel="noopener noreferrer">view</a></span></li>
+          <li><span class="n">How to Research and Write Using Generative AI Tools</span><span class="d">Aug 2023</span><span class="m">LinkedIn Learning <a href="https://www.linkedin.com/learning/certificates/a54dc0e4acc69d65137b277189793af7c2f3a678f8e89c05ed0b0058b389abc1/" target="_blank" rel="noopener noreferrer">view</a></span></li>
         </ul>
-        <p class="sub-h">Honours and events</p>
-        <ul class="feed">
-          <li><span class="yr">Award</span><span>Certificate of Appreciation for Ethical Hacking</span></li>
-          <li><span class="yr">Talk</span><span>Expert talk on Cloud Security Assessment</span></li>
-          <li><span class="yr">Event</span><span>CyberSec 2025 and GRC Meetup</span></li>
+      </div>
+      <div class="cgroup" style="--g:var(--teal)">
+        <h3><i></i>GRC, Risk and Compliance</h3>
+        <ul class="cl">
+          <li><span class="n">ISO 27001:2022-Compliant Cybersecurity</span><span class="d">Feb 2025</span><span class="m">Project Management Institute <a href="https://www.linkedin.com/learning/certificates/40e1fa3301b382b2bfaa36ce4ba41915ca5a1f16dd0e8820ce43bf77fd20e28e/?trk=share_certificate" target="_blank" rel="noopener noreferrer">view</a> <a href="https://github.com/parthlakhalani/ISO27001_Project_Pracrical_Implementation" target="_blank" rel="noopener noreferrer">project</a></span></li>
+          <li><span class="n">Continuous Security Validation for Organizations</span><span class="d">Mar 2025</span><span class="m">EC-Council, ID 399642 <a href="https://codered.eccouncil.org/certificate/d58f4633-5e35-40c5-b265-46303c4fb4ae?logged=false" target="_blank" rel="noopener noreferrer">verify</a></span></li>
+          <li><span class="n">IT Service Management: ISO/IEC 20000-1</span><span class="d">Jan 2025</span><span class="m">LinkedIn Learning <a href="https://www.linkedin.com/learning/certificates/d1ebc77214406625aa5fc87c41eaeb2a65d808b7c404fad5dfa13b86b81b38eb/?trk=share_certificate" target="_blank" rel="noopener noreferrer">view</a></span></li>
+          <li><span class="n">ICS/OT Cybersecurity, NIST 800-82 Rev 3</span><span class="d">Jan 2025</span><span class="m">EC-Council, ID 385688 <a href="https://codered.eccouncil.org/certificate/5814315b-5c38-4bc6-983d-a08b4a5732c4?logged=false" target="_blank" rel="noopener noreferrer">verify</a></span></li>
+          <li><span class="n">Data Security and Protection Leads</span><span class="d">Apr 2025</span><span class="m">Digital Care Hub</span></li>
+          <li><span class="n">Data Security and Protection</span><span class="d">Apr 2025</span><span class="m">NHS England</span></li>
+          <li><span class="n">Forensic Accounting: Fraud Investigation</span><span class="d">May 2022</span><span class="m">Udemy <a href="https://www.udemy.com/certificate/UC-204e9e0a-e951-4219-8d13-2b45dee13886/" target="_blank" rel="noopener noreferrer">view</a></span></li>
         </ul>
-        <p class="sub-h">Languages</p>
-        <ul class="feed">
-          <li><span class="yr">Lang</span><span>English (professional), German (learning, toward B1), Hindi and Gujarati (native)</span></li>
+      </div>
+      <div class="cgroup" style="--g:#C9A7FF">
+        <h3><i></i>Networks, Systems and Teaching</h3>
+        <ul class="cl">
+          <li><span class="n">Cisco CCNP ENCOR (350-401)</span><span class="d">Feb 2025</span><span class="m">EC-Council, ID 387890 <a href="https://codered.eccouncil.org/certificate/ae9c1602-b7bb-4292-af8c-cd3af9a2ae33?logged=false" target="_blank" rel="noopener noreferrer">verify</a></span></li>
+          <li><span class="n">IT Helpdesk Fundamentals</span><span class="d">Jul 2025</span><span class="m">EC-Council, ID 424117 <a href="https://learn.eccouncil.org/certificate/36042aa4-059a-431a-bab7-99684bc82dac" target="_blank" rel="noopener noreferrer">verify</a></span></li>
+          <li><span class="n">Red Hat Linux OS</span><span class="d">Apr 2024</span><span class="m">Technical Guftgu <a href="https://drive.google.com/file/d/1M0z7VusZaSD79N1npFygJdW3CdMqqRft/view?usp=drive_link" target="_blank" rel="noopener noreferrer">view</a></span></li>
+          <li><span class="n">Faculty Development Programme</span><span class="d">Mar 2022</span><span class="m">Amity University <a href="https://drive.google.com/file/d/1P1i8MHpdtilUnh60lgSiHtBvc2InxgkX/view?usp=sharing" target="_blank" rel="noopener noreferrer">view</a></span></li>
         </ul>
-      </section>
+      </div>
+      <div class="cgroup" style="--g:var(--amber)">
+        <h3><i></i>Events, Talks and Honours</h3>
+        <ul class="cl">
+          <li><span class="n">AI Summit 2025</span><span class="d">Jul 2025</span><span class="m">InfosecTrain, ID ISTE25H826330727</span></li>
+          <li><span class="n">CyberSec 2025, 7 CPD hours</span><span class="d">May 2025</span><span class="m">Executive Partners Network <a href="https://portal.cpduk.co.uk/certificate/ed0bda6a-c71d-4d21-9418-b68537b39219/show" target="_blank" rel="noopener noreferrer">view</a></span></li>
+          <li><span class="n">GRC Skill Online Meetup</span><span class="d">May 2025</span><span class="m">InfosecTrain</span></li>
+          <li><span class="n">Expert talk on Cloud Security Assessment</span><span class="d">2023</span><span class="m">Speaker, Ahmedabad Management Association</span></li>
+          <li><span class="n">Certificate of Appreciation for Ethical Hacking</span><span class="d"></span><span class="m">Award</span></li>
+        </ul>
+      </div>
+      </div>
+      <p class="cred-foot"><b>Languages:</b> English (professional), German (learning, toward B1), Hindi and Gujarati (native)</p>
+    </section>
 
+    <!-- EDUCATION + RESEARCH -->
+    <div class="grid-2">
       <section id="education" class="panel" aria-labelledby="edu-title">
         <div class="panel-head"><h2 id="edu-title">Education</h2><span class="hint">Dual Masters, MS, BS and B.Ed</span></div>
         <ul class="feed">
@@ -759,22 +809,21 @@ footer a { color: var(--muted); }
           <li><span class="yr">2012</span><span>Diploma, Business Administration Programmer<span class="venue">NIELIT, National Institute of Electronics and Information Technology</span></span></li>
         </ul>
       </section>
-    </div>
 
-    <!-- RESEARCH -->
-    <section id="intel" class="panel" aria-labelledby="in-title">
-      <div class="panel-head"><h2 id="in-title">Research and Talks</h2><span class="hint">Peer-reviewed work</span></div>
-      <ul class="feed">
-        <li><span class="yr">2024</span><span><a href="https://doi.org/10.13140/RG.2.2.27022.27202" target="_blank" rel="noopener noreferrer">Navigating Global Data Privacy Regulations: Cybersecurity and Compliance Strategies in Big Data Management</a><span class="venue">Master in Data Science thesis, IU International University</span></span></li>
-        <li><span class="yr">2024</span><span><a href="https://ijcrt.org/papers/IJCRT2406529.pdf" target="_blank" rel="noopener noreferrer">Bytes By Bytes: Unmasking Digital Shadows in Forensic Investigations</a><span class="venue">IJCRT</span></span></li>
-        <li><span class="yr">2023</span><span><a href="https://www.ijraset.com/research-paper/a-static-approach-for-malware-analysis-a-guide-to-analysis-tools-and-techniques" target="_blank" rel="noopener noreferrer">Static Approach for Malware Analysis: A Guide to Analysis Tools and Techniques</a><span class="venue">IJRASET</span></span></li>
-        <li><span class="yr">2023</span><span><a href="https://www.researchgate.net/publication/369597611_Forensic_Phenotyping" target="_blank" rel="noopener noreferrer">Forensic Phenotyping: Unveiling Hidden Clues from Discarded Waste</a><span class="venue">Journal of Forensic Sciences and Criminal Investigation</span></span></li>
-        <li><span class="yr">2023</span><span>Cloud Security Assessments<span class="venue">Talk, Ahmedabad Management Association</span></span></li>
-        <li><span class="yr">2022</span><span><a href="https://www.researchgate.net/publication/382411368_Computer_Forensics_Data_Recovery_Software_A_Comparative_Study" target="_blank" rel="noopener noreferrer">Computer Forensics Data Recovery Software: A Comparative Study</a><span class="venue">IJIRCST</span></span></li>
-        <li><span class="yr">2021</span><span><a href="https://www.ijip.in/" target="_blank" rel="noopener noreferrer">The Psychological Impact of COVID-19 Pandemics on Gujarati Adults</a><span class="venue">International Journal of Indian Psychology</span></span></li>
-        <li><span class="yr">2016</span><span>Forensic Analysis of Android Devices using LiME and Volatility<span class="venue">MS thesis, Gujarat University</span></span></li>
-      </ul>
-    </section>
+      <section id="intel" class="panel" aria-labelledby="in-title">
+        <div class="panel-head"><h2 id="in-title">Research and Talks</h2><span class="hint">Peer-reviewed work</span></div>
+        <ul class="feed">
+          <li><span class="yr">2024</span><span><a href="https://doi.org/10.13140/RG.2.2.27022.27202" target="_blank" rel="noopener noreferrer">Navigating Global Data Privacy Regulations: Cybersecurity and Compliance Strategies in Big Data Management</a><span class="venue">Master in Data Science thesis, IU International University</span></span></li>
+          <li><span class="yr">2024</span><span><a href="https://ijcrt.org/papers/IJCRT2406529.pdf" target="_blank" rel="noopener noreferrer">Bytes By Bytes: Unmasking Digital Shadows in Forensic Investigations</a><span class="venue">IJCRT</span></span></li>
+          <li><span class="yr">2023</span><span><a href="https://www.ijraset.com/research-paper/a-static-approach-for-malware-analysis-a-guide-to-analysis-tools-and-techniques" target="_blank" rel="noopener noreferrer">Static Approach for Malware Analysis: A Guide to Analysis Tools and Techniques</a><span class="venue">IJRASET</span></span></li>
+          <li><span class="yr">2023</span><span><a href="https://www.researchgate.net/publication/369597611_Forensic_Phenotyping" target="_blank" rel="noopener noreferrer">Forensic Phenotyping: Unveiling Hidden Clues from Discarded Waste</a><span class="venue">Journal of Forensic Sciences and Criminal Investigation</span></span></li>
+          <li><span class="yr">2023</span><span>Cloud Security Assessments<span class="venue">Talk, Ahmedabad Management Association</span></span></li>
+          <li><span class="yr">2022</span><span><a href="https://www.researchgate.net/publication/382411368_Computer_Forensics_Data_Recovery_Software_A_Comparative_Study" target="_blank" rel="noopener noreferrer">Computer Forensics Data Recovery Software: A Comparative Study</a><span class="venue">IJIRCST</span></span></li>
+          <li><span class="yr">2021</span><span><a href="https://www.ijip.in/" target="_blank" rel="noopener noreferrer">The Psychological Impact of COVID-19 Pandemics on Gujarati Adults</a><span class="venue">International Journal of Indian Psychology</span></span></li>
+          <li><span class="yr">2016</span><span>Forensic Analysis of Android Devices using LiME and Volatility<span class="venue">MS thesis, Gujarat University</span></span></li>
+        </ul>
+      </section>
+    </div>
 
     <!-- CONTACT -->
     <section id="contact" class="panel ticket" aria-labelledby="ct-title">

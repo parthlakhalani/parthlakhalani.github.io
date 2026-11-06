@@ -26,7 +26,7 @@ A single-file personal website built with HTML and CSS. It shows my current work
 | AI Automation | AI workflows for GRC and security, and what I can automate |
 | Audit Trail | Certifications, degrees and milestones, newest first |
 | Service Catalogue | Freelance services |
-| Credentials | Certifications, other training and languages |
+| Credentials | Core certifications, grouped certificates and training, events and languages |
 | Education | Degrees and diploma |
 | Research | Publications and talks |
 | Contact | Email, contact form and LinkedIn |
@@ -83,16 +83,17 @@ The site is hosted on **GitHub Pages**. Any change committed to the `main` branc
 
 ## Certifications shown
 
-- ✅ ISO/IEC 27001 Lead Implementer (TÜV SÜD)
+**Core**
+- ✅ ISO/IEC 27001 Lead Implementer (TÜV SÜD, Aug 2025; training by InfosecTrain, Jun 2025)
 - ✅ ISO/IEC 27001 Lead Auditor
-- ✅ CHFI, Computer Hacking Forensic Investigator (EC-Council)
-- ✅ CEH, Certified Ethical Hacker (EC-Council)
-- ✅ AWS Cloud Security (InfosecTrain)
-- ✅ AIGP training, InfosecTrain (Oct 2026, 24 CPE)
+- ✅ CHFI, Computer Hacking Forensic Investigator (IIT Kanpur, Jul 2024)
+- ✅ CEH, Cyber Security and Ethical Hacking (IIT Kanpur, Aug 2024)
+- ✅ AWS Solutions Architect Associate and AWS Security Specialty (InfosecTrain, May 2026)
+- ✅ AIGP training (InfosecTrain, Oct 2026, 24 CPE)
 - 🔄 AIGP certification exam (IAPP), in progress
 - 🔄 CISSP (ISC2), in progress
 
-Other training: ICS/OT Security (NIST 800-82 Rev 3), Cisco CCNP ENCOR, IT Service Management.
+**Also listed:** AI in SecOps Bootcamp, AWS Cloud Foundation, LLM Security Red Team Bootcamp, ISO 27001:2022-Compliant Cybersecurity (PMI), Continuous Security Validation, ISO/IEC 20000-1, ICS/OT NIST 800-82, Data Security and Protection (NHS England, Digital Care Hub), Cisco CCNP ENCOR, IT Helpdesk Fundamentals, Red Hat Linux, and events such as CyberSec 2025, AI Summit 2025 and the GRC Skill Online Meetup.
 
 ---
 
