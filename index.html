@@ -67,6 +67,8 @@ a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px soli
   .op::before { animation: beat 2.4s ease-in-out infinite; }
   @keyframes beat { 50% { box-shadow: 0 0 0 6px transparent; } }
 }
+.top-dl { font-family: var(--sans); font-weight: 600; font-size: 14px; color: var(--text); border: 1px solid var(--line); padding: 6px 12px; border-radius: 8px; text-decoration: none; white-space: nowrap; }
+.top-dl:hover { border-color: var(--muted); }
 .top-cta { font-family: var(--sans); font-weight: 600; font-size: 14px; color: var(--bg); background: var(--teal); padding: 7px 14px; border-radius: 8px; text-decoration: none; white-space: nowrap; }
 
 .shell { display: grid; grid-template-columns: 232px 1fr; min-height: calc(100vh - 56px); }
@@ -395,6 +397,7 @@ footer a { color: var(--muted); }
   main { padding: 16px; gap: 20px; }
   .topbar { padding: 0 16px; }
   .op { display: none; }
+  .top-dl { display: none; }
   .panel-head .hint { display: none; }
   .crumb span { display: none; }
   .who h1 { font-size: 26px; }
@@ -447,6 +450,7 @@ footer a { color: var(--muted); }
   <div class="top-right">
     <span class="op">Audit ready</span>
     <span class="clock" id="clock" aria-label="Time in Berlin">Berlin</span>
+    <a class="top-dl" href="Parth-Lakhalani-CV.pdf" download>Download CV</a>
     <a class="top-cta" href="#contact">Request a consultation</a>
   </div>
 </header>
@@ -483,7 +487,8 @@ footer a { color: var(--muted); }
           <p class="lede">I run Information Security and IT at a <b>HealthTech AI company</b> in Berlin. I build ISMS and <b>Business Continuity</b> programmes, take companies through <b>ISO 27001 audits</b>, automate GRC work with <b>AI</b>, and teach Digital Forensics.</p>
           <div class="actions">
             <a href="#contact" class="btn btn-go">Request a consultation</a>
-            <a href="https://www.linkedin.com/in/parth-lakhalani/" target="_blank" rel="noopener noreferrer" class="btn">LinkedIn profile</a>
+            <a href="https://www.linkedin.com/in/parth-lakhalani/" target="_blank" rel="noopener noreferrer" class="btn">LinkedIn</a>
+            <a href="Parth-Lakhalani-CV.pdf" class="btn" download>Download CV</a>
           </div>
         </div>
         <div class="arc">
@@ -771,7 +776,6 @@ footer a { color: var(--muted); }
         </ul>
       </div>
       </div>
-      <p class="cred-foot"><b>Languages:</b> English (professional), German (learning, toward B1), Hindi and Gujarati (native)</p>
     </section>
 
     <!-- EDUCATION + RESEARCH -->
@@ -811,6 +815,7 @@ footer a { color: var(--muted); }
       </div>
       <div class="actions">
         <a id="email-link" href="#" class="btn btn-go">Email me</a>
+        <a href="Parth-Lakhalani-CV.pdf" class="btn" download>Download CV (PDF)</a>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLScOeEoJN5NgZ6h7EOJD1YEGtq1PdORNswqeKEQu_sIAj93zVA/viewform" target="_blank" rel="noopener noreferrer" class="btn">Use the contact form</a>
         <a href="https://www.linkedin.com/in/parth-lakhalani/" target="_blank" rel="noopener noreferrer" class="btn">LinkedIn</a>
       </div>

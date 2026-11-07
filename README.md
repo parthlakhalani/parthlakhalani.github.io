@@ -35,10 +35,16 @@ A single-file personal website built with HTML and CSS. It shows my current work
 ## Files
 
 ```
-├── index.html   Main website (single file, everything included)
-├── photo.png    Profile photo (must be named exactly photo.png)
-└── README.md    This file
+├── index.html               Main website (single file, everything included)
+├── cv.html                  Source of the downloadable CV
+├── Parth-Lakhalani-CV.pdf   CV that visitors download with one click
+├── photo.png                Profile photo (must be named exactly photo.png)
+└── README.md                This file
 ```
+
+### Update the CV
+Edit `cv.html`, open it in Chrome, press `Ctrl+P`, choose "Save as PDF" (A4, background graphics on), and save it as `Parth-Lakhalani-CV.pdf`. Upload both files.
+
 
 ---
 
